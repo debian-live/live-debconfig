@@ -1,0 +1,24 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+# Recreating openssh-server host keys
+for _PROTOCOL in dsa rsa ecdsa
+do
+	if [ ! -e /etc/ssh/ssh_host_${_PROTOCOL}_key ] && \
+	   grep -qs "ssh_host_${_PROTOCOL}_key" /etc/ssh/sshd_config
+	then
+		if [ -x /usr/bin/ssh-keygen ]
+		then
+			ssh-keygen -q -f /etc/ssh/ssh_host_${_PROTOCOL}_key -N "" -t ${_PROTOCOL}
+		fi
+	fi
+done

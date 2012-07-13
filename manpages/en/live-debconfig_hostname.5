@@ -1,0 +1,72 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.TH LIVE\-DEBCONFIG 5 2012\-08\-02 4.0~a1-1 "Debian Live Project"
+
+.SH NAME
+\fBlive\-debconfig\fR \- hostname script
+
+.SH DESCRIPTION
+\fBlive\-debconfig\fR contains the scripts that configure a Debian Live system during the build process (live\-build).
+.PP
+This script sets the systems hostname in the /etc/hostname file.
+
+.SH PRESEEDING
+The hostname script currently features the following preseeding options.
+
+.IP "\fBlive-debconfig live-debconfig/hostname/hostname string\fR \fIHOSTNAME\fR" 8
+Allows to set the hostname of the system.
+.br
+
+.br
+If no value is preseeded, a suitable default is being suggested in a debconf prompt. If no value is entered in the debconf prompt, the default value is being used. The default value is determined automatically:
+.br
+
+.br
+  1. \fIHOSTNAME\fR is set to the string in the /etc/hostname file, if existing and non-empty.
+.br
+
+.br
+  2. \fIHOSTNAME\fR is set to the distributor's ID as in the /etc/os-release file, if existing and non-empty.
+.br
+
+.br
+  3. \fIHOSTNAME\fR is set to the distributor's ID as in the \fIlsb_release\fR(1) program, if installed and non-empty.
+.br
+
+.br
+  4. \fIHOSTNAME\fR is set to \fBprogress\fR if the /etc/progress_version file is existing.
+.br
+
+.br
+  5. \fIHOSTNAME\fR is set to \fBdebian\fR as a fallback.
+.br
+
+.br
+\fBWarning:\fR the new hostname will be set in the /etc/hostname file, overwriting any previous content without prior prompt or backup.
+.br
+
+.SH SEE ALSO
+\fIlive\-boot\fR(7)
+.PP
+\fIlive\-build\fR(7)
+.PP
+\fIlive\-config\fR(7)
+.PP
+\fIlive\-debconfig\fR(7)
+.PP
+\fIlive\-tools\fR(7)
+
+.SH HOMEPAGE
+More information about live\-debconfig and the Debian Live project can be found on the homepage at <\fIhttp://live.debian.net/\fR> and in the manual at <\fIhttp://live.debian.net/manual/\fR>.
+
+.SH BUGS
+Bugs can be reported by submitting a bugreport for the live\-debconfig package in the Debian Bug Tracking System at <\fIhttp://bugs.debian.org/\fR> or by writing a mail to the Debian Live mailing list at <\fIdebian\-live@lists.debian.org\fR>.
+
+.SH AUTHOR
+live\-debconfig was written by Daniel Baumann <\fIdaniel@debian.org\fR>.

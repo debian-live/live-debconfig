@@ -1,0 +1,47 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.TH LIVE\-DEBCONFIG 7 2012\-08\-02 4.0~a1-1 "Debian Live Project"
+
+.SH NAME
+\fBlive\-debconfig\fR \- System Configuration Scripts
+
+.SH DESCRIPTION
+\fBlive\-debconfig\fR contains the scripts that configure a Debian Live system during the build process (live\-build).
+
+.SH SCRIPTS
+\fBlive\-debconfig\fR currently features the following scripts in /lib/live/debconfig.
+
+.IP "\fBhostname\fR" 4
+sets the systems hostname (/etc/hostname), see \fIlive\-debconfig_hostname\fR(5).
+.IP "\fBifupdown\fR" 4
+configures the systems network settings (/etc/network/interfaces, /etc/resolv.conf, /etc/hosts), see \fIlive\-debconfig_ifupdown\fR(5).
+.IP "\fBsysvinit\fR" 4
+configures the systems type for Linux Containers, LXC (/etc/inittab), see \fIlive\-debconfig_sysvinit\fR(5).
+.IP "\fBselinux\fR" 4
+enables or disables selinux (/selinux), see \fIlive\-debconfig_selinux\fR(5).
+.IP "\fBopenssh\-server\fR" 4
+recreates openssh-server host keys (/etc/ssh/ssh_host_key*), see \fIlive\-debconfig_openssh\-server\fR(5).
+
+.SH SEE ALSO
+\fIlive\-boot\fR(7)
+.PP
+\fIlive\-build\fR(7)
+.PP
+\fIlive\-config\fR(7)
+.PP
+\fIlive\-tools\fR(7)
+
+.SH HOMEPAGE
+More information about live\-debconfig and the Debian Live project can be found on the homepage at <\fIhttp://live.debian.net/\fR> and in the manual at <\fIhttp://live.debian.net/manual/\fR>.
+
+.SH BUGS
+Bugs can be reported by submitting a bugreport for the live\-debconfig package in the Debian Bug Tracking System at <\fIhttp://bugs.debian.org/\fR> or by writing a mail to the Debian Live mailing list at <\fIdebian\-live@lists.debian.org\fR>.
+
+.SH AUTHOR
+live\-debconfig was written by Daniel Baumann <\fIdaniel@debian.org\fR>.

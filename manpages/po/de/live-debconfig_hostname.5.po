@@ -1,0 +1,228 @@
+# German translations for live-debconfig package
+# Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+# This file is distributed under the same license as the live-debconfig package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: live-debconfig 4.0~a1-1\n"
+"POT-Creation-Date: 2012-08-02 22:19+0300\n"
+"PO-Revision-Date: 2010-05-24 09:59+0300\n"
+"Last-Translator: Daniel Baumann <daniel@debian.org>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "LIVE-DEBCONFIG"
+msgstr "LIVE-DEBCONFIG"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "2012-08-02"
+msgstr "02.08.2012"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "4.0~a1-1"
+msgstr "4.0~a1-1"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "Debian Live Project"
+msgstr "Debian Live Projekt"
+
+#. type: SH
+#: en/live-debconfig.7:11 en/live-debconfig_hostname.5:11
+#, no-wrap
+msgid "NAME"
+msgstr "NAME"
+
+#. type: SH
+#: en/live-debconfig.7:14 en/live-debconfig_hostname.5:14
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "BESCHREIBUNG"
+
+#. type: Plain text
+#: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
+msgid ""
+"B<live-debconfig> contains the scripts that configure a Debian Live system "
+"during the build process (live-build)."
+msgstr ""
+"B<live-debconfig> enthält die Skripte welche ein Debian Live System während "
+"des Buildvorganges (live-build) konfigurieren."
+
+#. type: SH
+#: en/live-debconfig.7:31 en/live-debconfig_hostname.5:54
+#, no-wrap
+msgid "SEE ALSO"
+msgstr "SIEHE AUCH"
+
+#. type: Plain text
+#: en/live-debconfig.7:33 en/live-debconfig_hostname.5:56
+msgid "I<live-boot>(7)"
+msgstr "I<live-boot>(7)"
+
+#. type: Plain text
+#: en/live-debconfig.7:35 en/live-debconfig_hostname.5:58
+msgid "I<live-build>(7)"
+msgstr "I<live-build>(7)"
+
+#. type: Plain text
+#: en/live-debconfig.7:37 en/live-debconfig_hostname.5:60
+msgid "I<live-config>(7)"
+msgstr "I<live-config>(7)"
+
+#. type: Plain text
+#: en/live-debconfig.7:39 en/live-debconfig_hostname.5:64
+msgid "I<live-tools>(7)"
+msgstr "I<live-tools>(7)"
+
+#. type: SH
+#: en/live-debconfig.7:40 en/live-debconfig_hostname.5:65
+#, no-wrap
+msgid "HOMEPAGE"
+msgstr "HOMEPAGE"
+
+#. type: Plain text
+#: en/live-debconfig.7:42 en/live-debconfig_hostname.5:67
+msgid ""
+"More information about live-debconfig and the Debian Live project can be "
+"found on the homepage at E<lt>I<http://live.debian.net/>E<gt> and in the "
+"manual at E<lt>I<http://live.debian.net/manual/>E<gt>."
+msgstr ""
+"Weitere Informationen über live-debconfig und das Debian Live Projekt können "
+"auf der Homepage unter E<lt>I<http://live.debian.net/>E<gt> und im Handbuch "
+"unter E<lt>I<http://live.debian.net/manual/>E<gt> gefunden werden."
+
+#. type: SH
+#: en/live-debconfig.7:43 en/live-debconfig_hostname.5:68
+#, no-wrap
+msgid "BUGS"
+msgstr "FEHLER"
+
+#. type: Plain text
+#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:70
+msgid ""
+"Bugs can be reported by submitting a bugreport for the live-debconfig "
+"package in the Debian Bug Tracking System at E<lt>I<http://bugs.debian.org/"
+">E<gt> or by writing a mail to the Debian Live mailing list at E<lt>I<debian-"
+"live@lists.debian.org>E<gt>."
+msgstr ""
+"Fehler können durch Einreichen eines Fehlerberichtes für das live-debconfig "
+"Paket im Debian Bug Tracking System unter E<lt>I<http://bugs.debian.org/"
+">E<gt> oder durch Senden einer E-Mail an die Debian Live Mailing Liste unter "
+"E<lt>I<debian-live@lists.debian.org>E<gt> (englischsprachig) mitgeteilt "
+"werden."
+
+#. type: SH
+#: en/live-debconfig.7:46 en/live-debconfig_hostname.5:71
+#, no-wrap
+msgid "AUTHOR"
+msgstr "AUTOR"
+
+#. type: Plain text
+#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:72
+msgid ""
+"live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
+msgstr ""
+"live-debconfig wurde von Daniel Baumann E<lt>I<daniel@debian.org>E<gt> "
+"geschrieben."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:13
+msgid "B<live-debconfig> - hostname script"
+msgstr "B<live-debconfig> - Hostname Skript"
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:18
+msgid "This script sets the systems hostname in the /etc/hostname file."
+msgstr "Dieses Skript setzt den Hostnamen des Systems in Datei /etc/hostname."
+
+#. type: SH
+#: en/live-debconfig_hostname.5:19
+#, no-wrap
+msgid "PRESEEDING"
+msgstr "PRESEEDING"
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:21
+msgid ""
+"The hostname script currently features the following preseeding options."
+msgstr "Das Hostname Skript enthält derzeit folgende Preseeding Optionen."
+
+#. type: IP
+#: en/live-debconfig_hostname.5:22
+#, no-wrap
+msgid "B<live-debconfig live-debconfig/hostname/hostname string> I<HOSTNAME>"
+msgstr "B<live-debconfig live-debconfig/hostname/hostname string> I<HOSTNAME>"
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:24
+msgid "Allows to set the hostname of the system."
+msgstr "Erlaubt das Setzen des Hostnamen des Systems."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:28
+msgid ""
+"If no value is preseeded, a suitable default is being suggested in a debconf "
+"prompt. If no value is entered in the debconf prompt, the default value is "
+"being used. The default value is determined automatically:"
+msgstr ""
+"Wird kein Wert mit Preseeding vorgegeben, wird ein geeigneter Standardwert "
+"mit einer Debconf Eingabeaufforderung vorgeschlagen. Wird kein Wert in der "
+"Debconf Eingabeaufforderung eingegeben, wird der Standardwert benutzt. Der "
+"Standardwert ist automatisch bestimmt:"
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:32
+#, no-wrap
+msgid "  1. I<HOSTNAME> is set to the string in the /etc/hostname file, if existing and non-empty.\n"
+msgstr "  1. I<HOSTNAME> wird auf den String in der /etc/hostname Datei gesetzt, sofern vorhanden und nicht leer."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:36
+#, no-wrap
+msgid "  2. I<HOSTNAME> is set to the distributor's ID as in the /etc/os-release file, if existing and non-empty.\n"
+msgstr "  2. I<HOSTNAME> wird auf die Distributor ID in der /etc/os-release Datei gesetzt, sofern vorhanden und nicht leer."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:40
+#, no-wrap
+msgid "  3. I<HOSTNAME> is set to the distributor's ID as in the I<lsb_release>(1) program, if installed and non-empty.\n"
+msgstr "  3. I<HOSTNAME> wird auf die Distributor ID des I<lsb_release>(1) Programmes gesetzt, sofern vorhanden und nicht leer."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:44
+#, no-wrap
+msgid "  4. I<HOSTNAME> is set to B<progress> if the /etc/progress_version file is existing.\n"
+msgstr "  4. I<HOSTNAME> wird auf B<progress> gesetzt sofern die /etc/progress_version Datei vorhanden ist."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:48
+#, no-wrap
+msgid "  5. I<HOSTNAME> is set to B<debian> as a fallback.\n"
+msgstr "  5. I<HOSTNAME> wird auf B<debian> gesetzt als Fallback."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:52
+msgid ""
+"B<Warning:> the new hostname will be set in the /etc/hostname file, "
+"overwriting any previous content without prior prompt or backup."
+msgstr ""
+"B<Warnung:> der neue Hostname wird in der /etc/hostname Datei, jeglicher "
+"vorheriger Inhalt wird ohne vorgängige Rückfrage oder Sicherung "
+"überschrieben."
+
+#. type: Plain text
+#: en/live-debconfig_hostname.5:62
+msgid "I<live-debconfig>(7)"
+msgstr "I<live-debconfig>(7)"

@@ -1,0 +1,230 @@
+# German translations for live-debconfig package
+# Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+# This file is distributed under the same license as the live-debconfig package.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: live-debconfig 4.0~a1-1\n"
+"POT-Creation-Date: 2012-08-02 22:19+0300\n"
+"PO-Revision-Date: 2010-05-24 09:59+0300\n"
+"Last-Translator: Daniel Baumann <daniel@debian.org>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "LIVE-DEBCONFIG"
+msgstr "LIVE-DEBCONFIG"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "2012-08-02"
+msgstr "02.08.2012"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "4.0~a1-1"
+msgstr "4.0~a1-1"
+
+#. type: TH
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#, no-wrap
+msgid "Debian Live Project"
+msgstr "Debian Live Projekt"
+
+#. type: SH
+#: en/live-debconfig.7:11 en/live-debconfig_hostname.5:11
+#, no-wrap
+msgid "NAME"
+msgstr "NAME"
+
+#. type: Plain text
+#: en/live-debconfig.7:13
+msgid "B<live-debconfig> - System Configuration Scripts"
+msgstr "B<live-debconfig> - System Konfiguration Skripte"
+
+#. type: SH
+#: en/live-debconfig.7:14 en/live-debconfig_hostname.5:14
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "BESCHREIBUNG"
+
+#. type: Plain text
+#: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
+msgid ""
+"B<live-debconfig> contains the scripts that configure a Debian Live system "
+"during the build process (live-build)."
+msgstr ""
+"B<live-debconfig> enthält die Skripte welche ein Debian Live System während "
+"des Buildvorganges (live-build) konfigurieren."
+
+#. type: SH
+#: en/live-debconfig.7:17
+#, no-wrap
+msgid "SCRIPTS"
+msgstr "SKRIPTE"
+
+#. type: Plain text
+#: en/live-debconfig.7:19
+msgid ""
+"B<live-debconfig> currently features the following scripts in /lib/live/"
+"debconfig."
+msgstr ""
+"B<live-debconfig> enthält derzeit folgende Skripte in /lib/live/debconfig."
+
+#. type: IP
+#: en/live-debconfig.7:20
+#, no-wrap
+msgid "B<hostname>"
+msgstr "B<hostname>"
+
+#. type: Plain text
+#: en/live-debconfig.7:22
+msgid ""
+"sets the systems hostname (/etc/hostname), see I<live-debconfig_hostname>(5)."
+msgstr ""
+"setzt den Hostnamen des Systems (/etc/hostname), siehe I<live-"
+"debconfig_hostname>(5)."
+
+#. type: IP
+#: en/live-debconfig.7:22
+#, no-wrap
+msgid "B<ifupdown>"
+msgstr "B<ifupdown>"
+
+#. type: Plain text
+#: en/live-debconfig.7:24
+msgid ""
+"configures the systems network settings (/etc/network/interfaces, /etc/"
+"resolv.conf, /etc/hosts), see I<live-debconfig_ifupdown>(5)."
+msgstr ""
+"konfiguriert die Netzwerkeinstellungen des Systems (/etc/network/"
+"interfaces, /etc/resolv.conf, /etc/hosts), siehe I<live-debconfig_ifupdown>"
+"(5)."
+
+#. type: IP
+#: en/live-debconfig.7:24
+#, no-wrap
+msgid "B<sysvinit>"
+msgstr "B<sysvinit>"
+
+#. type: Plain text
+#: en/live-debconfig.7:26
+msgid ""
+"configures the systems type for Linux Containers, LXC (/etc/inittab), see "
+"I<live-debconfig_sysvinit>(5)."
+msgstr ""
+"konfiguriert den Typ des Systems für Linux Container, LXC (/etc/inittab), "
+"siehe I<live-debconfig_sysvinit>(5)."
+
+#. type: IP
+#: en/live-debconfig.7:26
+#, no-wrap
+msgid "B<selinux>"
+msgstr "B<selinux>"
+
+#. type: Plain text
+#: en/live-debconfig.7:28
+msgid ""
+"enables or disables selinux (/selinux), see I<live-debconfig_selinux>(5)."
+msgstr ""
+"schaltet SELinux ein oder aus (/selinux), siehe I<live-debconfig_selinux>(5)."
+
+#. type: IP
+#: en/live-debconfig.7:28
+#, no-wrap
+msgid "B<openssh-server>"
+msgstr "B<openssh-server>"
+
+#. type: Plain text
+#: en/live-debconfig.7:30
+msgid ""
+"recreates openssh-server host keys (/etc/ssh/ssh_host_key*), see I<live-"
+"debconfig_openssh-server>(5)."
+msgstr ""
+"erstellt OpenSSH-Server Host Schlüssel (/etc/ssh/ssh_host_key*), see I<live-"
+"debconfig_openssh-server>(5)."
+
+#. type: SH
+#: en/live-debconfig.7:31 en/live-debconfig_hostname.5:54
+#, no-wrap
+msgid "SEE ALSO"
+msgstr "SIEHE AUCH"
+
+#. type: Plain text
+#: en/live-debconfig.7:33 en/live-debconfig_hostname.5:56
+msgid "I<live-boot>(7)"
+msgstr "I<live-boot>(7)"
+
+#. type: Plain text
+#: en/live-debconfig.7:35 en/live-debconfig_hostname.5:58
+msgid "I<live-build>(7)"
+msgstr "I<live-build>(7)"
+
+#. type: Plain text
+#: en/live-debconfig.7:37 en/live-debconfig_hostname.5:60
+msgid "I<live-config>(7)"
+msgstr "I<live-config>(7)"
+
+#. type: Plain text
+#: en/live-debconfig.7:39 en/live-debconfig_hostname.5:64
+msgid "I<live-tools>(7)"
+msgstr "I<live-tools>(7)"
+
+#. type: SH
+#: en/live-debconfig.7:40 en/live-debconfig_hostname.5:65
+#, no-wrap
+msgid "HOMEPAGE"
+msgstr "HOMEPAGE"
+
+#. type: Plain text
+#: en/live-debconfig.7:42 en/live-debconfig_hostname.5:67
+msgid ""
+"More information about live-debconfig and the Debian Live project can be "
+"found on the homepage at E<lt>I<http://live.debian.net/>E<gt> and in the "
+"manual at E<lt>I<http://live.debian.net/manual/>E<gt>."
+msgstr ""
+"Weitere Informationen über live-debconfig und das Debian Live Projekt können "
+"auf der Homepage unter E<lt>I<http://live.debian.net/>E<gt> und im Handbuch "
+"unter E<lt>I<http://live.debian.net/manual/>E<gt> gefunden werden."
+
+#. type: SH
+#: en/live-debconfig.7:43 en/live-debconfig_hostname.5:68
+#, no-wrap
+msgid "BUGS"
+msgstr "FEHLER"
+
+#. type: Plain text
+#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:70
+msgid ""
+"Bugs can be reported by submitting a bugreport for the live-debconfig "
+"package in the Debian Bug Tracking System at E<lt>I<http://bugs.debian.org/"
+">E<gt> or by writing a mail to the Debian Live mailing list at E<lt>I<debian-"
+"live@lists.debian.org>E<gt>."
+msgstr ""
+"Fehler können durch Einreichen eines Fehlerberichtes für das live-debconfig "
+"Paket im Debian Bug Tracking System unter E<lt>I<http://bugs.debian.org/"
+">E<gt> oder durch Senden einer E-Mail an die Debian Live Mailing Liste unter "
+"E<lt>I<debian-live@lists.debian.org>E<gt> (englischsprachig) mitgeteilt "
+"werden."
+
+#. type: SH
+#: en/live-debconfig.7:46 en/live-debconfig_hostname.5:71
+#, no-wrap
+msgid "AUTHOR"
+msgstr "AUTOR"
+
+#. type: Plain text
+#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:72
+msgid ""
+"live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
+msgstr ""
+"live-debconfig wurde von Daniel Baumann E<lt>I<daniel@debian.org>E<gt> "
+"geschrieben."

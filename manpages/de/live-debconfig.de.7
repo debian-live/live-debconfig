@@ -1,0 +1,65 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH LIVE\-DEBCONFIG 7 02.08.2012 4.0~a1\-1 "Debian Live Projekt"
+
+.SH NAME
+\fBlive\-debconfig\fP \- System Konfiguration Skripte
+
+.SH BESCHREIBUNG
+\fBlive\-debconfig\fP enthält die Skripte welche ein Debian Live System während
+des Buildvorganges (live\-build) konfigurieren.
+
+.SH SKRIPTE
+\fBlive\-debconfig\fP enthält derzeit folgende Skripte in /lib/live/debconfig.
+
+.IP \fBhostname\fP 4
+setzt den Hostnamen des Systems (/etc/hostname), siehe
+\fIlive\-debconfig_hostname\fP(5).
+.IP \fBifupdown\fP 4
+konfiguriert die Netzwerkeinstellungen des Systems (/etc/network/interfaces,
+/etc/resolv.conf, /etc/hosts), siehe \fIlive\-debconfig_ifupdown\fP(5).
+.IP \fBsysvinit\fP 4
+konfiguriert den Typ des Systems für Linux Container, LXC (/etc/inittab),
+siehe \fIlive\-debconfig_sysvinit\fP(5).
+.IP \fBselinux\fP 4
+schaltet SELinux ein oder aus (/selinux), siehe
+\fIlive\-debconfig_selinux\fP(5).
+.IP \fBopenssh\-server\fP 4
+erstellt OpenSSH\-Server Host Schlüssel (/etc/ssh/ssh_host_key*), see
+\fIlive\-debconfig_openssh\-server\fP(5).
+
+.SH "SIEHE AUCH"
+\fIlive\-boot\fP(7)
+.PP
+\fIlive\-build\fP(7)
+.PP
+\fIlive\-config\fP(7)
+.PP
+\fIlive\-tools\fP(7)
+
+.SH HOMEPAGE
+Weitere Informationen über live\-debconfig und das Debian Live Projekt können
+auf der Homepage unter <\fIhttp://live.debian.net/\fP> und im Handbuch
+unter <\fIhttp://live.debian.net/manual/\fP> gefunden werden.
+
+.SH FEHLER
+Fehler können durch Einreichen eines Fehlerberichtes für das live\-debconfig
+Paket im Debian Bug Tracking System unter
+<\fIhttp://bugs.debian.org/\fP> oder durch Senden einer E\-Mail an die
+Debian Live Mailing Liste unter <\fIdebian\-live@lists.debian.org\fP>
+(englischsprachig) mitgeteilt werden.
+
+.SH AUTOR
+live\-debconfig wurde von Daniel Baumann <\fIdaniel@debian.org\fP>
+geschrieben.

@@ -1,0 +1,92 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH LIVE\-DEBCONFIG 5 2012\-07\-30 4.0~a1\-1 "Proyecto Debian Live"
+
+.SH NOMBRE
+\fBlive\-debconfig\fP \- script hostname
+
+.SH DESCRIPCIÓN
+\fBlive\-debconfig\fP contiene los scripts que configuran un sistema Debian Live
+durante el proceso de construcción (live\-build).
+.PP
+Este script establece el nombre del anfitrión del sistema en el fichero
+/etc/hostname
+
+.SH PRECONFIGURACIÓN
+El script hostname actualmente incluye las siguientes opciones de
+preconfiguración.
+
+.IP "\fBlive\-debconfig live\-debconfig/hostname/hostname string\fP \fIHOSTNAME\fP" 8
+Permite establecer el nombre del anfitrión del sistema.
+.br
+
+.br
+Si no hay ningún valor preconfigurado, se sugiere un valor por defecto
+adecuado en el prompt de debconf. Si no se introduce ningún valor en el
+prompt de debconf, se utiliza el valor por defecto. El valor por defecto se
+determina de forma automática:
+.br
+
+.br
+  1. \fIHOSTNAME\fP se establece con el fichero /etc/hostname, si este existe y no está vacio.
+.br
+
+.br
+  2. \fIHOSTNAME\fP se establece con la ID del distribuidor en el fichero /etc/os\-release, si este existe y no está vacio.
+.br
+
+.br
+  3. \fIHOSTNAME\fP se establece con la ID del distribuidor como en el programa \fIlsb_release\fP(1) si está instalado y no está vacio.
+.br
+
+.br
+  4. \fIHOSTNAME\fP se establece en \fBprogress\fP si existe el fichero /etc/progress_version.
+.br
+
+.br
+  5. \fIHOSTNAME\fP se establece en  \fBdebian\fP como forma alternativa.
+.br
+
+.br
+\fBAtención:\fP el nuevo nombre del anfitrión se añadirá al fichero
+/etc/hostname sobreescribiendo cualquier contenido anterior sin aviso o
+copia de seguridad.
+.br
+
+.SH "VER TAMBIÉN"
+\fIlive\-boot\fP(7)
+.PP
+\fIlive\-build\fP(7)
+.PP
+\fIlive\-config\fP(7)
+.PP
+\fIlive\-debconfig\fP(7)
+.PP
+\fIlive\-tools\fP(7)
+
+.SH "PÁGINA WEB"
+Se puede encontrar más información acerca de live\-debconfig y el proyecto
+Debian Live en su página principal en <\fIhttp://live.debian.net/\fP> y
+en el manual en <\fIhttp://live.debian.net/manual/\fP>.
+
+.SH ERRORES
+Se puede notificar los fallos enviando un informe de errores sobre el
+paquete live\-debconfig en el Debian Bug Tracking System en
+<\fIhttp://bugs.debian.org/\fP> o escribiendo un mensaje a la lista de
+correo de Debian Live a la dirección
+<\fIdebian\-live@lists.debian.org\fP>.
+
+.SH AUTOR
+live\-debconfig fue escrito por Daniel Baumann
+<\fIdaniel@debian.org\fP>.

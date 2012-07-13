@@ -1,0 +1,19 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/hostname/hostname
+Type: string
+Default: debian
+Description: live-debconfig: Hostname?
+ What should be the hostname of the current system?
+ .
+ The default value is determined automatically:
+ .
+   1. string in the /etc/hostname file, if existing and non-empty.
+   2. distributor's ID as in the /etc/os-release file, if existing and
+      non-empty.
+   3. distributor's ID as in the lsb_release(1) program, if installed and
+      non-empty.
+   4. progress if the /etc/progress_version file is existing.
+   5. debian as a fallback.
