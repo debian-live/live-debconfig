@@ -1,0 +1,28 @@
+Source: live-debconfig
+Section: misc
+Priority: optional
+Maintainer: Debian Live Project <debian-live@lists.debian.org>
+Uploaders: Daniel Baumann <daniel@debian.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.3
+Homepage: http://live.debian.net/devel/live-debconfig/
+Vcs-Browser: http://live.debian.net/gitweb/?p=live-debconfig.git
+Vcs-Git: git://live.debian.net/git/live-debconfig.git
+
+Package: live-debconfig
+Architecture: all
+Depends: ${misc:Depends}, debconf
+Recommends: live-debconfig-doc
+Description: Debian Live - System Configuration Scripts
+ live-debconfig contains the scripts that configure a Debian Live system during
+ the build process (live-build).
+
+Package: live-debconfig-doc
+Section: doc
+Architecture: all
+Depends: ${misc:Depends}
+Description: Debian Live - System Configuration Scripts (documentation)
+ live-debconfig contains the scripts that configure a Debian Live system during
+ the build process (live-build).
+ .
+ This package contains the documentation.

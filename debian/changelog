@@ -1,0 +1,5 @@
+live-debconfig (4.0~a1-1) unstable; urgency=low
+
+  * Initial release.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 02 Aug 2012 22:23:52 +0200
