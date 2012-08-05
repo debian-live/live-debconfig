@@ -140,9 +140,17 @@ case "${_LXC_ENABLE}" in
 		# Remove pointless services in a container
 		for _SERVICE in ${_LXC_DISABLE_SERVICES}
 		do
+			case ${_SERVICE} in
+				umount*)
+					_ACTION=remove
+					;;
+				*)
+					_ACTION=disable
+					;;
+			esac
 			if [ -e "/etc/init.d/${_SERVICE}" ]
 			then
-				update-rc.d -f ${_SERVICE} disable 2>&1 | \
+				update-rc.d -f ${_SERVICE} ${_ACTION} 2>&1 | \
 				grep -v "update-rc.d: using dependency based boot sequencing" | \
 				grep -v "update-rc.d: error: cannot find a LSB script for mountroot" || true
 			fi
