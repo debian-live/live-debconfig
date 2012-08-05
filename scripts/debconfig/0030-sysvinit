@@ -16,7 +16,7 @@ Defaults ()
 {
 	_LXC_ENABLE="${_LXC_ENABLE:-false}"
 	_LXC_CONSOLES="${_LXC_CONSOLES:-6}"
-	_LXC_DISABLE_SERVICES="${_LXC_DISABLE_SERVICES:-checkroot.sh hwclockfirst.sh hwclock.sh kmod module-init-tools umountfs umountroot}"
+	_LXC_DISABLE_SERVICES="${_LXC_DISABLE_SERVICES:-checkroot.sh hwclockfirst.sh hwclock.sh kmod module-init-tools mountall.sh mountkernfs.sh umountfs umountroot}"
 }
 
 db_get live-debconfig/sysvinit/lxc-enable
