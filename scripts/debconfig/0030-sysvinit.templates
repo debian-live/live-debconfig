@@ -20,7 +20,7 @@ Description: live-debconfig: How many consoles for LXC?
 
 Template: live-debconfig/sysvinit/lxc-disable-services
 Type: string
-Default: checkroot.sh hwclockfirst.sh hwclock.sh module-init-tools umountfsumountroot
+Default: checkroot.sh hwclockfirst.sh hwclock.sh module-init-tools umountfs umountroot
 Description: live-debconfig: Which services to disable for LXC?
  Some services are not useful in containers and should be disabled.
  .
