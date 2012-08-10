@@ -16,7 +16,7 @@ Defaults ()
 {
 	_LXC_ENABLE="${_LXC_ENABLE:-false}"
 	_LXC_CONSOLES="${_LXC_CONSOLES:-6}"
-	_LXC_DISABLE_SERVICES="${_LXC_DISABLE_SERVICES:-checkroot.sh hwclockfirst.sh hwclock.sh module-init-tools umountfs umountroot}"
+	_LXC_DISABLE_SERVICES="${_LXC_DISABLE_SERVICES:-checkroot.sh hwclockfirst.sh hwclock.sh kmod module-init-tools mountall.sh mountkernfs.sh umountfs umountroot}"
 }
 
 db_get live-debconfig/sysvinit/lxc-enable
@@ -140,9 +140,20 @@ case "${_LXC_ENABLE}" in
 		# Remove pointless services in a container
 		for _SERVICE in ${_LXC_DISABLE_SERVICES}
 		do
+			case ${_SERVICE} in
+				umountfs|umountroot)
+					# FIXME: not upgrade safe
+					_ACTION=remove
+					;;
+
+				*)
+					_ACTION=disable
+					;;
+			esac
+
 			if [ -e "/etc/init.d/${_SERVICE}" ]
 			then
-				update-rc.d -f ${_SERVICE} disable 2>&1 | \
+				update-rc.d -f ${_SERVICE} ${_ACTION} 2>&1 | \
 				grep -v "update-rc.d: using dependency based boot sequencing" | \
 				grep -v "update-rc.d: error: cannot find a LSB script for mountroot" || true
 			fi
