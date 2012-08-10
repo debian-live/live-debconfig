@@ -1,3 +1,26 @@
+live-debconfig (4.0~a2-1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Adding missing space in live-debconfig/sysvinit/lxc-disable-services
+    default, thanks to Jon Severinsson <jon@severinsson.net>.
+  * Also adding kmod to disabled services within lxc containers in
+    sysvinit script.
+
+  [ Jon Severinsson ]
+  * Remove, rather than disable, the umount* initscripts in lxc
+    containers.
+
+  [ Daniel Baumann ]
+  * Explicitly listing umountfs and umountroot for remove in sysvinit
+    script to be on the conservative side, instead of using 'umount*'
+    pattern to match them.
+
+  [ Jon Severinsson ]
+  * Add mountkernfs.sh and mountall.sh to the list of services disabled
+    in lxc containers.
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 10 Aug 2012 23:08:14 +0200
+
 live-debconfig (4.0~a1-1) unstable; urgency=low
 
   * Initial release.
