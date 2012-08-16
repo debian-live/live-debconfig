@@ -49,6 +49,15 @@ _ETH0_NETWORK="${RET}" # string (w/ empty)
 db_get live-debconfig/ifupdown/nameserver-addresses
 _NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
 
+db_get live-debconfig/ifupdown/nameserver-domain
+_NAMESERVER_DOMAIN="${RET}" # string (w/ empty)
+
+dg_get live-debconfig/ifupdown/nameserver-search
+_NAMESERVER_SEARCH="${RET}" # string (w/ empty)
+
+db_get live-debconfig/ifupdown/nameserver-options
+_NAMESERVER_OPTIONS="${RET}" # string (w/ empty)
+
 Defaults
 
 db_set live-debconfig/ifupdown/lo-enable "${_LO_ENABLE}"
@@ -80,6 +89,15 @@ db_fset live-debconfig/ifupdown/eth0-network seen false
 
 db_set live-debconfig/ifupdown/nameserver-addresses "${_NAMESERVER_ADDRESSES}"
 db_fset live-debconfig/ifupdown/nameserver-addresses seen false
+
+db_set live-debconfig/ifupdown/nameserver-domain "${_NAMESERVER_DOMAIN}"
+db_fset live-debconfig/ifupdown/nameserver-domain seen false
+
+db_set live-debconfig/ifupdown/nameserver-search "${_NAMESERVER_SEARCH}"
+db_fset live-debconfig/ifupdown/nameserver-search seen false
+
+db_set live-debconfig/ifupdown/nameserver-options "${_NAMESERVER_OPTIONS}"
+db_fset live-debconfig/ifupdown/nameserver-options seen false
 
 db_settitle live-debconfig/title
 db_input high live-debconfig/ifupdown/lo-enable || true
@@ -180,6 +198,15 @@ _ETH_NUMBER="${_NUMBER}"
 
 db_get live-debconfig/ifupdown/nameserver-addresses
 _NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
+
+db_get live-debconfig/ifupdown/nameserver-domain
+_NAMESERVER_DOMAIN="${RET}" # string (w/ empty)
+
+db_get live-debconfig/ifupdown/nameserver-search
+_NAMESERVER_SEARCH="${RET}" # string (w/ empty)
+
+db_get live-debconfig/ifupdown/nameserver-options
+_NAMESERVER_OPTIONS="${RET}" # string (w/ empty)
 
 Defaults
 
@@ -282,15 +309,29 @@ EOF
 done
 
 # Create /etc/resolv.conf
+rm -f /etc/resolv.conf
+
+if [ -n "${_NAMESERVER_DOMAIN}" ]
+then
+	echo "domain ${_NAMESERVER_DOMAIN}" >> /etc/resolv.conf
+fi
+
+if [ -n "${_NAMESERVER_SEARCH}" ]
+then
+	echo "search ${_NAMESERVER_SEARCH}" >> /etc/resolv.conf
+fi
+
 if [ -n "${_NAMESERVER_ADDRESSES}" ]
 then
-	grep -Ev '^ *nameserver' /etc/resolv.conf > /etc/resolv.conf.tmp
-	mv /etc/resolv.conf.tmp /etc/resolv.conf
-
 	for _NAMESERVER_ADDRESS in $(echo ${_NAMESERVER_ADDRESSES} | sed -e 's|,| |g')
 	do
 		echo "nameserver ${_NAMESERVER_ADDRESS}" >> /etc/resolv.conf
 	done
+fi
+
+if [ -n "${_NAMESERVER_OPTIONS}" ]
+then
+	echo "options ${_NAMESERVER_OPTIONS}" >> /etc/resolv.conf
 fi
 
 # Create /etc/hosts
