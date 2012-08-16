@@ -137,26 +137,49 @@ case "${_LXC_ENABLE}" in
 			fi
 		done
 
-		# Remove pointless services in a container
+		# Remove uneeded services in a container
 		for _SERVICE in ${_LXC_DISABLE_SERVICES}
 		do
-			case ${_SERVICE} in
-				umountfs|umountroot)
-					# FIXME: not upgrade safe
-					_ACTION=remove
-					;;
-
-				*)
-					_ACTION=disable
-					;;
-			esac
-
-			if [ -e "/etc/init.d/${_SERVICE}" ]
+			# service does not exist
+			if [ ! -e /etc/init.d/${_SERVICE} ]
 			then
-				update-rc.d -f ${_SERVICE} ${_ACTION} 2>&1 | \
-				grep -v "update-rc.d: using dependency based boot sequencing" | \
-				grep -v "update-rc.d: error: cannot find a LSB script for mountroot" || true
+				continue
 			fi
+
+			# service is already disabled
+			for _RUNLEVEL in /etc/rc*.d
+			do
+				if [ ! -e "${_RUNLEVEL}/K*${_SERVICE}" ]
+				then
+					# disabled services have stop links in all runlevels
+					# if at least one runlevel does not have a stop link,
+					# then the service was not disabled and we need to continue
+					# with disabling the service later on
+					break
+				fi
+
+				# service is indeed already disabled
+				continue
+			done
+
+			if ls /etc/rc*.d/K*${_SERVICE} > /dev/null 2>&1 && \
+			   ! ls /etc/rc*.d/S*${_SERVICE} > /dev/null 2>&1
+			then
+				# service has only stop links
+				# therefore, using 'update-rc.d disable' does not work,
+				# and using 'update-rc.d remove' is not upgrade safe
+				# (on upgrades, the stop links would be re-added).
+				for _SYMLINK in /etc/rc*.d/K*${_SERVICE}
+				do
+					rm -f ${_SYMLINK}
+					ln -s /bin/true ${_SYMLINK}
+				done
+			fi
+
+			# service is a normal service with both start and stop links
+			update-rc.d -f ${_SERVICE} disable 2>&1 | \
+			grep -v "update-rc.d: using dependency based boot sequencing" | \
+			grep -v "update-rc.d: error: cannot find a LSB script for mountroot" || true
 		done
 		;;
 
