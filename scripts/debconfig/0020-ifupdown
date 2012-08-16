@@ -17,6 +17,14 @@ Defaults ()
 	_LO_ENABLE="${_LO_ENABLE:-true}"
 	_ETH0_METHOD="${_ETH0_METHOD:-dhcp}"
 	_ETH0_ADDRESS="${_ETH0_ADDRESS:-192.168.1.2}"
+
+	if [ -e /etc/resolv.conf ]
+	then
+		_NAMESERVER_ADDRESSES="${_NAMESERVER_ADDRESSES:-$(awk '/^nameserver / {$1=""; print $0}' /etc/resolv.conf)}"
+		_NAMESERVER_DOMAIN="${_NAMESERVER_DOMAIN:-$(awk '/^domain / {$1=""; print $0}' /etc/resolv.conf)}"
+		_NAMESERVER_SEARCH="${_NAMESERVER_SEARCH:-$(awk '/^search / {$1=""; print $0}' /etc/resolv.conf)}"
+		_NAMESERVER_OPTIONS="${_NAMESERVER_OPTIONS:-$(awk '/^options / {$1=""; print $0}' /etc/resolv.conf)}"
+	fi
 }
 
 db_get live-debconfig/ifupdown/lo-enable
