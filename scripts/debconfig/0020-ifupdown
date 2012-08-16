@@ -12,6 +12,11 @@ set -e
 
 . /usr/share/debconf/confmodule
 
+# FIXME:
+#   * use interfaces.d where possible
+#   * respect pre-existing interfaces (or interfaces.d)
+#   * add support for bridges (make interface configuration more generic?)
+
 Defaults ()
 {
 	_LO_ENABLE="${_LO_ENABLE:-true}"
