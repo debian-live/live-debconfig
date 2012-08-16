@@ -119,13 +119,14 @@ case "${_LXC_ENABLE}" in
 		_CONSOLES="${_CONSOLES}\n#-- live-debconfig end"
 
 		# Remove old entries
-		sed -e '/#-- live-debconfig begin/,/#-- live-debconfig end/d' /etc/inittab.tmp > /etc/inittab
+		sed -i -e '/#-- live-debconfig begin/,/#-- live-debconfig end/d' /etc/inittab.tmp
 
 		# Add new entries
 		_CONSOLE="$(grep '#[0-9].*:respawn:/sbin/getty' /etc/inittab | tail -1)"
 
-		sed -e "s|\(${_CONSOLE}\)|\1${_CONSOLES}|" /etc/inittab > /etc/inittab.tmp
-		mv -f /etc/inittab.tmp /etc/inittab
+		sed -i -e "s|\(${_CONSOLE}\)|\1${_CONSOLES}|" /etc/inittab.tmp
+
+		mv /etc/inittab.tmp /etc/inittab
 
 		# squeeze and newer only has /dev/tty and /dev/tty0 by default,
 		# therefore creating missing device nodes for tty1-4.
