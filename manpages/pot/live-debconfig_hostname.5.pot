@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig VERSION\n"
-"POT-Creation-Date: 2012-08-16 15:41+0300\n"
+"POT-Creation-Date: 2012-08-17 00:03+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2012-08-16"
+msgid "2012-08-17"
 msgstr ""
 
 #. type: TH

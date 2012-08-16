@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a3-1\n"
-"POT-Creation-Date: 2012-08-16 15:41+0300\n"
+"POT-Creation-Date: 2012-08-17 00:03+0300\n"
 "PO-Revision-Date: 2010-05-24 09:59+0300\n"
 "Last-Translator: Daniel Baumann <daniel@debian.org>\n"
 "Language-Team: none\n"
@@ -24,8 +24,8 @@ msgstr "LIVE-DEBCONFIG"
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2012-08-16"
-msgstr "16.08.2012"
+msgid "2012-08-17"
+msgstr "17.08.2012"
 
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
@@ -118,11 +118,12 @@ msgstr "B<sysvinit>"
 #. type: Plain text
 #: en/live-debconfig.7:26
 msgid ""
-"configures the systems type for Linux Containers, LXC (/etc/inittab), see "
-"I<live-debconfig_sysvinit>(5)."
+"configures the systems type for Linux Containers, LXC (/etc/inittab) and "
+"disables some services not needed for LXC, see I<live-debconfig_sysvinit>(5)."
 msgstr ""
 "konfiguriert den Typ des Systems für Linux Container, LXC (/etc/inittab), "
-"siehe I<live-debconfig_sysvinit>(5)."
+"und schaltet einige Services ab die für LXC nicht benötigt werden, siehe "
+"I<live-debconfig_sysvinit>(5)."
 
 #. type: IP
 #: en/live-debconfig.7:26
@@ -133,11 +134,11 @@ msgstr "B<util-linux>"
 #. type: Plain text
 #: en/live-debconfig.7:28
 msgid ""
-"configure the access to the hardware clock, see I<live-debconfig_util-linux>"
-"(5)."
+"configure the access to the hardware clock (/etc/default/hwclock), see "
+"I<live-debconfig_util-linux>(5)."
 msgstr ""
-"konfiguriert den Zugriff auf die Hardware Uhr, siehe I<live-debconfig_util-"
-"linux>(5)."
+"konfiguriert den Zugriff auf die Hardware Uhr (/etc/default/hwclock), siehe "
+"I<live-debconfig_util-linux>(5)."
 
 #. type: IP
 #: en/live-debconfig.7:28
