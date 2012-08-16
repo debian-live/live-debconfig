@@ -60,6 +60,7 @@ case "${_SELINUX_ENABLE}" in
 
 	false)
 		mkdir -p /selinux
-		echo 0 > /selinux/enforce
+		echo 0 > /selinux/enforce.tmp
+		mv /selinux/enforce.tmp /selinux/enforce
 		;;
 esac
