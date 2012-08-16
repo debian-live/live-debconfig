@@ -1,3 +1,26 @@
+live-debconfig (4.0~a3-1) unstable; urgency=low
+
+  * Reworking disabling and removal of sysvinit services in a non-
+    hardcoded and upgrade safe way.
+  * Removing start and stop links for disabled services when reverting
+    lxc changes in sysvinit script.
+  * Adding util-linux script for setting hwclock options.
+  * Making loopback interface in ifupdown script configurable.
+  * Renaming nameserver preseedings to nameserver-addresses in
+    preparation for additional nameserver preseedings.
+  * Making the 'domain', 'search', and 'options' options available in
+    ifupdown script.
+  * Making file operations in hostname script atomic.
+  * Making file operations in ifupdown script atomic.
+  * Making file operations in sysvinit script atomic.
+  * Making file operations in util-linux script atomic.
+  * Making file operations in selinux script atomic.
+  * Respecting pre-existing /etc/resolv.conf for nameserver settings in
+    ifupdown script.
+  * Adding some todo notes to ifupdown script.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 16 Aug 2012 15:43:09 +0200
+
 live-debconfig (4.0~a2-1) unstable; urgency=low
 
   [ Daniel Baumann ]
