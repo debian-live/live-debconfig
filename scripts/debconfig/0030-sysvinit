@@ -192,6 +192,9 @@ case "${_LXC_ENABLE}" in
 		do
 			if [ -e "/etc/init.d/${_SERVICE}" ]
 			then
+				rm -f /etc/rc*.d/S*${_SERVICE}
+				rm -f /etc/rc*.d/K*${_SERVICE}
+
 				update-rc.d -f ${_SERVICE} defaults | \
 				grep -v "update-rc.d: using dependency based boot sequencing" | \
 				grep -v "update-rc.d: error: cannot find a LSB script for mountroot" || true
