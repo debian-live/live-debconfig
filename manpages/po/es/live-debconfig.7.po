@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a3-1\n"
 "POT-Creation-Date: 2012-08-17 00:03+0300\n"
-"PO-Revision-Date: 2012-07-30 14:08+0200\n"
+"PO-Revision-Date: 2012-08-17 00:17+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -25,7 +25,7 @@ msgstr "LIVE-DEBCONFIG"
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "2012-08-17"
-msgstr "16.08.2012"
+msgstr "17.08.2012"
 
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
@@ -117,16 +117,13 @@ msgstr "B<sysvinit>"
 
 #. type: Plain text
 #: en/live-debconfig.7:26
-#, fuzzy
-#| msgid ""
-#| "configures the systems type for Linux Containers, LXC (/etc/inittab), see "
-#| "I<live-debconfig_sysvinit>(5)."
 msgid ""
 "configures the systems type for Linux Containers, LXC (/etc/inittab) and "
 "disables some services not needed for LXC, see I<live-debconfig_sysvinit>(5)."
 msgstr ""
-"configura el tipo de sistema para los Linux Containers, LXC (/etc/inittab), "
-"ver I<live-debconfig_sysvinit>(5)."
+"configura el tipo de sistema para los Linux Containers, LXC (/etc/inittab) y "
+"desactiva algunos servicios que no son necesarios para LXC, ver I<live-"
+"debconfig_sysvinit>(5)."
 
 #. type: IP
 #: en/live-debconfig.7:26
@@ -136,16 +133,12 @@ msgstr "B<util-linux>"
 
 #. type: Plain text
 #: en/live-debconfig.7:28
-#, fuzzy
-#| msgid ""
-#| "configures the systems type for Linux Containers, LXC (/etc/inittab), see "
-#| "I<live-debconfig_sysvinit>(5)."
 msgid ""
 "configure the access to the hardware clock (/etc/default/hwclock), see "
 "I<live-debconfig_util-linux>(5)."
 msgstr ""
-"configura el tipo de sistema para los Linux Containers, LXC (/etc/inittab), "
-"ver I<live-debconfig_sysvinit>(5)."
+"configura el acceso al reloj del sistema (/etc/default/hwclock), ver I<live-"
+"debconfig_util-linux>(5)."
 
 #. type: IP
 #: en/live-debconfig.7:28
