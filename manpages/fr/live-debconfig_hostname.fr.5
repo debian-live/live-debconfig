@@ -1,0 +1,89 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH LIVE\-DEBCONFIG 5 2012\-08\-17 4.0~a3\-1 "Projet Debian Live"
+
+.SH NOM
+\fBlive\-debconfig\fP \- script hostname
+
+.SH DESCRIPTION
+\fBlive\-debconfig\fP contient les scripts qui configurent un système Debian
+Live pendant le processus de construction (live\-build).
+.PP
+Ce script définit le nom d'hôte dans le fichier /etc/hostname
+
+.SH PRECONFIGURATION
+Le script hostname comprend actuellement les options de préconfiguration
+suivantes.
+
+.IP "\fBlive\-debconfig live\-debconfig/hostname/hostname string\fP \fIHOSTNAME\fP" 8
+Permet de définir le nom d'hôte du système.
+.br
+
+.br
+Si aucune valeur n'est préconfigurée, une valeur par défaut appropriée est
+suggérée en un prompt de debconf. Si aucune valeur n'est entrée dans le
+prompt debconf, la valeur par défaut est utilisée. La valeur par défaut est
+déterminée automatiquement:
+.br
+
+.br
+  1. \fIHOSTNAME\fP est fixé dans le fichier /etc/hostname si existant et non\-vide.
+.br
+
+.br
+  2. \fIHOSTNAME\fP est fixé a l'ID du distributeur comme dans le fichier /etc/os\-release, si existant et non\-vide.
+.br
+
+.br
+  3. \fIHOSTNAME\fP est fixé a l'ID du distributeur comme dans le logiciel \fIlsb_release\fP(1) s'il est installé et non\-vide.
+.br
+
+.br
+  4. \fIHOSTNAME\fP est fixé a \fBprogress\fP si le fichier /etc/progress_version existe.
+.br
+
+.br
+  5. \fIHOSTNAME\fP est fixé a \fBdebian\fP en dernier recours.
+.br
+
+.br
+\fBAttention:\fP le nouveau nom d'hôte sera fixé dans le fichier /etc/hostname,
+écrasant tout le contenu précédent sans avis préalable ou sauvegarde.
+.br
+
+.SH "VOIR AUSSI"
+\fIlive\-boot\fP(7)
+.PP
+\fIlive\-build\fP(7)
+.PP
+\fIlive\-config\fP(7)
+.PP
+\fIlive\-debconfig\fP(7)
+.PP
+\fIlive\-tools\fP(7)
+
+.SH "PAGE D'ACCUEIL"
+Plus d'informations sur live\-debconfig et le projet Debian Live peuvent être
+trouvées sur la page <\fIhttp://live.debian.net/\fP> et dans le manuel
+sur <\fIhttp://live.debian.net/manual/\fP>.
+
+.SH BOGUES
+Les bogues peuvent être signalés en soumettant un rapport de bogue à propos
+du paquet live\-debconfig via le Debian Bug Tracking System sur
+<\fIhttp://bugs.debian.org/\fP> ou en envoyant un mail à la liste de
+diffusion de Debian Live sur <\fIdebian\-live@lists.debian.org\fP>
+
+.SH AUTEUR
+live\-debconfig a été conçu par Daniel Baumann
+<\fIdaniel@debian.org\fP>.
