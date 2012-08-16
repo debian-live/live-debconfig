@@ -46,8 +46,8 @@ _ETH0_NETMASK="${RET}" # string (w/ empty)
 db_get live-debconfig/ifupdown/eth0-network
 _ETH0_NETWORK="${RET}" # string (w/ empty)
 
-db_get live-debconfig/ifupdown/nameservers
-_NAMESERVERS="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/nameserver-addresses
+_NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
 
 Defaults
 
@@ -78,8 +78,8 @@ db_fset live-debconfig/ifupdown/eth0-netmask seen false
 db_set live-debconfig/ifupdown/eth0-network "${_ETH0_NETWORK}"
 db_fset live-debconfig/ifupdown/eth0-network seen false
 
-db_set live-debconfig/ifupdown/nameservers "${_NAMESERVERS}"
-db_fset live-debconfig/ifupdown/nameservers seen false
+db_set live-debconfig/ifupdown/nameserver-addresses "${_NAMESERVER_ADDRESSES}"
+db_fset live-debconfig/ifupdown/nameserver-addresses seen false
 
 db_settitle live-debconfig/title
 db_input high live-debconfig/ifupdown/lo-enable || true
@@ -129,7 +129,7 @@ case "${_ETH0_METHOD}" in
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/nameservers || true
+		db_input high live-debconfig/ifupdown/nameserver-addresses || true
 		db_go
 		;;
 esac
@@ -178,8 +178,8 @@ done
 
 _ETH_NUMBER="${_NUMBER}"
 
-db_get live-debconfig/ifupdown/nameservers
-_NAMESERVERS="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/nameserver-addresses
+_NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
 
 Defaults
 
@@ -282,14 +282,14 @@ EOF
 done
 
 # Create /etc/resolv.conf
-if [ -n "${_NAMESERVERS}" ]
+if [ -n "${_NAMESERVER_ADDRESSES}" ]
 then
 	grep -Ev '^ *nameserver' /etc/resolv.conf > /etc/resolv.conf.tmp
 	mv /etc/resolv.conf.tmp /etc/resolv.conf
 
-	for _NAMESERVER in $(echo ${_NAMESERVERS} | sed -e 's|,| |g')
+	for _NAMESERVER_ADDRESS in $(echo ${_NAMESERVER_ADDRESSES} | sed -e 's|,| |g')
 	do
-		echo "nameserver ${_NAMESERVER}" >> /etc/resolv.conf
+		echo "nameserver ${_NAMESERVER_ADDRESS}" >> /etc/resolv.conf
 	done
 fi
 

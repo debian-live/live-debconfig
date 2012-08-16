@@ -81,7 +81,7 @@ Description: live-debconfig: Ethernet Network Address?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/nameservers
+Template: live-debconfig/ifupdown/nameserver-addresses
 Type: string
 Default: 192.168.1.1
 Description: live-debconfig: Nameserver Addresses?
