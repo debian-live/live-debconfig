@@ -2,12 +2,33 @@ Template: live-debconfig/title
 Type: title
 Description: live-debconfig: System Configuration
 
+Template: live-debconfig/ifupdown/lo-enable
+Type: boolean
+Default: true
+Description: live-debconfig: Enable Loopback Interface?
+ Should the loopback interface be enabled?
+ .
+ On normal systems a loopback interface needs to be configured.
+ However, on Linux Containers (LXC) no loopback interface from
+ within the container should be configured as the LXC tools
+ do that on container startup.
+ .
+ This defaults to yes.
+
+Template: live-debconfig/ifupdown/lo-comment
+Type: string
+Default:
+Description: live-debconfig: Loopback Interface Comment?
+ What optional comment would you like to give to the loopback interface?
+ .
+ This defaults to empty.
+
 Template: live-debconfig/ifupdown/eth0-method
 Type: select
 Choices: dhcp, static, none
 Default: dhcp
-Description: live-debconfig: Interface Method?
- What method should be used to configure the interface?
+Description: live-debconfig: Ethernet Interface Method?
+ What method should be used to configure the ethernet interface?
  .
  This defaults to dhcp and will require that you run a dhcp-server in your
  network.
@@ -15,15 +36,15 @@ Description: live-debconfig: Interface Method?
 Template: live-debconfig/ifupdown/eth0-comment
 Type: string
 Default:
-Description: live-debconfig: Interface Comment?
- What optional comment would you like to give to the interface?
+Description: live-debconfig: Ethernet Interface Comment?
+ What optional comment would you like to give to the ethernet interface?
  .
  This defaults to empty.
 
 Template: live-debconfig/ifupdown/eth0-address
 Type: string
 Default: 192.168.1.2
-Description: live-debconfig: IP Address?
+Description: live-debconfig: Ethernet IP Address?
  What should be the IP address of the current system?
  .
  This defaults to 192.168.1.2.
@@ -31,7 +52,7 @@ Description: live-debconfig: IP Address?
 Template: live-debconfig/ifupdown/eth0-broadcast
 Type: string
 Default: 192.168.1.255
-Description: live-debconfig: Broadcast Address?
+Description: live-debconfig: Ethernet Broadcast Address?
  What should be the broadcast address of the current system?
  .
  This defaults to empty.
@@ -39,7 +60,7 @@ Description: live-debconfig: Broadcast Address?
 Template: live-debconfig/ifupdown/eth0-gateway
 Type: string
 Default: 192.168.1.1
-Description: live-debconfig: Gateway Address?
+Description: live-debconfig: Ethernet Gateway Address?
  What should be the gateway address of the current system?
  .
  This defaults to empty.
@@ -47,7 +68,7 @@ Description: live-debconfig: Gateway Address?
 Template: live-debconfig/ifupdown/eth0-netmask
 Type: string
 Default: 255.255.255.0
-Description: live-debconfig: Network Mask?
+Description: live-debconfig: Ethernet Network Mask?
  What should be the netmask of the current system?
  .
  This defaults to empty.
@@ -55,15 +76,45 @@ Description: live-debconfig: Network Mask?
 Template: live-debconfig/ifupdown/eth0-network
 Type: string
 Default: 192.168.1.0
-Description: live-debconfig: Network Address?
+Description: live-debconfig: Ethernet Network Address?
  What should be the network address of the current system?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/nameservers
+Template: live-debconfig/ifupdown/nameserver-addresses
 Type: string
-Default: 192.168.1.1
+Default:
 Description: live-debconfig: Nameserver Addresses?
  What should be the IP addresses of the nameservers of the current system?
  .
  This defaults to empty. Multiple nameservers can be separated by whitespace.
+
+Template: live-debconfig/ifupdown/nameserver-domain
+Type: string
+Default:
+Description: live-debconfig: Nameserver Local Domain Name?
+ What should be local domain name used for name resolution?
+ .
+ See resolv.conf(5) for more information about the 'domain' option.
+ .
+ This defaults to empty.
+
+Template: live-debconfig/ifupdown/nameserver-search
+Type: string
+Default:
+Description: live-debconfig: Nameserver Search List?
+ What should be search list for hostname lookups?
+ .
+ See resolv.conf(5) for more information about the 'search' option.
+ .
+ This defaults to empty.
+
+Template: live-debconfig/ifupdown/nameserver-options
+Type: string
+Default:
+Description: live-debconfig: Nameserver Resolver Options?
+ What should be the resolver options?
+ .
+ See resolv.conf(5) for more information about the 'options' option.
+ .
+ This defaults to empty.

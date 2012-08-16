@@ -55,4 +55,5 @@ Defaults
 db_stop
 
 # Set the hostname
-echo "${_HOSTNAME}" > /etc/hostname
+echo "${_HOSTNAME}" > /etc/hostname.tmp
+mv /etc/hostname.tmp /etc/hostname

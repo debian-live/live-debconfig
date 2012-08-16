@@ -1,0 +1,89 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+Defaults ()
+{
+	if [ -z "${_HWCLOCKACCESS}" ]
+	then
+		if [ -e /etc/default/hwclock ]
+		then
+			. /etc/default/hwclock
+
+			_HWCLOCKACCESS="${_HWCLOCKACCESS:-${HWCLOCKACCESS}}"
+		fi
+
+		_HWCLOCKACCESS="${_HWCLOCKACCESS:-yes}"
+	fi
+}
+
+# /etc/default/hwclock is supported as of util-linux version 2.20.1-5
+_UTIL_LINUX_VERSION="$(dpkg -l util-linux | awk '/^ii/ { print $3 }')"
+
+if ! dpkg --compare-versions ${_UTIL_LINUX_VERSION} lt 2.20.1-5~
+then
+	exit 0
+fi
+
+db_get live-debconfig/util-linux/hwclockaccess
+_HWCLOCKACCESS="${RET}" # boolean
+
+Defaults
+
+db_set live-debconfig/util-linux/hwclockaccess "${_HWCLOCKACCESS}"
+db_fset live-debconfig/util-linux/hwclockaccess seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/util-linux/hwclockaccess || true
+db_go
+
+db_get live-debconfig/util-linux/hwclockaccess
+_HWCLOCKACCESS="${RET}" # boolean
+
+Defaults
+
+db_stop
+
+# translate debconf boolean into 'yes' and 'no'
+# (this is better than using a select in debconf with Choices-C,
+# otherwise all translators would need to translate 'yes' and 'no').
+case "${_HWCLOCKACCESS}" in
+	true)
+		_HWCLOCKACCESS="yes"
+		;;
+
+	false)
+		_HWCLOCKACCESS="no"
+		;;
+esac
+
+# HWCLOCKACCESS is commented in /etc/default/hwclock
+if [ -z "${HWCLOCKACCESS}" ]
+then
+	# uncommenting it
+	sed -e "s|^# *HWCLOCKACCESS=|HWCLOCKACCESS=|" \
+		/etc/default/hwclock > /etc/default/hwclock.tmp
+
+	mv /etc/default/hwclock.tmp /etc/default/hwclock
+else
+	cp /etc/default/hwclock /etc/default/hwclock.tmp
+fi
+
+# Set the hwclock parameters
+grep -Eq '^ *HWCLOCKACCESS=' /etc/default/hwclock.tmp || \
+	echo "HWCLOCKACCESS=" >> /etc/default/hwclock.tmp
+
+sed -i -e "s|^ *HWCLOCKACCESS=.*|HWCLOCKACCESS=\"${_HWCLOCKACCESS}\"|" \
+	/etc/default/hwclock.tmp
+
+mv /etc/default/hwclock.tmp /etc/default/hwclock

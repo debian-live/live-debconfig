@@ -4,8 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: live-debconfig 4.0~a2-1\n"
-"POT-Creation-Date: 2012-08-10 23:08+0300\n"
+"Project-Id-Version: live-debconfig 4.0~a3-1\n"
+"POT-Creation-Date: 2012-08-16 15:41+0300\n"
 "PO-Revision-Date: 2012-07-30 14:08+0200\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
@@ -24,14 +24,14 @@ msgstr "LIVE-DEBCONFIG"
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2012-08-10"
-msgstr "2012-07-30"
+msgid "2012-08-16"
+msgstr "16.08.2012"
 
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~a2-1"
-msgstr "4.0~a2-1"
+msgid "4.0~a3-1"
+msgstr "4.0~a3-1"
 
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
@@ -127,24 +127,37 @@ msgstr ""
 #. type: IP
 #: en/live-debconfig.7:26
 #, no-wrap
+msgid "B<util-linux>"
+msgstr "B<util-linux>"
+
+#. type: Plain text
+#: en/live-debconfig.7:28
+msgid ""
+"configure the access to the hardware clock, see I<live-debconfig_util-linux>"
+"(5)."
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig.7:28
+#, no-wrap
 msgid "B<selinux>"
 msgstr "B<selinux>"
 
 #. type: Plain text
-#: en/live-debconfig.7:28
+#: en/live-debconfig.7:30
 msgid ""
 "enables or disables selinux (/selinux), see I<live-debconfig_selinux>(5)."
 msgstr ""
 "activa o desactiva selinux (/selinux), ver I<live-debconfig_selinux>(5)."
 
 #. type: IP
-#: en/live-debconfig.7:28
+#: en/live-debconfig.7:30
 #, no-wrap
 msgid "B<openssh-server>"
 msgstr "B<openssh-server>"
 
 #. type: Plain text
-#: en/live-debconfig.7:30
+#: en/live-debconfig.7:32
 msgid ""
 "recreates openssh-server host keys (/etc/ssh/ssh_host_key*), see I<live-"
 "debconfig_openssh-server>(5)."
@@ -153,39 +166,39 @@ msgstr ""
 "ver I<live-debconfig_openssh-server>(5)."
 
 #. type: SH
-#: en/live-debconfig.7:31 en/live-debconfig_hostname.5:54
+#: en/live-debconfig.7:33 en/live-debconfig_hostname.5:54
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "VER TAMBIÉN"
 
 #. type: Plain text
-#: en/live-debconfig.7:33 en/live-debconfig_hostname.5:56
+#: en/live-debconfig.7:35 en/live-debconfig_hostname.5:56
 msgid "I<live-boot>(7)"
 msgstr "I<live-boot>(7)"
 
 #. type: Plain text
-#: en/live-debconfig.7:35 en/live-debconfig_hostname.5:58
+#: en/live-debconfig.7:37 en/live-debconfig_hostname.5:58
 msgid "I<live-build>(7)"
 msgstr "I<live-build>(7)"
 
 #. type: Plain text
-#: en/live-debconfig.7:37 en/live-debconfig_hostname.5:60
+#: en/live-debconfig.7:39 en/live-debconfig_hostname.5:60
 msgid "I<live-config>(7)"
 msgstr "I<live-config>(7)"
 
 #. type: Plain text
-#: en/live-debconfig.7:39 en/live-debconfig_hostname.5:64
+#: en/live-debconfig.7:41 en/live-debconfig_hostname.5:64
 msgid "I<live-tools>(7)"
 msgstr "I<live-tools>(7)"
 
 #. type: SH
-#: en/live-debconfig.7:40 en/live-debconfig_hostname.5:65
+#: en/live-debconfig.7:42 en/live-debconfig_hostname.5:65
 #, no-wrap
 msgid "HOMEPAGE"
 msgstr "PÁGINA WEB"
 
 #. type: Plain text
-#: en/live-debconfig.7:42 en/live-debconfig_hostname.5:67
+#: en/live-debconfig.7:44 en/live-debconfig_hostname.5:67
 msgid ""
 "More information about live-debconfig and the Debian Live project can be "
 "found on the homepage at E<lt>I<http://live.debian.net/>E<gt> and in the "
@@ -196,13 +209,13 @@ msgstr ""
 "en el manual en E<lt>I<http://live.debian.net/manual/>E<gt>."
 
 #. type: SH
-#: en/live-debconfig.7:43 en/live-debconfig_hostname.5:68
+#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:68
 #, no-wrap
 msgid "BUGS"
 msgstr "ERRORES"
 
 #. type: Plain text
-#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:70
+#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:70
 msgid ""
 "Bugs can be reported by submitting a bugreport for the live-debconfig "
 "package in the Debian Bug Tracking System at E<lt>I<http://bugs.debian.org/"
@@ -215,13 +228,13 @@ msgstr ""
 "Debian Live a la dirección E<lt>I<debian-live@lists.debian.org>E<gt>."
 
 #. type: SH
-#: en/live-debconfig.7:46 en/live-debconfig_hostname.5:71
+#: en/live-debconfig.7:48 en/live-debconfig_hostname.5:71
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
 #. type: Plain text
-#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:72
+#: en/live-debconfig.7:49 en/live-debconfig_hostname.5:72
 msgid ""
 "live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
 msgstr ""
