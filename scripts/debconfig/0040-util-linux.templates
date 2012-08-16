@@ -1,0 +1,14 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/util-linux/hwclockaccess
+Type: boolean
+Default: yes
+Description: live-debconfig: access the hardware clock?
+ Is it possible to access the hardare clock?
+ .
+ On normal systems the hardware clock can be accessed. However, on Linux Containers
+ (LXC) by default the hardware clock can not be access from within the container.
+ .
+ The default value is yes.

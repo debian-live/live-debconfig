@@ -6,7 +6,7 @@
 .\" under certain conditions; see COPYING for details.
 .\"
 .\"
-.TH LIVE\-DEBCONFIG 7 2012\-08\-10 4.0~a2-1 "Debian Live Project"
+.TH LIVE\-DEBCONFIG 7 2012\-08\-16 4.0~a2-1 "Debian Live Project"
 
 .SH NAME
 \fBlive\-debconfig\fR \- System Configuration Scripts
@@ -23,6 +23,8 @@ sets the systems hostname (/etc/hostname), see \fIlive\-debconfig_hostname\fR(5)
 configures the systems network settings (/etc/network/interfaces, /etc/resolv.conf, /etc/hosts), see \fIlive\-debconfig_ifupdown\fR(5).
 .IP "\fBsysvinit\fR" 4
 configures the systems type for Linux Containers, LXC (/etc/inittab), see \fIlive\-debconfig_sysvinit\fR(5).
+.IP "\fButil\-linux\fR" 4
+configure the access to the hardware clock, see \fIlive\-debconfig_util\-linux\fR(5).
 .IP "\fBselinux\fR" 4
 enables or disables selinux (/selinux), see \fIlive\-debconfig_selinux\fR(5).
 .IP "\fBopenssh\-server\fR" 4
