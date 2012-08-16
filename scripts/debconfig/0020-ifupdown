@@ -14,9 +14,16 @@ set -e
 
 Defaults ()
 {
+	_LO_ENABLE="${_LO_ENABLE:-true}"
 	_ETH0_METHOD="${_ETH0_METHOD:-dhcp}"
 	_ETH0_ADDRESS="${_ETH0_ADDRESS:-192.168.1.2}"
 }
+
+db_get live-debconfig/ifupdown/lo-enable
+_LO_ENABLE="${RET}" # boolean
+
+db_get live-debconfig/ifupdown/lo-comment
+_LO_COMMENT="${RET}" # string (w/empty)
 
 db_get live-debconfig/ifupdown/eth0-method
 _ETH0_METHOD="${RET}" # select
@@ -44,6 +51,12 @@ _NAMESERVERS="${RET}" # string (w/ empty)
 
 Defaults
 
+db_set live-debconfig/ifupdown/lo-enable "${_LO_ENABLE}"
+db_fset live-debconfig/ifupdown/lo-enable seen false
+
+db_set live-debconfig/ifupdown/lo-comment "${_LO_COMMENT}"
+db_fset live-debconfig/ifupdown/lo-comment seen false
+
 db_set live-debconfig/ifupdown/eth0-method "${_ETH0_METHOD}"
 db_fset live-debconfig/ifupdown/eth0-method seen false
 
@@ -67,6 +80,16 @@ db_fset live-debconfig/ifupdown/eth0-network seen false
 
 db_set live-debconfig/ifupdown/nameservers "${_NAMESERVERS}"
 db_fset live-debconfig/ifupdown/nameservers seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/ifupdown/lo-enable || true
+db_go
+
+db_get live-debconfig/ifupdown/lo-enable
+_LO_ENABLE="${RET}" # boolean
+
+db_get live-debconfig/ifupdown/lo-comment
+_LO_COMMENT="${RET}" # string (w/ empty)
 
 db_settitle live-debconfig/title
 db_input high live-debconfig/ifupdown/eth0-method || true
@@ -168,10 +191,22 @@ cat > /etc/network/interfaces << EOF
 # Used by ifup(8) and ifdown(8). See the interfaces(5) manpage or
 # /usr/share/doc/ifupdown/examples for more information.
 
-# The loopback network interface
+EOF
+
+case "${_LO_ENABLE}" in
+	true)
+		if [ -n "${_LO_COMMENT}" ]
+		then
+			echo "# ${_LO_COMMENT}" >> /etc/network/interfaces
+		fi
+
+cat >> /etc/network/interfaces << EOF
 auto lo
 iface lo inet loopback
 EOF
+
+		;;
+esac
 
 for _NUMBER in $(seq 0 ${_ETH_NUMBER})
 do
