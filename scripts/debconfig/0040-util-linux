@@ -67,16 +67,19 @@ case "${_HWCLOCKACCESS}" in
 		;;
 esac
 
-# HWCLOCKACCESS is commented in /etc/default/hwclock
-if [ -z "${HWCLOCKACCESS}" ]
+if [ -e /etc/default/hwclock ]
 then
-	# uncommenting it
-	sed -e "s|^# *HWCLOCKACCESS=|HWCLOCKACCESS=|" \
-		/etc/default/hwclock > /etc/default/hwclock.tmp
-
-	mv /etc/default/hwclock.tmp /etc/default/hwclock
+	# HWCLOCKACCESS is commented in /etc/default/hwclock
+	if [ -z "${HWCLOCKACCESS}" ]
+	then
+		# uncommenting it
+		sed -e "s|^# *HWCLOCKACCESS=|HWCLOCKACCESS=|" \
+			/etc/default/hwclock > /etc/default/hwclock.tmp
+	else
+		cp /etc/default/hwclock /etc/default/hwclock.tmp
+	fi
 else
-	cp /etc/default/hwclock /etc/default/hwclock.tmp
+	touch /etc/default/hwclock.tmp
 fi
 
 # Set the hwclock parameters
