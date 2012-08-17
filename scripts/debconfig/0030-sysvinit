@@ -173,7 +173,7 @@ case "${_LXC_ENABLE}" in
 				for _SYMLINK in /etc/rc*.d/K*${_SERVICE}
 				do
 					rm -f ${_SYMLINK}
-					ln -s /bin/true ${_SYMLINK}
+					ln -s /bin/live-initscripts-empty-stop ${_SYMLINK}
 				done
 			fi
 
