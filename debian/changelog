@@ -1,3 +1,43 @@
+live-debconfig (4.0~a4-1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Harmonizing script descriptions in live-debconfig manpage.
+
+  [ chals ]
+  * Updating the Spanish translation of two strings.
+  * Adding initial French translation for the current version.
+  * Adding initial Catalan translation for the current version.
+
+  [ Daniel Baumann ]
+  * Harmonizing po file headers.
+  * Correcting spelling typo in db_get call of the ifupdown script.
+  * Correcting /etc/default/hwclock handling in util-linux script for
+    cases where it was locally removed.
+  * Correcting version check of util-linux in util-linux script.
+  * Adding whitespace seperaters in generated resolv.conf in ifupdown
+    script.
+  * Only reading existing nameserver settings in ifupdown script from
+    /etc/resolv.conf if the file is existing.
+  * Prepeding scripts execution with custom debconf systemrc to avoid
+    needing to export the variable to make it work.
+  * Removing default values from debconf templates since defaults are
+    derived from scripts automatically and independently.
+  * Adding a workaround in ifupdown script when reading defaults for
+    nameserver addresses from resolv.conf to get rid of newlines as
+    debconf can not handle multiline return values in assignments.
+  * Evening out whitespace seperation in ifupdown script when generating
+    /etc/network/interfaces.
+  * Correcting db_setttile typo in ifupdown script.
+  * Correcting db_input typo in ifupdown script.
+  * Also removing /var/lib/live on purge if empty.
+  * Replacing /bin/true symlinks with an empty initscript to fake LSB
+    headers in sysvinit script.
+  * Replacing test for stop links in sysvinit script with ls to match on
+    wildcards.
+  * Completing insserv and update-rc.d silencing in sysvinit script.
+
+ -- Daniel Baumann <daniel.baumann@progress-technologies.net>  Fri, 17 Aug 2012 16:51:10 +0200
+
 live-debconfig (4.0~a3-1) unstable; urgency=low
 
   * Reworking disabling and removal of sysvinit services in a non-
