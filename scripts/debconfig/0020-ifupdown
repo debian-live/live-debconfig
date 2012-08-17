@@ -65,7 +65,7 @@ _NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
 db_get live-debconfig/ifupdown/nameserver-domain
 _NAMESERVER_DOMAIN="${RET}" # string (w/ empty)
 
-dg_get live-debconfig/ifupdown/nameserver-search
+db_get live-debconfig/ifupdown/nameserver-search
 _NAMESERVER_SEARCH="${RET}" # string (w/ empty)
 
 db_get live-debconfig/ifupdown/nameserver-options
