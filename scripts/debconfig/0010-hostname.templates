@@ -4,7 +4,7 @@ Description: live-debconfig: System Configuration
 
 Template: live-debconfig/hostname/hostname
 Type: string
-Default: debian
+Default:
 Description: live-debconfig: Hostname?
  What should be the hostname of the current system?
  .

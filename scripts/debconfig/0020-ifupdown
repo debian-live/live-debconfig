@@ -20,8 +20,10 @@ set -e
 Defaults ()
 {
 	_LO_ENABLE="${_LO_ENABLE:-true}"
+
 	_ETH0_METHOD="${_ETH0_METHOD:-dhcp}"
 	_ETH0_ADDRESS="${_ETH0_ADDRESS:-192.168.1.2}"
+	_ETH0_NETMASK="${_ETH0_NETMASK:-255.255.255.0}"
 
 	if [ -e /etc/resolv.conf ]
 	then
@@ -54,7 +56,7 @@ db_get live-debconfig/ifupdown/eth0-gateway
 _ETH0_GATEWAY="${RET}" # string (w/ empty)
 
 db_get live-debconfig/ifupdown/eth0-netmask
-_ETH0_NETMASK="${RET}" # string (w/ empty)
+_ETH0_NETMASK="${RET}" # string (w/o empty)
 
 db_get live-debconfig/ifupdown/eth0-network
 _ETH0_NETWORK="${RET}" # string (w/ empty)
@@ -196,7 +198,7 @@ do
 
 	if db_get live-debconfig/ifupdown/eth${_NUMBER}-netmask
 	then
-		eval _ETH${_NUMBER}_NETMASK="\"${RET}\"" # string (w/ empty)
+		eval _ETH${_NUMBER}_NETMASK="\"${RET}\"" # string (w/o empty)
 	fi
 
 	if db_get live-debconfig/ifupdown/eth${_NUMBER}-network

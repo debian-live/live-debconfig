@@ -4,7 +4,7 @@ Description: live-debconfig: System Configuration
 
 Template: live-debconfig/util-linux/hwclockaccess
 Type: boolean
-Default: yes
+Default:
 Description: live-debconfig: access the hardware clock?
  Is it possible to access the hardare clock?
  .

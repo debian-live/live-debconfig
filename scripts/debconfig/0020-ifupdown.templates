@@ -4,7 +4,7 @@ Description: live-debconfig: System Configuration
 
 Template: live-debconfig/ifupdown/lo-enable
 Type: boolean
-Default: true
+Default:
 Description: live-debconfig: Enable Loopback Interface?
  Should the loopback interface be enabled?
  .
@@ -26,7 +26,7 @@ Description: live-debconfig: Loopback Interface Comment?
 Template: live-debconfig/ifupdown/eth0-method
 Type: select
 Choices: dhcp, static, none
-Default: dhcp
+Default:
 Description: live-debconfig: Ethernet Interface Method?
  What method should be used to configure the ethernet interface?
  .
@@ -43,7 +43,7 @@ Description: live-debconfig: Ethernet Interface Comment?
 
 Template: live-debconfig/ifupdown/eth0-address
 Type: string
-Default: 192.168.1.2
+Default:
 Description: live-debconfig: Ethernet IP Address?
  What should be the IP address of the current system?
  .
@@ -51,7 +51,7 @@ Description: live-debconfig: Ethernet IP Address?
 
 Template: live-debconfig/ifupdown/eth0-broadcast
 Type: string
-Default: 192.168.1.255
+Default:
 Description: live-debconfig: Ethernet Broadcast Address?
  What should be the broadcast address of the current system?
  .
@@ -59,7 +59,7 @@ Description: live-debconfig: Ethernet Broadcast Address?
 
 Template: live-debconfig/ifupdown/eth0-gateway
 Type: string
-Default: 192.168.1.1
+Default:
 Description: live-debconfig: Ethernet Gateway Address?
  What should be the gateway address of the current system?
  .
@@ -67,7 +67,7 @@ Description: live-debconfig: Ethernet Gateway Address?
 
 Template: live-debconfig/ifupdown/eth0-netmask
 Type: string
-Default: 255.255.255.0
+Default:
 Description: live-debconfig: Ethernet Network Mask?
  What should be the netmask of the current system?
  .
@@ -75,7 +75,7 @@ Description: live-debconfig: Ethernet Network Mask?
 
 Template: live-debconfig/ifupdown/eth0-network
 Type: string
-Default: 192.168.1.0
+Default:
 Description: live-debconfig: Ethernet Network Address?
  What should be the network address of the current system?
  .

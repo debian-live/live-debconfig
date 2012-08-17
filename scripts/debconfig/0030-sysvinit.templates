@@ -4,7 +4,7 @@ Description: live-debconfig: System Configuration
 
 Template: live-debconfig/sysvinit/lxc-enable
 Type: boolean
-Default: false
+Default:
 Description: live-debconfig: Enable LXC?
  Should Linux Container (LXC) support  be enabled?
  .
@@ -12,7 +12,7 @@ Description: live-debconfig: Enable LXC?
 
 Template: live-debconfig/sysvinit/lxc-consoles
 Type: string
-Default: 6
+Default:
 Description: live-debconfig: How many consoles for LXC?
  How many concurrent consoles should the current container provide?
  .
@@ -20,7 +20,7 @@ Description: live-debconfig: How many consoles for LXC?
 
 Template: live-debconfig/sysvinit/lxc-disable-services
 Type: string
-Default: checkroot.sh hwclockfirst.sh hwclock.sh kmod module-init-tools mountall.sh mountkernfs.sh umountfs umountroot
+Default:
 Description: live-debconfig: Which services to disable for LXC?
  Some services are not useful in containers and should be disabled.
  .
