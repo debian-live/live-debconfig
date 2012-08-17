@@ -140,7 +140,7 @@ case "${_ETH0_METHOD}" in
 		;;
 
 	static)
-		db_setttile live-debconfig/title
+		db_settitle live-debconfig/title
 		dh_input high live-debconfig/ifupdown/eth0-comment || true
 		db_go
 
