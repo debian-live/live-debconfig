@@ -338,6 +338,11 @@ fi
 
 if [ -n "${_NAMESERVER_ADDRESSES}" ]
 then
+	if [ -e /etc/resolv.conf.tmp ]
+	then
+		echo "" >> /etc/resolv.conf.tmp
+	fi
+
 	for _NAMESERVER_ADDRESS in $(echo ${_NAMESERVER_ADDRESSES} | sed -e 's|,| |g')
 	do
 		echo "nameserver ${_NAMESERVER_ADDRESS}" >> /etc/resolv.conf.tmp
@@ -346,6 +351,11 @@ fi
 
 if [ -n "${_NAMESERVER_OPTIONS}" ]
 then
+	if [ -e /etc/resolv.conf.tmp ]
+	then
+		echo "" >> /etc/resolv.conf.tmp
+	fi
+
 	echo "options ${_NAMESERVER_OPTIONS}" >> /etc/resolv.conf.tmp
 fi
 
