@@ -1,6 +1,6 @@
-# Spanish translations for live-debconfig
+# Spanish translations for live-debconfig package
+# Copyright (C) 2012 Carlos Zuferri <chals@altorricon.com>
 # This file is distributed under the same license as the live-debconfig package.
-# Carlos Zuferri <chals@altorricon.com>, 2012.
 #
 msgid ""
 msgstr ""
