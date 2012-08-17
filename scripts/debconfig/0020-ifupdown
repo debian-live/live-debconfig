@@ -25,10 +25,10 @@ Defaults ()
 
 	if [ -e /etc/resolv.conf ]
 	then
-		_NAMESERVER_ADDRESSES="${_NAMESERVER_ADDRESSES:-$(awk '/^nameserver / {$1=""; print $0}' /etc/resolv.conf)}"
-		_NAMESERVER_DOMAIN="${_NAMESERVER_DOMAIN:-$(awk '/^domain / {$1=""; print $0}' /etc/resolv.conf)}"
-		_NAMESERVER_SEARCH="${_NAMESERVER_SEARCH:-$(awk '/^search / {$1=""; print $0}' /etc/resolv.conf)}"
-		_NAMESERVER_OPTIONS="${_NAMESERVER_OPTIONS:-$(awk '/^options / {$1=""; print $0}' /etc/resolv.conf)}"
+		_NAMESERVER_ADDRESSES="${_NAMESERVER_ADDRESSES:-$(if [ -e /etc/resolv.conf ]; then awk '/^nameserver / {$1=""; print $0}' /etc/resolv.conf; fi)}"
+		_NAMESERVER_DOMAIN="${_NAMESERVER_DOMAIN:-$(if [ -e /etc/resolv.conf ]; then awk '/^domain / {$1=""; print $0}' /etc/resolv.conf; fi)}"
+		_NAMESERVER_SEARCH="${_NAMESERVER_SEARCH:-$(if [ -e /etc/resolv.conf ]; then awk '/^search / {$1=""; print $0}' /etc/resolv.conf; fi)}"
+		_NAMESERVER_OPTIONS="${_NAMESERVER_OPTIONS:-$(if [ -e /etc/resolv.conf ]; then awk '/^options / {$1=""; print $0}' /etc/resolv.conf; fi)}"
 	fi
 }
 
