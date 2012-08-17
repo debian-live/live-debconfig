@@ -235,7 +235,6 @@ db_stop
 cat > /etc/network/interfaces.tmp << EOF
 # Used by ifup(8) and ifdown(8). See the interfaces(5) manpage or
 # /usr/share/doc/ifupdown/examples for more information.
-
 EOF
 
 case "${_LO_ENABLE}" in
@@ -246,6 +245,7 @@ case "${_LO_ENABLE}" in
 		fi
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 auto lo
 iface lo inet loopback
 EOF
@@ -279,6 +279,7 @@ do
 		none)
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 iface eth${_NUMBER} inet manual
 EOF
 
@@ -287,6 +288,7 @@ EOF
 		dhcp)
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 auto eth${_NUMBER}
 iface eth${_NUMBER} inet dhcp
 EOF
@@ -296,6 +298,7 @@ EOF
 		static)
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 auto eth${_NUMBER}
 iface eth${_NUMBER} inet static
 	address		${_ADDRESS}
