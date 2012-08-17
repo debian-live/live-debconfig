@@ -62,8 +62,6 @@ EOF
 
 fi
 
-DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
-
 if [ "${1}" = "--noscripts" ]
 then
 	exit
@@ -75,6 +73,6 @@ do
 	if [ -x "${_SCRIPT}" ]
 	then
 		# FIXME: make scripts a multiselect
-		"${_SCRIPT}"
+		DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc" "${_SCRIPT}"
 	fi
 done

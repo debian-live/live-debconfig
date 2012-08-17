@@ -1,0 +1,26 @@
+#!/bin/sh
+
+## live-debconfig contains the scripts that configure a Debian Live system during
+## the build process (live-build).
+##
+## This is the sysvinit script for live-debconfig.
+
+
+### BEGIN INIT INFO
+# Provides:		live-debconfig
+# Required-Start:
+# Required-Stop:
+# Should-Start:
+# Should-Stop:
+# Default-Start:
+# Default-Stop:		0 6
+# Short-Description:	Debian Live - System Configuration Scripts
+# Description:		live-debconfig contains the scripts that configure a
+#			Debian Live system during the build process
+#			(live-build).
+# X-Start-Before:
+# X-Stop-After:
+# X-Interactive:
+### END INIT INFO
+
+exit 0

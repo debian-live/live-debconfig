@@ -1,0 +1,68 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH LIVE\-DEBCONFIG 7 2012\-08\-17 4.0~a4\-1 "Projecte Debian Live"
+
+.SH NOM
+\fBlive\-debconfig\fP \- Scripts de Configuració del Sistema
+
+.SH DESCRIPCIÓ
+\fBlive\-debconfig\fP conté els scripts que configuren un sistema Debian Live
+durant el procés de construcció (live\-build).
+
+.SH SCRIPTS
+\fBlive\-debconfig\fP actualment compta amb els següents scripts a
+/lib/live/debconfig.
+
+.IP \fBhostname\fP 4
+estableix el nom del amfitrió del sistema (/etc/hostname), veure
+\fIlive\-debconfig_hostname\fP(5).
+.IP \fBifupdown\fP 4
+configura la connexió de xarxa del sistema (/etc/network/interfaces,
+/etc/resolv.conf, /etc/hosts), veure \fIlive\-debconfig_ifupdown\fP(5).
+.IP \fBsysvinit\fP 4
+configura el tipus de sistema per als Linux Containers, LXC (/etc/inittab) i
+desactiva alguns serveis que no són necessaris per LXC. veure
+\fIlive\-debconfig_sysvinit\fP(5).
+.IP \fButil\-linux\fP 4
+configura l'accés al rellotge del maquinari (/etc/default/hwclock), veure
+\fIlive\-debconfig_util\-linux\fP(5).
+.IP \fBselinux\fP 4
+activa o desactiva selinux (/selinux), veure \fIlive\-debconfig_selinux\fP(5).
+.IP \fBopenssh\-server\fP 4
+recrea les claus de l'amfitrió del openssh\-server (/etc/ssh/ssh_host_key*),
+veure \fIlive\-debconfig_openssh\-server\fP(5).
+
+.SH "VEURE TAMBÉ"
+\fIlive\-boot\fP(7)
+.PP
+\fIlive\-build\fP(7)
+.PP
+\fIlive\-config\fP(7)
+.PP
+\fIlive\-tools\fP(7)
+
+.SH "PÀGINA WEB"
+Es pot trobar més informació sobre live\-debconfig i el projecte Debian Live
+a la pàgina web <\fIhttp://live.debian.net/\fP> i al manual a
+<\fIhttp://live.debian.net/manual/\fP>.
+
+.SH ERRORS
+Es pot informar sobre els errors mitjançant la presentació d'un informe
+d'errors sobre al paquet live\-debconfig al Debian Bug Tracking System a
+<\fIhttp://bugs.debian.org/\fP> o escrivint un correu a la llista de
+correu de Debian Live a <\fIdebian\-live@lists.debian.org\fP>.
+
+.SH AUTOR
+live\-debconfig va ser escrit per Daniel Baumann
+<\fIdaniel@debian.org\fP>.

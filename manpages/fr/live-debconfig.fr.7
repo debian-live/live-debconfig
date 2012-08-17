@@ -1,0 +1,67 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH LIVE\-DEBCONFIG 7 2012\-08\-17 4.0~a4\-1 "Projet Debian Live"
+
+.SH NOM
+\fBlive\-debconfig\fP \- Scripts de configuration du système
+
+.SH DESCRIPTION
+\fBlive\-debconfig\fP contient les scripts qui configurent un système Debian
+Live pendant le processus de construction (live\-build).
+
+.SH SCRIPTS
+\fBlive\-debconfig\fP contient les scripts suivants sur /lib/live/debconfig.
+
+.IP \fBhostname\fP 4
+fixe le nom d'hôte du système (/etc/hostname), voir
+\fIlive\-debconfig_hostname\fP(5).
+.IP \fBifupdown\fP 4
+configure les paramètres de réseau du système (/etc/network/interfaces,
+/etc/resolv.conf, /etc/hosts), voir \fIlive\-debconfig_ifupdown\fP(5).
+.IP \fBsysvinit\fP 4
+configure le type de système pour les Linux Containers, LXC (/etc/inittab)
+et désactive certains services qui ne sont pas nécessaires pour LXC, voir
+\fIlive\-debconfig_sysvinit\fP(5).
+.IP \fButil\-linux\fP 4
+configure l'accès à l'horloge du système /etc/default/hwclock), voir
+\fIlive\-debconfig_util\-linux\fP(5).
+.IP \fBselinux\fP 4
+active ou désactive selinux (/selinux), voir \fIlive\-debconfig_selinux\fP(5).
+.IP \fBopenssh\-server\fP 4
+recrée les clés de l'hôte openssh\-server (/etc/ssh/ssh_host_key*), voir
+\fIlive\-debconfig_openssh\-server\fP(5).
+
+.SH "VOIR AUSSI"
+\fIlive\-boot\fP(7)
+.PP
+\fIlive\-build\fP(7)
+.PP
+\fIlive\-config\fP(7)
+.PP
+\fIlive\-tools\fP(7)
+
+.SH "PAGE D'ACCUEIL"
+Plus d'informations sur live\-debconfig et le projet Debian Live peuvent être
+trouvées sur la page <\fIhttp://live.debian.net/\fP> et dans le manuel
+sur <\fIhttp://live.debian.net/manual/\fP>.
+
+.SH BOGUES
+Les bogues peuvent être signalés en soumettant un rapport de bogue à propos
+du paquet live\-debconfig via le Debian Bug Tracking System sur
+<\fIhttp://bugs.debian.org/\fP> ou en envoyant un mail à la liste de
+diffusion de Debian Live sur <\fIdebian\-live@lists.debian.org\fP>
+
+.SH AUTEUR
+live\-debconfig a été conçu par Daniel Baumann
+<\fIdaniel@debian.org\fP>.

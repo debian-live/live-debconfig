@@ -20,15 +20,20 @@ set -e
 Defaults ()
 {
 	_LO_ENABLE="${_LO_ENABLE:-true}"
+
 	_ETH0_METHOD="${_ETH0_METHOD:-dhcp}"
 	_ETH0_ADDRESS="${_ETH0_ADDRESS:-192.168.1.2}"
+	_ETH0_NETMASK="${_ETH0_NETMASK:-255.255.255.0}"
 
 	if [ -e /etc/resolv.conf ]
 	then
-		_NAMESERVER_ADDRESSES="${_NAMESERVER_ADDRESSES:-$(awk '/^nameserver / {$1=""; print $0}' /etc/resolv.conf)}"
-		_NAMESERVER_DOMAIN="${_NAMESERVER_DOMAIN:-$(awk '/^domain / {$1=""; print $0}' /etc/resolv.conf)}"
-		_NAMESERVER_SEARCH="${_NAMESERVER_SEARCH:-$(awk '/^search / {$1=""; print $0}' /etc/resolv.conf)}"
-		_NAMESERVER_OPTIONS="${_NAMESERVER_OPTIONS:-$(awk '/^options / {$1=""; print $0}' /etc/resolv.conf)}"
+		_NAMESERVER_ADDRESSES="${_NAMESERVER_ADDRESSES:-$(if [ -e /etc/resolv.conf ]; then awk '/^nameserver / {$1=""; print $0}' /etc/resolv.conf; fi)}"
+		# Workaround to get rid of newlines since debconf can not handle multiline return value in assignments
+		_NAMESERVER_ADDRESSES="$(echo ${_NAMESERVER_ADDRESSES})"
+
+		_NAMESERVER_DOMAIN="${_NAMESERVER_DOMAIN:-$(if [ -e /etc/resolv.conf ]; then awk '/^domain / {$1=""; print $0}' /etc/resolv.conf; fi)}"
+		_NAMESERVER_SEARCH="${_NAMESERVER_SEARCH:-$(if [ -e /etc/resolv.conf ]; then awk '/^search / {$1=""; print $0}' /etc/resolv.conf; fi)}"
+		_NAMESERVER_OPTIONS="${_NAMESERVER_OPTIONS:-$(if [ -e /etc/resolv.conf ]; then awk '/^options / {$1=""; print $0}' /etc/resolv.conf; fi)}"
 	fi
 }
 
@@ -54,7 +59,7 @@ db_get live-debconfig/ifupdown/eth0-gateway
 _ETH0_GATEWAY="${RET}" # string (w/ empty)
 
 db_get live-debconfig/ifupdown/eth0-netmask
-_ETH0_NETMASK="${RET}" # string (w/ empty)
+_ETH0_NETMASK="${RET}" # string (w/o empty)
 
 db_get live-debconfig/ifupdown/eth0-network
 _ETH0_NETWORK="${RET}" # string (w/ empty)
@@ -65,7 +70,7 @@ _NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
 db_get live-debconfig/ifupdown/nameserver-domain
 _NAMESERVER_DOMAIN="${RET}" # string (w/ empty)
 
-dg_get live-debconfig/ifupdown/nameserver-search
+db_get live-debconfig/ifupdown/nameserver-search
 _NAMESERVER_SEARCH="${RET}" # string (w/ empty)
 
 db_get live-debconfig/ifupdown/nameserver-options
@@ -135,8 +140,8 @@ case "${_ETH0_METHOD}" in
 		;;
 
 	static)
-		db_setttile live-debconfig/title
-		dh_input high live-debconfig/ifupdown/eth0-comment || true
+		db_settitle live-debconfig/title
+		db_input high live-debconfig/ifupdown/eth0-comment || true
 		db_go
 
 		db_settitle live-debconfig/title
@@ -196,7 +201,7 @@ do
 
 	if db_get live-debconfig/ifupdown/eth${_NUMBER}-netmask
 	then
-		eval _ETH${_NUMBER}_NETMASK="\"${RET}\"" # string (w/ empty)
+		eval _ETH${_NUMBER}_NETMASK="\"${RET}\"" # string (w/o empty)
 	fi
 
 	if db_get live-debconfig/ifupdown/eth${_NUMBER}-network
@@ -230,7 +235,6 @@ db_stop
 cat > /etc/network/interfaces.tmp << EOF
 # Used by ifup(8) and ifdown(8). See the interfaces(5) manpage or
 # /usr/share/doc/ifupdown/examples for more information.
-
 EOF
 
 case "${_LO_ENABLE}" in
@@ -241,6 +245,7 @@ case "${_LO_ENABLE}" in
 		fi
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 auto lo
 iface lo inet loopback
 EOF
@@ -274,6 +279,7 @@ do
 		none)
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 iface eth${_NUMBER} inet manual
 EOF
 
@@ -282,6 +288,7 @@ EOF
 		dhcp)
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 auto eth${_NUMBER}
 iface eth${_NUMBER} inet dhcp
 EOF
@@ -291,6 +298,7 @@ EOF
 		static)
 
 cat >> /etc/network/interfaces.tmp << EOF
+
 auto eth${_NUMBER}
 iface eth${_NUMBER} inet static
 	address		${_ADDRESS}
@@ -338,6 +346,11 @@ fi
 
 if [ -n "${_NAMESERVER_ADDRESSES}" ]
 then
+	if [ -e /etc/resolv.conf.tmp ]
+	then
+		echo "" >> /etc/resolv.conf.tmp
+	fi
+
 	for _NAMESERVER_ADDRESS in $(echo ${_NAMESERVER_ADDRESSES} | sed -e 's|,| |g')
 	do
 		echo "nameserver ${_NAMESERVER_ADDRESS}" >> /etc/resolv.conf.tmp
@@ -346,6 +359,11 @@ fi
 
 if [ -n "${_NAMESERVER_OPTIONS}" ]
 then
+	if [ -e /etc/resolv.conf.tmp ]
+	then
+		echo "" >> /etc/resolv.conf.tmp
+	fi
+
 	echo "options ${_NAMESERVER_OPTIONS}" >> /etc/resolv.conf.tmp
 fi
 

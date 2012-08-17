@@ -11,7 +11,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH LIVE\-DEBCONFIG 7 16.08.2012 4.0~a3\-1 "Debian Live Projekt"
+.TH LIVE\-DEBCONFIG 7 17.08.2012 4.0~a4\-1 "Debian Live Projekt"
 
 .SH NAME
 \fBlive\-debconfig\fP \- System Konfiguration Skripte
@@ -31,9 +31,10 @@ konfiguriert die Netzwerkeinstellungen des Systems (/etc/network/interfaces,
 /etc/resolv.conf, /etc/hosts), siehe \fIlive\-debconfig_ifupdown\fP(5).
 .IP \fBsysvinit\fP 4
 konfiguriert den Typ des Systems für Linux Container, LXC (/etc/inittab),
-siehe \fIlive\-debconfig_sysvinit\fP(5).
+und schaltet einige Services ab die für LXC nicht benötigt werden, siehe
+\fIlive\-debconfig_sysvinit\fP(5).
 .IP \fButil\-linux\fP 4
-konfiguriert den Zugriff auf die Hardware Uhr, siehe
+konfiguriert den Zugriff auf die Hardware Uhr (/etc/default/hwclock), siehe
 \fIlive\-debconfig_util\-linux\fP(5).
 .IP \fBselinux\fP 4
 schaltet SELinux ein oder aus (/selinux), siehe
