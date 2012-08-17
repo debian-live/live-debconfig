@@ -73,6 +73,6 @@ do
 	if [ -x "${_SCRIPT}" ]
 	then
 		# FIXME: make scripts a multiselect
-		DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc" "${_SCRIPT}"
+		"${_SCRIPT}"
 	fi
 done
