@@ -184,8 +184,11 @@ case "${_LXC_ENABLE}" in
 
 				# service is a normal service with both start and stop links
 				update-rc.d -f ${_SERVICE} disable 2>&1 | \
-				grep -v "update-rc.d: using dependency based boot sequencing" | \
-				grep -v "update-rc.d: error: cannot find a LSB script for mountroot" || true
+					grep -v -e "^insserv: warning:" \
+						-e "^update-rc.d: warning:" \
+						-e "^update-rc.d: using dependency based boot sequencing" \
+						-e "^update-rc.d: error: .* Default-Start contains no runlevels, aborting." \
+					|| true
 			fi
 		done
 		;;
@@ -202,9 +205,12 @@ case "${_LXC_ENABLE}" in
 				rm -f /etc/rc*.d/S*${_SERVICE}
 				rm -f /etc/rc*.d/K*${_SERVICE}
 
-				update-rc.d -f ${_SERVICE} defaults | \
-				grep -v "update-rc.d: using dependency based boot sequencing" | \
-				grep -v "update-rc.d: error: cannot find a LSB script for mountroot" || true
+				update-rc.d -f ${_SERVICE} defaults 2>&1 | \
+					grep -v -e "^insserv: warning:" \
+						-e "^update-rc.d: warning:" \
+						-e "^update-rc.d: using dependency based boot sequencing" \
+						-e "^update-rc.d: error: .* Default-Start contains no runlevels, aborting." \
+					|| true
 			fi
 		done
 		;;
