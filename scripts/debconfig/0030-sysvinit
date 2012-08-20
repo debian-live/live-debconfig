@@ -125,7 +125,7 @@ case "${_LXC_ENABLE}" in
 		sed -i -e '/#-- live-debconfig begin/,/#-- live-debconfig end/d' /etc/inittab.tmp
 
 		# Add new entries
-		_CONSOLE="$(grep '#[0-9].*:respawn:/sbin/getty' /etc/inittab | tail -1)"
+		_CONSOLE="$(grep '#[0-9].*:respawn:/sbin/getty' /etc/inittab.tmp | tail -1)"
 
 		sed -i -e "s|\(${_CONSOLE}\)|\1${_CONSOLES}|" /etc/inittab.tmp
 
