@@ -1,3 +1,14 @@
+live-debconfig (4.0~a5-1) unstable; urgency=low
+
+  * Repeating debconf systemrc variable in all scripts to ease
+    standalone testing.
+  * Correcting typo when reading from unprocessed instead of processed
+    inittab in sysvinit script.
+  * Adding the other language translations for automatic date
+    conversion.
+
+ -- Daniel Baumann <daniel@debian.org>  Wed, 22 Aug 2012 09:55:31 +0200
+
 live-debconfig (4.0~a4-1) unstable; urgency=low
 
   [ Daniel Baumann ]
