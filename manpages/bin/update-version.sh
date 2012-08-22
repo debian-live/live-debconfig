@@ -29,7 +29,7 @@ do
 done
 
 # European date format
-for _LANGUAGE in de
+for _LANGUAGE in ca de es fr
 do
 	if ls po/${_LANGUAGE}/*.po > /dev/null 2>&1
 	then
