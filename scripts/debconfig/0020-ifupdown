@@ -67,6 +67,9 @@ _ETH0_NETMASK="${RET}" # string (w/o empty)
 db_get live-debconfig/ifupdown/eth0-network
 _ETH0_NETWORK="${RET}" # string (w/ empty)
 
+db_get live-debconfig/ifupdown/eth0-post-up
+_ETH0_POST_UP="${RET}" # string (w/ empty)
+
 db_get live-debconfig/ifupdown/nameserver-addresses
 _NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
 
@@ -107,6 +110,9 @@ db_fset live-debconfig/ifupdown/eth0-netmask seen false
 
 db_set live-debconfig/ifupdown/eth0-network "${_ETH0_NETWORK}"
 db_fset live-debconfig/ifupdown/eth0-network seen false
+
+db_set live-debconfig/ifupdown/eth0-post-up "${_ETH0_POST_UP}"
+db_fset live-debconfig/ifupdown/eth0-post-up seen false
 
 db_set live-debconfig/ifupdown/nameserver-addresses "${_NAMESERVER_ADDRESSES}"
 db_fset live-debconfig/ifupdown/nameserver-addresses seen false
@@ -168,6 +174,10 @@ case "${_ETH0_METHOD}" in
 		db_go
 
 		db_settitle live-debconfig/title
+		db_input high live-debconfig/ifupdown/eth0-post-up || true
+		db_go
+
+		db_settitle live-debconfig/title
 		db_input high live-debconfig/ifupdown/nameserver-addresses || true
 		db_go
 		;;
@@ -210,6 +220,11 @@ do
 	if db_get live-debconfig/ifupdown/eth${_NUMBER}-network
 	then
 		eval _ETH${_NUMBER}_NETWORK="\"${RET}\"" # string (w/ empty)
+	fi
+
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-post-up
+	then
+		eval _ETH${_NUMBER}_POST_UP="\"${RET}\"" # string (w/ empty)
 	fi
 
 	_NUMBER="$((${_NUMBER} + 1))"
@@ -265,6 +280,7 @@ do
 	eval _GATEWAY="$`echo _ETH${_NUMBER}_GATEWAY`"
 	eval _NETMASK="$`echo _ETH${_NUMBER}_NETMASK`"
 	eval _NETWORK="$`echo _ETH${_NUMBER}_NETWORK`"
+	eval _POST_UP="$`echo _ETH${_NUMBER}_POST_UP`"
 
 	if [ -z "${_METHOD}" ]
 	then
@@ -325,6 +341,11 @@ EOF
 			if [ -n "${_NETWORK}" ]
 			then
 				echo "	network		${_NETWORK}" >> /etc/network/interfaces.tmp
+			fi
+
+			if [ -n "${_POST_UP}" ]
+			then
+				echo "	post-up		${_POST_UP}" >> /etc/network/interfaces.tmp
 			fi
 			;;
 	esac

@@ -81,6 +81,14 @@ Description: live-debconfig: Ethernet Network Address?
  .
  This defaults to empty.
 
+Template: live-debconfig/ifupdown/eth0-post-up
+Type: string
+Default:
+Description: live-debconfig: Ethernet post-up Command?
+ What should be the post-up command for eth0?
+ .
+ This defaults to empty.
+
 Template: live-debconfig/ifupdown/nameserver-addresses
 Type: string
 Default:
