@@ -13,16 +13,16 @@ Package: live-debconfig
 Architecture: all
 Depends: ${misc:Depends}, debconf
 Recommends: live-debconfig-doc
-Description: Debian Live - System Configuration Scripts
- live-debconfig contains the scripts that configure a Debian Live system during
- the build process (live-build).
+Description: Live System Configuration Scripts
+ live-debconfig contains the scripts that configure a live system during the
+ build process.
 
 Package: live-debconfig-doc
 Section: doc
 Architecture: all
 Depends: ${misc:Depends}
-Description: Debian Live - System Configuration Scripts (documentation)
- live-debconfig contains the scripts that configure a Debian Live system during
- the build process (live-build).
+Description: Live System Configuration Scripts (documentation)
+ live-debconfig contains the scripts that configure a live system during the
+ build process.
  .
  This package contains the documentation.
