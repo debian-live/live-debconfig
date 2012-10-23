@@ -65,6 +65,14 @@ Description: live-debconfig: Ethernet Gateway Address?
  .
  This defaults to empty.
 
+Template: live-debconfig/ifupdown/eth0-mtu
+Type: string
+Default:
+Description: live-debconfig: Ethernet MTU?
+ What should be the MTU for the Ethernet device?
+ .
+ This defaults to empty.
+
 Template: live-debconfig/ifupdown/eth0-netmask
 Type: string
 Default:

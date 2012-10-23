@@ -61,6 +61,9 @@ _ETH0_BROADCAST="${RET}" # string (w/ empty)
 db_get live-debconfig/ifupdown/eth0-gateway
 _ETH0_GATEWAY="${RET}" # string (w/ empty)
 
+db_get live-debconfig/ifupdown/eth0-mtu
+_ETH0_MTU="${RET}" # string (w/ empty)
+
 db_get live-debconfig/ifupdown/eth0-netmask
 _ETH0_NETMASK="${RET}" # string (w/o empty)
 
@@ -104,6 +107,9 @@ db_fset live-debconfig/ifupdown/eth0-broadcast seen false
 
 db_set live-debconfig/ifupdown/eth0-gateway "${_ETH0_GATEWAY}"
 db_fset live-debconfig/ifupdown/eth0-gateway seen false
+
+db_set live-debconfig/ifupdown/eth0-mtu "${_ETH0_MTU}"
+db_fset live-debconfig/ifupdown/eth0-mtu seen false
 
 db_set live-debconfig/ifupdown/eth0-netmask "${_ETH0_NETMASK}"
 db_fset live-debconfig/ifupdown/eth0-netmask seen false
@@ -166,6 +172,10 @@ case "${_ETH0_METHOD}" in
 		db_go
 
 		db_settitle live-debconfig/title
+		db_input high live-debconfig/ifupdown/eth0-mtu || true
+		db_go
+
+		db_settitle live-debconfig/title
 		db_input high live-debconfig/ifupdown/eth0-netmask || true
 		db_go
 
@@ -210,6 +220,11 @@ do
 	if db_get live-debconfig/ifupdown/eth${_NUMBER}-gateway
 	then
 		eval _ETH${_NUMBER}_GATEWAY="\"${RET}\"" # string (w/ empty)
+	fi
+
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-mtu
+	then
+		eval _ETH${_NUMBER}_MTU="\"${RET}\"" # string (w/o empty)
 	fi
 
 	if db_get live-debconfig/ifupdown/eth${_NUMBER}-netmask
@@ -278,6 +293,7 @@ do
 	eval _ADDRESS="$`echo _ETH${_NUMBER}_ADDRESS`"
 	eval _BROADCAST="$`echo _ETH${_NUMBER}_BROADCAST`"
 	eval _GATEWAY="$`echo _ETH${_NUMBER}_GATEWAY`"
+	eval _MTU="$`echo _ETH${_NUMBER}_MTU`"
 	eval _NETMASK="$`echo _ETH${_NUMBER}_NETMASK`"
 	eval _NETWORK="$`echo _ETH${_NUMBER}_NETWORK`"
 	eval _POST_UP="$`echo _ETH${_NUMBER}_POST_UP`"
@@ -331,6 +347,11 @@ EOF
 			if [ -n "${_GATEWAY}" ]
 			then
 				echo "	gateway		${_GATEWAY}" >> /etc/network/interfaces.tmp
+			fi
+
+			if [ -n "${_MTU}" ]
+			then
+				echo "	mtu		${_MTU}" >> /etc/network/interfaces.tmp
 			fi
 
 			if [ -n "${_NETMASK}" ]
