@@ -1,0 +1,6 @@
+live-debconfig-foobar (4-1) unstable; urgency=low
+
+  * Initial release based on the live-debconfig-foobar example package
+    included in live-debconfig.
+
+ -- John Doe <john@example.org>  Sun, 26 Feb 2012 21:15:40 +0100

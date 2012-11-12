@@ -1,0 +1,47 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+Defaults ()
+{
+	if [ -z "${_FOO}" ]
+	then
+		# FIXME
+	fi
+}
+
+db_get live-debconfig/foobar/foo
+_FOO="${RET}" # string (w/o empty)
+
+Defaults
+
+db_set live-debconfig/foobar/foo "${_FOO}"
+db_fset live-debconfig/foobar/foo seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/foobar/foo || true
+db_go
+
+db_get live-debconfig/foobar/foo
+_FOO="${RET}" # string (w/o empty)
+
+Defaults
+
+db_stop
+
+# Set foo
+echo "${_FOO}" > /etc/foo.tmp
+mv /etc/foo.tmp /etc/foo

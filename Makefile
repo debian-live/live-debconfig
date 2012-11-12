@@ -63,7 +63,7 @@ install:
 
 	# Installing docs
 	mkdir -p $(DESTDIR)/usr/share/doc/live-debconfig
-	cp -r COPYING $(DESTDIR)/usr/share/doc/live-debconfig
+	cp -r COPYING examples $(DESTDIR)/usr/share/doc/live-debconfig
 
 	# Installing manpages
 	for MANPAGE in manpages/en/*; \
