@@ -29,9 +29,9 @@ Defaults ()
 		elif [ -x /usr/bin/lsb_release ]
 		then
 			_HOSTNAME="$(lsb_release -is | tr [A-Z] [a-z])"
-		elif [ -e /etc/progress_version ]
+		elif [ -e /etc/progress-linux_version ]
 		then
-			_HOSTNAME="progress"
+			_HOSTNAME="progress-linux"
 		else
 			_HOSTNAME="debian"
 		fi

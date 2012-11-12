@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a7-1\n"
-"POT-Creation-Date: 2012-10-23 14:54+0300\n"
+"POT-Creation-Date: 2012-11-12 15:23+0100\n"
 "PO-Revision-Date: 2012-07-31 14:56+0200\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
@@ -24,8 +24,8 @@ msgstr "LIVE-DEBCONFIG"
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2012-10-23"
-msgstr "23.10.2012"
+msgid "2012-11-12"
+msgstr "12.11.2012"
 
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
@@ -205,8 +205,8 @@ msgstr "  3. I<HOSTNAME> s'estableix a l'ID del distribuïdor, com al programa I
 #. type: Plain text
 #: en/live-debconfig_hostname.5:44
 #, no-wrap
-msgid "  4. I<HOSTNAME> is set to B<progress> if the /etc/progress_version file is existing.\n"
-msgstr "  4. I<HOSTNAME> s'estableix a B<progress> si existeix el fitxer /etc/progress_version\n"
+msgid "  4. I<HOSTNAME> is set to B<progress-linux> if the /etc/progress-linux_version file is existing.\n"
+msgstr "  4. I<HOSTNAME> s'estableix a B<progress-linux> si existeix el fitxer /etc/progress-linux_version\n"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:48
