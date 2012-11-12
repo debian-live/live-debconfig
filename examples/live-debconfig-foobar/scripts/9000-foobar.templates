@@ -1,0 +1,13 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/foobar/foo
+Type: string
+Default:
+Description: live-debconfig: Foo?
+ What should be the foo of the current system?
+ .
+ The default value is determined automatically:
+ .
+   1. FIXME

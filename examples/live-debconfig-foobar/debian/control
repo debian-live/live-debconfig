@@ -1,0 +1,18 @@
+Source: live-debconfig-foobar
+Section: misc
+Priority: extra
+Maintainer: John Doe <john@example.org>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.4
+Homepage: http://www.example.org/foobar/
+Vcs-Browser: http://git.example.org/?p=live-debconfig-foobar.git
+Vcs-Git: git://git.example.org/git/live-debconfig-foobar.git
+
+Package: live-debconfig-foobar
+Architecture: all
+Depends: ${misc:Depends}, live-debconfig (>= 4), live-debconfig (<< 5)
+Description: Additional Live System Configuration Scripts (foobar)
+ live-debconfig contains the scripts that debconfigure a live system during the boot
+ process (late userspace).
+ .
+ This package contains the additional foobar script(s).

@@ -1,0 +1,15 @@
+live-debconfig-foobar Example
+-----------------------------
+
+Best practise for downstream projects and derivatives is to ship their custom
+live-debconfig scripts in an own debian package.
+
+The following live-debconfig-foobar example package should be used as a starting
+point. The following things should minimally be changed:
+
+  * Replace any mentioning of 'Joe Doe' with your own name.
+  * Replace any mentioning of 'example.org' with your own domain name.
+  * Replace any mentioning of 'foobar', 'Foobar' and 'FOOBAR' with the name of
+    your custom script or project name.
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 26 Feb 2012 21:15:40 +0100
