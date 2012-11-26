@@ -414,12 +414,14 @@ fi
 
 mv /etc/resolv.conf.tmp /etc/resolv.conf
 
+_HOSTNAME="$(cat /etc/hostname)"
+
 # Create /etc/hosts
 case "${_ETH0_METHOD}" in
 	none|dhcp)
 
 cat > /etc/hosts.tmp << EOF
-127.0.0.1	localhost
+127.0.0.1	localhost	${_HOSTNAME}
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
@@ -435,7 +437,7 @@ EOF
 
 cat > /etc/hosts.tmp << EOF
 127.0.0.1	localhost
-${_ETH0_ADDRESS}	$(cat /etc/hostname)
+${_ETH0_ADDRESS}	${_HOSTNAME}
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback

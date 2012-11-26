@@ -129,6 +129,17 @@ case "${_LXC_ENABLE}" in
 
 		sed -i -e "s|\(${_CONSOLE}\)|\1${_CONSOLES}|" /etc/inittab.tmp
 
+		# Enable powerfail entries for lxc-shutdown
+		if ! grep -qs ^p0:: /etc/inittab.tmp
+		then
+			echo "p0::powerfail:/sbin/init 0" >> /etc/inittab.tmp
+		fi
+
+		if ! grep -qs ^p6:: /etc/inittab.tmp
+		then
+			echo "p6::ctrlaltdel:/sbin/init 6" >> /etc/inittab.tmp
+		fi
+
 		mv /etc/inittab.tmp /etc/inittab
 
 		# squeeze and newer only has /dev/tty and /dev/tty0 by default,

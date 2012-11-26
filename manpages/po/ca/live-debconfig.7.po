@@ -4,8 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: live-debconfig 4.0~a8-1\n"
-"POT-Creation-Date: 2012-11-12 15:44+0100\n"
+"Project-Id-Version: live-debconfig 4.0~a9-1\n"
+"POT-Creation-Date: 2012-11-26 21:20+0100\n"
 "PO-Revision-Date: 2012-08-17 00:41+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
@@ -24,14 +24,14 @@ msgstr "LIVE-DEBCONFIG"
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2012-11-12"
-msgstr "12.11.2012"
+msgid "2012-11-26"
+msgstr "26.11.2012"
 
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~a8-1"
-msgstr "4.0~a8-1"
+msgid "4.0~a9-1"
+msgstr "4.0~a9-1"
 
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
