@@ -1,3 +1,11 @@
+live-debconfig (4.0~a9-1) unstable; urgency=low
+
+  * Adding hostname to /etc/hosts when using dhcp or no network, nost just
+    when using static addresses only.
+  * Add powerfail entries for lxc-shutdown in sysvinit script.
+
+ -- Daniel Baumann <daniel@debian.org>  Mon, 26 Nov 2012 21:21:40 +0100
+
 live-debconfig (4.0~a8-1) unstable; urgency=low
 
   * Updating defaults in hostname script for newer progress-linux
