@@ -22,15 +22,72 @@
 
 set -e
 
-# Setup local debconf
-if [ ! -e /var/lib/live/debconfig ]
-then
-	mkdir -p /var/lib/live/debconfig
-	chmod 0700 /var/lib/live/debconfig
-fi
+Cmdline ()
+{
+	for _PARAMETER in ${_CMDLINE}
+	do
+		case "${_PARAMETER}" in
+			--debconfig=*)
+				# Only run requested scripts
+				LIVE_DEBCONFIGS="${_PARAMETER#*debconfig=}"
+				;;
 
-if [ ! -e /var/lib/live/debconfig/systemrc ]
-then
+			--debconfig)
+				# Run all scripts
+				_SCRIPTS="$(ls /lib/live/debconfig/* | grep -v '\.templates$')"
+				;;
+
+			--nodebconfig=*)
+				# Don't run requested scripts
+				_SCRIPTS="$(ls /lib/live/debconfig/* | grep -v '\.templates$')"
+				LIVE_NODEBCONFIGS="${_PARAMETER#*nodebconfig=}"
+				;;
+
+			--nodebconfig)
+				# Don't run any script
+				_SCRIPTS=""
+				;;
+
+			# Special options
+			--debug)
+				LIVE_DEBUG="true"
+				;;
+		esac
+	done
+
+	# Include requested scripts
+	if [ -n "${LIVE_DEBCONFIGS}" ]
+	then
+		for _DEBCONFIG in $(echo ${LIVE_DEBCONFIGS} | sed -e 's|,| |g')
+		do
+			_SCRIPTS="${_SCRIPTS} $(ls /lib/live/debconfig/????-${_DEBCONFIG} 2> /dev/null || true)"
+		done
+
+		_SCRIPTS="$(echo ${_SCRIPTS} | grep -v '\.templates$')"
+	fi
+
+	# Exclude requested scripts
+	if [ -n "${LIVE_NODEBCONFIGS}" ]
+	then
+		for _NODEBCONFIG in $(echo ${LIVE_NODEBCONFIGS} | sed -e 's|,| |g')
+		do
+			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|$(ls /lib/live/debconfig/????-${_NODEBCONFIG} 2> /dev/null || echo none)||")"
+		done
+
+		_SCRIPTS="$(echo ${_SCRIPTS} | grep -v '\.templates$')"
+	fi
+}
+
+Setup_debconf ()
+{
+	if [ ! -e /var/lib/live/debconfig ]
+	then
+		mkdir -p /var/lib/live/debconfig
+		chmod 0700 /var/lib/live/debconfig
+	fi
+
+	if [ ! -e /var/lib/live/debconfig/systemrc ]
+	then
 
 cat > /var/lib/live/debconfig/systemrc << EOF
 Config: configdb
@@ -60,20 +117,53 @@ Mode: 644
 Filename: /var/lib/live/debconfig/templates.dat
 EOF
 
-	chmod 0600 /var/lib/live/debconfig/systemrc
-fi
-
-if [ "${1}" = "--noscripts" ]
-then
-	exit
-fi
-
-# Run debconf scripts
-for _SCRIPT in /lib/live/debconfig/*
-do
-	if [ -x "${_SCRIPT}" ]
-	then
-		# FIXME: make scripts a multiselect
-		"${_SCRIPT}"
+		chmod 0600 /var/lib/live/debconfig/systemrc
 	fi
-done
+}
+
+Main ()
+{
+	_CMDLINE="${@}"
+
+	if [ -z "${_CMDLINE}" ]
+	then
+		echo "Usage: live-debconfig --debconfig|--debconfig=SCRIPT1,SCRIPT2,SCRIPT3"
+		echo "Usage: live-debconfig --nodebconfig|--nodebconfig=SCRIPT1,SCRIPT2,SCRIPT3"
+		echo "Usage: live-debconfig --debug"
+		exit 1
+	fi
+
+	# Reading configuration files
+	for _FILE in /etc/live/debconfig.conf /etc/live/debconfig/*
+	do
+		if [ -e "${_FILE}" ]
+		then
+			. "${_FILE}"
+		fi
+	done
+
+	# Processing command line
+	Cmdline
+
+	case "${LIVE_DEBUG}" in
+		true)
+			set -x
+			;;
+	esac
+
+	mkdir -p /var/log/live/debconfig
+
+	Setup_debconf
+
+	# Configuring system
+	_SCRIPTS="$(echo ${_SCRIPTS} | sed -e 's| |\n|g' | sort -u)"
+
+	for _SCRIPT in ${_SCRIPTS}
+	do
+		[ "${LIVE_DEBUG}" = "true" ] && echo "[$(date +'%F %T')] live-debconfig: ${_SCRIPT}" >> /var/log/live/debconfig.log
+
+		${_SCRIPT}
+	done
+}
+
+Main ${@}
