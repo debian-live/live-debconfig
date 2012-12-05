@@ -60,6 +60,7 @@ Mode: 644
 Filename: /var/lib/live/debconfig/templates.dat
 EOF
 
+	chmod 0600 /var/lib/live/debconfig/systemrc
 fi
 
 if [ "${1}" = "--noscripts" ]
