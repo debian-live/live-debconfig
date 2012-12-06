@@ -15,6 +15,12 @@ export DEBCONF_SYSTEMRC
 
 . /usr/share/debconf/confmodule
 
+if [ ! -e /usr/share/sysvinit/inittab ]
+then
+	# System does not use sysvinit
+	exit 0
+fi
+
 Defaults ()
 {
 	_LXC_ENABLE="${_LXC_ENABLE:-false}"
