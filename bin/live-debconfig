@@ -34,12 +34,12 @@ Cmdline ()
 
 			--debconfig)
 				# Run all scripts
-				_SCRIPTS="$(ls /lib/live/debconfig/* | grep -v '\.templates$')"
+				_SCRIPTS="$(ls /lib/live/debconfig/????-* | grep -v '\.templates$')"
 				;;
 
 			--nodebconfig=*)
 				# Don't run requested scripts
-				_SCRIPTS="$(ls /lib/live/debconfig/* | grep -v '\.templates$')"
+				_SCRIPTS="$(ls /lib/live/debconfig/????-* | grep -v '\.templates$')"
 				LIVE_NODEBCONFIGS="${_PARAMETER#*nodebconfig=}"
 				;;
 
@@ -51,6 +51,14 @@ Cmdline ()
 			# Special options
 			--debug)
 				LIVE_DEBUG="true"
+				;;
+
+			*)
+				echo "Usage: live-debconfig"
+				echo "Usage: live-debconfig --debconfig|--debconfig=SCRIPT1,SCRIPT2,SCRIPT3"
+				echo "Usage: live-debconfig --nodebconfig|--nodebconfig=SCRIPT1,SCRIPT2,SCRIPT3"
+				echo "Usage: live-debconfig --debug"
+				exit 1
 				;;
 		esac
 	done
@@ -123,16 +131,6 @@ EOF
 
 Main ()
 {
-	_CMDLINE="${@}"
-
-	if [ -z "${_CMDLINE}" ]
-	then
-		echo "Usage: live-debconfig --debconfig|--debconfig=SCRIPT1,SCRIPT2,SCRIPT3"
-		echo "Usage: live-debconfig --nodebconfig|--nodebconfig=SCRIPT1,SCRIPT2,SCRIPT3"
-		echo "Usage: live-debconfig --debug"
-		exit 1
-	fi
-
 	# Reading configuration files
 	for _FILE in /etc/live/debconfig.conf /etc/live/debconfig/*
 	do
@@ -143,6 +141,8 @@ Main ()
 	done
 
 	# Processing command line
+	_CMDLINE="${@}"
+
 	Cmdline
 
 	case "${LIVE_DEBUG}" in
@@ -154,6 +154,14 @@ Main ()
 	mkdir -p /var/log/live/debconfig
 
 	Setup_debconf
+
+	if [ -z "${_SCRIPTS}" ]
+	then
+		/lib/live/debconfig/multiselect
+
+		. /var/lib/live/debconfig/multiselect
+		rm -f /var/lib/live/debconfig/multiselect
+	fi
 
 	# Configuring system
 	_SCRIPTS="$(echo ${_SCRIPTS} | sed -e 's| |\n|g' | sort -u)"

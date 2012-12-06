@@ -1,0 +1,38 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+_SCRIPTS="$(for _SCRIPT in $(ls /lib/live/debconfig/????-* | grep -v '\.templates$' | sed -e 's|[0-9][0-9][0-9][0-9]-||g'); do echo -n "$(basename ${_SCRIPT}), "; done | sed -e 's|, $||')"
+_SCRIPTS_C="$(for _SCRIPT in $(ls /lib/live/debconfig/????-* | grep -v '\.templates$'); do echo -n "${_SCRIPT}, "; done | sed -e 's|, $||')"
+
+if [ -n "${_SCRIPTS}" ]
+then
+	db_subst live-debconfig/scripts CHOICES "${_SCRIPTS}"
+	db_subst live-debconfig/scripts CHOICES_C "${_SCRIPTS_C}"
+
+	db_fset live-debconfig/scripts seen false
+
+	db_settitle live-debconfig/title
+	db_input high live-debconfig/scripts || true
+	db_go
+
+	db_get live-debconfig/scripts
+	_SCRIPTS="${RET}" # multiselect
+
+	echo "_SCRIPTS=\"${_SCRIPTS}\"" > /var/lib/live/debconfig/multiselect
+
+	db_stop
+fi
