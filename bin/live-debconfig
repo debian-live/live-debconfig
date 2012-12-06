@@ -155,13 +155,11 @@ Main ()
 
 	Setup_debconf
 
-	if [ -z "${_SCRIPTS}" ]
-	then
-		/lib/live/debconfig/multiselect
+	# Show debconf multiselect dialog
+	/lib/live/debconfig/multiselect ${_SCRIPTS}
 
-		. /var/lib/live/debconfig/multiselect
-		rm -f /var/lib/live/debconfig/multiselect
-	fi
+	. /var/lib/live/debconfig/multiselect
+	rm -f /var/lib/live/debconfig/multiselect
 
 	# Configuring system
 	_SCRIPTS="$(echo ${_SCRIPTS} | sed -e 's| |\n|g' | sort -u)"
