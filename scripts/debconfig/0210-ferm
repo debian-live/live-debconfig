@@ -1,0 +1,76 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+db_get live-debconfig/ferm/ipv4-ports
+_IPV4_PORTS="${RET}" # string (w/ empty)
+
+db_set live-debconfig/ferm/ipv4-ports "${_IPV4_PORTS}"
+db_fset live-debconfig/ferm/ipv4-ports seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/ferm/ipv4-ports || true
+db_go
+
+db_get live-debconfig/ferm/ipv4-ports
+_IPV4_PORTS="${RET}" # string (w/ empty)
+
+db_stop
+
+# Setup ferm
+
+mkdir -p /etc/ferm
+
+cat > /etc/ferm/ferm.conf.tmp << EOF
+# /etc/ferm/ferm.conf
+
+table filter {
+	chain INPUT {
+		policy DROP;
+
+		# connection tracking
+		mod state state INVALID DROP;
+		mod state state (ESTABLISHED RELATED) ACCEPT;
+
+		# allow local packet
+		interface lo ACCEPT;
+
+		# respond to ping
+		proto icmp ACCEPT;
+
+		# allow incoming packets
+		proto tcp dport (@IPV4_PORTS@) ACCEPT;
+	}
+	chain OUTPUT {
+		policy ACCEPT;
+
+		# connection tracking
+		#mod state state INVALID DROP;
+		mod state state (ESTABLISHED RELATED) ACCEPT;
+	}
+	chain FORWARD {
+		policy DROP;
+
+		# connection tracking
+		mod state state INVALID DROP;
+		mod state state (ESTABLISHED RELATED) ACCEPT;
+	}
+}
+EOF
+
+sed -e "s|@IPV4_PORTS@|${_IPV4_PORTS}|" /etc/ferm/ferm.conf.tmp > /etc/ferm/ferm.conf
+
+# reload ferm

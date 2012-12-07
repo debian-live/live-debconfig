@@ -1,0 +1,9 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/ferm/ipv4-ports
+Type: string
+Default:
+Description: live-debconfig: open ports (IPv4)?
+ What ports do you want to open on the current system?
