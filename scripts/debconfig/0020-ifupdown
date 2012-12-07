@@ -24,9 +24,9 @@ Defaults ()
 {
 	_LO_ENABLE="${_LO_ENABLE:-true}"
 
-	_ETH0_METHOD="${_ETH0_METHOD:-dhcp}"
-	_ETH0_ADDRESS="${_ETH0_ADDRESS:-192.168.1.2}"
-	_ETH0_NETMASK="${_ETH0_NETMASK:-255.255.255.0}"
+	_ETH0_IPV4_METHOD="${_ETH0_IPV4_METHOD:-dhcp}"
+	_ETH0_IPV4_ADDRESS="${_ETH0_IPV4_ADDRESS:-192.168.1.2}"
+	_ETH0_IPV4_NETMASK="${_ETH0_IPV4_NETMASK:-255.255.255.0}"
 
 	if [ -e /etc/resolv.conf ]
 	then
@@ -46,32 +46,32 @@ _LO_ENABLE="${RET}" # boolean
 db_get live-debconfig/ifupdown/lo-comment
 _LO_COMMENT="${RET}" # string (w/empty)
 
-db_get live-debconfig/ifupdown/eth0-method
-_ETH0_METHOD="${RET}" # select
+db_get live-debconfig/ifupdown/eth0-ipv4-method
+_ETH0_IPV4_METHOD="${RET}" # select
 
-db_get live-debconfig/ifupdown/eth0-comment
-_ETH0_COMMENT="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-comment
+_ETH0_IPV4_COMMENT="${RET}" # string (w/ empty)
 
-db_get live-debconfig/ifupdown/eth0-address
-_ETH0_ADDRESS="${RET}" # string (w/o empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-address
+_ETH0_IPV4_ADDRESS="${RET}" # string (w/o empty)
 
-db_get live-debconfig/ifupdown/eth0-broadcast
-_ETH0_BROADCAST="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-broadcast
+_ETH0_IPV4_BROADCAST="${RET}" # string (w/ empty)
 
-db_get live-debconfig/ifupdown/eth0-gateway
-_ETH0_GATEWAY="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-gateway
+_ETH0_IPV4_GATEWAY="${RET}" # string (w/ empty)
 
-db_get live-debconfig/ifupdown/eth0-mtu
-_ETH0_MTU="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-mtu
+_ETH0_IPV4_MTU="${RET}" # string (w/ empty)
 
-db_get live-debconfig/ifupdown/eth0-netmask
-_ETH0_NETMASK="${RET}" # string (w/o empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-netmask
+_ETH0_IPV4_NETMASK="${RET}" # string (w/o empty)
 
-db_get live-debconfig/ifupdown/eth0-network
-_ETH0_NETWORK="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-network
+_ETH0_IPV4_NETWORK="${RET}" # string (w/ empty)
 
-db_get live-debconfig/ifupdown/eth0-post-up
-_ETH0_POST_UP="${RET}" # string (w/ empty)
+db_get live-debconfig/ifupdown/eth0-ipv4-post-up
+_ETH0_IPV4_POST_UP="${RET}" # string (w/ empty)
 
 db_get live-debconfig/ifupdown/nameserver-addresses
 _NAMESERVER_ADDRESSES="${RET}" # string (w/ empty)
@@ -93,32 +93,32 @@ db_fset live-debconfig/ifupdown/lo-enable seen false
 db_set live-debconfig/ifupdown/lo-comment "${_LO_COMMENT}"
 db_fset live-debconfig/ifupdown/lo-comment seen false
 
-db_set live-debconfig/ifupdown/eth0-method "${_ETH0_METHOD}"
-db_fset live-debconfig/ifupdown/eth0-method seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-method "${_ETH0_IPV4_METHOD}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-method seen false
 
-db_set live-debconfig/ifupdown/eth0-comment "${_ETH0_COMMENT}"
-db_fset live-debconfig/ifupdown/eth0-comment seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-comment "${_ETH0_IPV4_COMMENT}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-comment seen false
 
-db_set live-debconfig/ifupdown/eth0-address "${_ETH0_ADDRESS}"
-db_fset live-debconfig/ifupdown/eth0-address seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-address "${_ETH0_IPV4_ADDRESS}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-address seen false
 
-db_set live-debconfig/ifupdown/eth0-broadcast "${_ETH0_BROADCAST}"
-db_fset live-debconfig/ifupdown/eth0-broadcast seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-broadcast "${_ETH0_IPV4_BROADCAST}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-broadcast seen false
 
-db_set live-debconfig/ifupdown/eth0-gateway "${_ETH0_GATEWAY}"
-db_fset live-debconfig/ifupdown/eth0-gateway seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-gateway "${_ETH0_IPV4_GATEWAY}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-gateway seen false
 
-db_set live-debconfig/ifupdown/eth0-mtu "${_ETH0_MTU}"
-db_fset live-debconfig/ifupdown/eth0-mtu seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-mtu "${_ETH0_IPV4_MTU}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-mtu seen false
 
-db_set live-debconfig/ifupdown/eth0-netmask "${_ETH0_NETMASK}"
-db_fset live-debconfig/ifupdown/eth0-netmask seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-netmask "${_ETH0_IPV4_NETMASK}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-netmask seen false
 
-db_set live-debconfig/ifupdown/eth0-network "${_ETH0_NETWORK}"
-db_fset live-debconfig/ifupdown/eth0-network seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-network "${_ETH0_IPV4_NETWORK}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-network seen false
 
-db_set live-debconfig/ifupdown/eth0-post-up "${_ETH0_POST_UP}"
-db_fset live-debconfig/ifupdown/eth0-post-up seen false
+db_set live-debconfig/ifupdown/eth0-ipv4-post-up "${_ETH0_IPV4_POST_UP}"
+db_fset live-debconfig/ifupdown/eth0-ipv4-post-up seen false
 
 db_set live-debconfig/ifupdown/nameserver-addresses "${_NAMESERVER_ADDRESSES}"
 db_fset live-debconfig/ifupdown/nameserver-addresses seen false
@@ -143,48 +143,48 @@ db_get live-debconfig/ifupdown/lo-comment
 _LO_COMMENT="${RET}" # string (w/ empty)
 
 db_settitle live-debconfig/title
-db_input high live-debconfig/ifupdown/eth0-method || true
+db_input high live-debconfig/ifupdown/eth0-ipv4-method || true
 db_go
 
-db_get live-debconfig/ifupdown/eth0-method
-_ETH0_METHOD="${RET}" # select
+db_get live-debconfig/ifupdown/eth0-ipv4-method
+_ETH0_IPV4_METHOD="${RET}" # select
 
-case "${_ETH0_METHOD}" in
+case "${_ETH0_IPV4_METHOD}" in
 	none|dhcp)
 
 		;;
 
 	static)
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-comment || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-comment || true
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-address || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-address || true
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-broadcast || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-broadcast || true
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-gateway || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-gateway || true
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-mtu || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-mtu || true
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-netmask || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-netmask || true
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-network || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-network || true
 		db_go
 
 		db_settitle live-debconfig/title
-		db_input high live-debconfig/ifupdown/eth0-post-up || true
+		db_input high live-debconfig/ifupdown/eth0-ipv4-post-up || true
 		db_go
 
 		db_settitle live-debconfig/title
@@ -195,51 +195,51 @@ esac
 
 _NUMBER="0"
 
-while db_get live-debconfig/ifupdown/eth${_NUMBER}-method && [ "${RET}" ]
+while db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-method && [ "${RET}" ]
 do
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-comment
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-comment
 	then
-		eval _ETH${_NUMBER}_COMMENT="\"${RET}\"" # string (w/ empty)
+		eval _ETH${_NUMBER}_IPV4_COMMENT="\"${RET}\"" # string (w/ empty)
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-method
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-method
 	then
-		eval _ETH${_NUMBER}_METHOD="\"${RET}\"" # select
+		eval _ETH${_NUMBER}_IPV4_METHOD="\"${RET}\"" # select
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-address
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-address
 	then
-		eval _ETH${_NUMBER}_ADDRESS="\"${RET}\"" # string (w/o empty)
+		eval _ETH${_NUMBER}_IPV4_ADDRESS="\"${RET}\"" # string (w/o empty)
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-broadcast
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-broadcast
 	then
-		eval _ETH${_NUMBER}_BROADCAST="\"${RET}\"" # string (w/ empty)
+		eval _ETH${_NUMBER}_IPV4_BROADCAST="\"${RET}\"" # string (w/ empty)
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-gateway
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-gateway
 	then
-		eval _ETH${_NUMBER}_GATEWAY="\"${RET}\"" # string (w/ empty)
+		eval _ETH${_NUMBER}_IPV4_GATEWAY="\"${RET}\"" # string (w/ empty)
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-mtu
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-mtu
 	then
-		eval _ETH${_NUMBER}_MTU="\"${RET}\"" # string (w/o empty)
+		eval _ETH${_NUMBER}_IPV4_MTU="\"${RET}\"" # string (w/o empty)
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-netmask
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-netmask
 	then
-		eval _ETH${_NUMBER}_NETMASK="\"${RET}\"" # string (w/o empty)
+		eval _ETH${_NUMBER}_IPV4_NETMASK="\"${RET}\"" # string (w/o empty)
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-network
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-network
 	then
-		eval _ETH${_NUMBER}_NETWORK="\"${RET}\"" # string (w/ empty)
+		eval _ETH${_NUMBER}_IPV4_NETWORK="\"${RET}\"" # string (w/ empty)
 	fi
 
-	if db_get live-debconfig/ifupdown/eth${_NUMBER}-post-up
+	if db_get live-debconfig/ifupdown/eth${_NUMBER}-ipv4-post-up
 	then
-		eval _ETH${_NUMBER}_POST_UP="\"${RET}\"" # string (w/ empty)
+		eval _ETH${_NUMBER}_IPV4_POST_UP="\"${RET}\"" # string (w/ empty)
 	fi
 
 	_NUMBER="$((${_NUMBER} + 1))"
@@ -288,29 +288,29 @@ esac
 
 for _NUMBER in $(seq 0 ${_ETH_NUMBER})
 do
-	eval _COMMENT="$`echo _ETH${_NUMBER}_COMMENT`"
-	eval _METHOD="$`echo _ETH${_NUMBER}_METHOD`"
-	eval _ADDRESS="$`echo _ETH${_NUMBER}_ADDRESS`"
-	eval _BROADCAST="$`echo _ETH${_NUMBER}_BROADCAST`"
-	eval _GATEWAY="$`echo _ETH${_NUMBER}_GATEWAY`"
-	eval _MTU="$`echo _ETH${_NUMBER}_MTU`"
-	eval _NETMASK="$`echo _ETH${_NUMBER}_NETMASK`"
-	eval _NETWORK="$`echo _ETH${_NUMBER}_NETWORK`"
-	eval _POST_UP="$`echo _ETH${_NUMBER}_POST_UP`"
+	eval _IPV4_COMMENT="$`echo _ETH${_NUMBER}_IPV4_COMMENT`"
+	eval _IPV4_METHOD="$`echo _ETH${_NUMBER}_IPV4_METHOD`"
+	eval _IPV4_ADDRESS="$`echo _ETH${_NUMBER}_IPV4_ADDRESS`"
+	eval _IPV4_BROADCAST="$`echo _ETH${_NUMBER}_IPV4_BROADCAST`"
+	eval _IPV4_GATEWAY="$`echo _ETH${_NUMBER}_IPV4_GATEWAY`"
+	eval _IPV4_MTU="$`echo _ETH${_NUMBER}_IPV4_MTU`"
+	eval _IPV4_NETMASK="$`echo _ETH${_NUMBER}_IPV4_NETMASK`"
+	eval _IPV4_NETWORK="$`echo _ETH${_NUMBER}_IPV4_NETWORK`"
+	eval _IPV4_POST_UP="$`echo _ETH${_NUMBER}_IPV4_POST_UP`"
 
-	if [ -z "${_METHOD}" ]
+	if [ -z "${_IPV4_METHOD}" ]
 	then
 		continue
 	fi
 
 	echo >> /etc/network/interfaces.tmp
 
-	if [ -n "${_COMMENT}" ]
+	if [ -n "${_IPV4_COMMENT}" ]
 	then
-		echo "# ${_COMMENT}" >> /etc/network/interfaces.tmp
+		echo "# ${_IPV4_COMMENT}" >> /etc/network/interfaces.tmp
 	fi
 
-	case "${_METHOD}" in
+	case "${_IPV4_METHOD}" in
 		none)
 
 cat >> /etc/network/interfaces.tmp << EOF
@@ -336,37 +336,37 @@ cat >> /etc/network/interfaces.tmp << EOF
 
 auto eth${_NUMBER}
 iface eth${_NUMBER} inet static
-	address		${_ADDRESS}
+	address		${_IPV4_ADDRESS}
 EOF
 
-			if [ -n "${_BROADCAST}" ]
+			if [ -n "${_IPV4_BROADCAST}" ]
 			then
-				echo "	broadcast	${_BROADCAST}" >> /etc/network/interfaces.tmp
+				echo "	broadcast	${_IPV4_BROADCAST}" >> /etc/network/interfaces.tmp
 			fi
 
-			if [ -n "${_GATEWAY}" ]
+			if [ -n "${_IPV4_GATEWAY}" ]
 			then
-				echo "	gateway		${_GATEWAY}" >> /etc/network/interfaces.tmp
+				echo "	gateway		${_IPV4_GATEWAY}" >> /etc/network/interfaces.tmp
 			fi
 
-			if [ -n "${_MTU}" ]
+			if [ -n "${_IPV4_MTU}" ]
 			then
-				echo "	mtu		${_MTU}" >> /etc/network/interfaces.tmp
+				echo "	mtu		${_IPV4_MTU}" >> /etc/network/interfaces.tmp
 			fi
 
-			if [ -n "${_NETMASK}" ]
+			if [ -n "${_IPV4_NETMASK}" ]
 			then
-				echo "	netmask		${_NETMASK}" >> /etc/network/interfaces.tmp
+				echo "	netmask		${_IPV4_NETMASK}" >> /etc/network/interfaces.tmp
 			fi
 
-			if [ -n "${_NETWORK}" ]
+			if [ -n "${_IPV4_NETWORK}" ]
 			then
-				echo "	network		${_NETWORK}" >> /etc/network/interfaces.tmp
+				echo "	network		${_IPV4_NETWORK}" >> /etc/network/interfaces.tmp
 			fi
 
-			if [ -n "${_POST_UP}" ]
+			if [ -n "${_IPV4_POST_UP}" ]
 			then
-				echo "	post-up		${_POST_UP}" >> /etc/network/interfaces.tmp
+				echo "	post-up		${_IPV4_POST_UP}" >> /etc/network/interfaces.tmp
 			fi
 			;;
 	esac
@@ -417,7 +417,7 @@ mv /etc/resolv.conf.tmp /etc/resolv.conf
 _HOSTNAME="$(cat /etc/hostname)"
 
 # Create /etc/hosts
-case "${_ETH0_METHOD}" in
+case "${_ETH0_IPV4_METHOD}" in
 	none|dhcp)
 
 cat > /etc/hosts.tmp << EOF
@@ -437,7 +437,7 @@ EOF
 
 cat > /etc/hosts.tmp << EOF
 127.0.0.1	localhost
-${_ETH0_ADDRESS}	${_HOSTNAME}
+${_ETH0_IPV4_ADDRESS}	${_HOSTNAME}
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     ip6-localhost ip6-loopback
