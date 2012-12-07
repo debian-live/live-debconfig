@@ -37,7 +37,7 @@ then
 	db_go
 
 	db_get live-debconfig/scripts
-	_SCRIPTS="${RET}" # multiselect
+	_SCRIPTS="$(echo ${RET} | sed -e 's|,| |g')" # multiselect
 
 	echo "_SCRIPTS=\"${_SCRIPTS}\"" > /var/lib/live/debconfig/multiselect
 
