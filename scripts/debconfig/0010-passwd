@@ -15,6 +15,7 @@ export DEBCONF_SYSTEMRC
 
 . /usr/share/debconf/confmodule
 
+# shadow passwords
 db_get live-debconfig/passwd/shadow
 _SHADOW="${RET}" # boolean
 
@@ -28,16 +29,96 @@ db_go
 db_get live-debconfig/passwd/shadow
 _SHADOW="${RET}" # boolean
 
+# root password
+if db_get live-debconfig/passwd/root-password
+then
+	_ROOT_PASSWORD="${RET}" # password
+fi
+
+if [ -z "${_ROOT_PASSWORD}" ]
+then
+	db_fset live-debconfig/passwd/root-password seen false
+
+	db_settitle live-debconfig/title
+	db_input high live-debconfig/passwd/root-password || true
+	db_go
+
+	db_get live-debconfig/passwd/root-password
+	_ROOT_PASSWORD="${RET}" # password
+
+	db_fset live-debconfig/passwd/root-password seen false
+	db_set live-debconfig/passwd/root-password ""
+fi
+
+# root password (again)
+if [ -n "${_ROOT_PASSWORD}" ]
+then
+	if db_get live-debconfig/passwd/root-password-again
+	then
+		_ROOT_PASSWORD_AGAIN="${RET}" # password
+	fi
+
+	if [ -z "${_ROOT_PASSWORD_AGAIN}" ]
+	then
+		db_fset live-debconfig/passwd/root-password-again seen false
+
+		db_settitle live-debconfig/title
+		db_input high live-debconfig/passwd/root-password-again || true
+		db_go
+
+		db_get live-debconfig/passwd/root-password-again
+		_ROOT_PASSWORD_AGAIN="${RET}" # password
+
+		db_fset live-debconfig/passwd/root-password-again seen false
+		db_set live-debconfig/passwd/root-password-again ""
+	fi
+fi
+
+if [ -n "${_ROOT_PASSWORD}" ] && [ -n "${_ROOT_PASSWORD_AGAIN}" ]
+then
+	if [ "${_ROOT_PASSWORD}" != "${_ROOT_PASSWORD_AGAIN}" ]
+	then
+		# FIXME: should display debconf error and ask again (if interactive, otherwise it loops)
+		echo "W: root passwords do not match, not setting root password."
+
+		_ROOT_PASSWORD=""
+		_ROOT_PASSWORD_AGAIN=""
+	fi
+fi
+
+# root password crypted
+if db_get live-debconfig/passwd/root-password-crypted
+then
+	_ROOT_PASSWORD_CRYPTED="${RET}" # password
+
+	db_fset live-debconfig/passwd/root-password-crypted seen false
+	db_set live-debconfig/passwd/root-password-crypted ""
+fi
+
 db_stop
 
 # Setup passwd
 
 case "${_SHADOW}" in
 	true)
-		shadowconfig on
+		( shadowconfig on | grep -v "Shadow passwords are now on." ) || true
 		;;
 
 	false)
-		shadowconfig off
+		( shadowconfig off | grep -v "Shadow passwords are now off." ) || true
 		;;
 esac
+
+if [ -n "${_ROOT_PASSWORD}" ] && [ -z "${_ROOT_PASSWORD_CRYPTED}" ]
+then
+
+chpasswd << EOF
+root:${_ROOT_PASSWORD}
+EOF
+
+fi
+
+if [ -n "${_ROOT_PASSWORD_CRYPTED}" ]
+then
+	usermod --password=${_ROOT_PASSWORD_CRYPTED} root
+fi

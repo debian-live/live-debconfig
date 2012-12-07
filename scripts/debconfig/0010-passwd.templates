@@ -7,3 +7,22 @@ Type: boolean
 Default: true
 Description: live-debconfig: Shadow passwords?
  Should the current system use shadow passwords?
+
+Template: live-debconfig/passwd/root-password
+Type: password
+Description: live-debconfig: root password?
+ What should be the passwort for the root account of this system?
+ .
+ If left empty (default), no change will be applied.
+
+Template: live-debconfig/passwd/root-password-again
+Type: password
+Description: live-debconfig: root password (again)?
+ Please enter root password again for confirmation.
+ .
+ If first and second root password do not match,
+ password setting is skipped.
+
+Template: live-debconfig/passwd/root-password-crypted
+Type: password
+Description: internal
