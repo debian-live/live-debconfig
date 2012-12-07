@@ -1,0 +1,9 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/passwd/shadow
+Type: boolean
+Default: true
+Description: live-debconfig: Shadow passwords?
+ Should the current system use shadow passwords?
