@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig VERSION\n"
-"POT-Creation-Date: 2012-12-06 20:33+0100\n"
+"POT-Creation-Date: 2012-12-13 17:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. type: TH
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2012-12-06"
+msgid "2012-12-13"
 msgstr ""
 
 #. type: TH
@@ -60,8 +60,8 @@ msgstr ""
 #. type: Plain text
 #: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
 msgid ""
-"B<live-debconfig> contains the scripts that configure a Debian Live system "
-"during the build process (live-build)."
+"B<live-debconfig> contains the scripts that configure a Live system during "
+"the build process (live-build)."
 msgstr ""
 
 #. type: SH
