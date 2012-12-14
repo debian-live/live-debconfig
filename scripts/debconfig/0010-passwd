@@ -242,6 +242,87 @@ then
 	fi
 fi
 
+_NUMBER="0"
+
+while db_get live-debconfig/passwd/user${_NUMBER}-name && [ "${RET}" ]
+do
+	if db_get live-debconfig/passwd/user${_NUMBER}-name
+	then
+		eval _USER${_NUMBER}_NAME="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-name seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-name ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-fullname
+	then
+		eval _USER${_NUMBER}_FULLNAME="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-fullname seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-fullname ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-password
+	then
+		eval _USER${_NUMBER}_PASSWORD="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-password seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-password ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-password-crypted
+	then
+		eval _USER${_NUMBER}_PASSWORD_CRYPTED="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-password-crypted seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-password-crypted ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-home
+	then
+		eval _USER${_NUMBER}_HOME="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-home seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-home ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-uid
+	then
+		eval _USER${_NUMBER}_UID="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-uid seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-uid ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-gid
+	then
+		eval _USER${_NUMBER}_GID="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-gid seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-gid ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-default-groups
+	then
+		eval _USER${_NUMBER}_DEFAULT_GROUPS="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-default-groups seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-default-groups ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-system-user
+	then
+		eval _USER${_NUMBER}_SYSTEM_USER="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-system-user seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-system-user ""
+	fi
+
+	_NUMBER="$((${_NUMBER} + 1))"
+done
+
+_USER_NUMBER="${_NUMBER}"
+
 db_stop
 
 # Setup passwd
@@ -270,6 +351,7 @@ then
 	usermod --password=${_ROOT_PASSWORD_CRYPTED} root
 fi
 
+# single user creation
 if [ -n "${_USER_NAME}" ]
 then
 	_USER_OPTIONS=""
@@ -338,3 +420,87 @@ EOF
 		echo "W: user \"${_USER_NAME}\" already exists, not creating new user."
 	fi
 fi
+
+# multiple user creation
+for _NUMBER in $(seq 0 ${_USER_NUMBER})
+do
+	eval _NAME="$`echo _USER${_NUMBER}_NAME`"
+	eval _PASSWORD="$`echo _USER${_NUMBER}_PASSWORD`"
+	eval _PASSWORD_CRYPTED="$`echo _USER${_NUMBER}_PASSWORD_CRYPTED`"
+	eval _HOME="$`echo _USER${_NUMBER}_HOME`"
+	eval _UID="$`echo _USER${_NUMBER}_UID`"
+	eval _GID="$`echo _USER${_NUMBER}_GID`"
+	eval _DEFAULT_GROUPS="$`echo _USER${_NUMBER}_DEFAULT_GROUPS`"
+	eval _SYSTEM_USER="$`echo _USER${_NUMBER}_SYSTEM_USER`"
+	eval _FULLNAME="$`echo _USER${_NUMBER}_FULLNAME`"
+
+	if [ -z "${_NAME}" ]
+	then
+		continue
+	fi
+
+	_OPTIONS=""
+
+	if [ -n "${_HOME}" ]
+	then
+		if [ -e "${_HOME}" ]
+		then
+			_OPTIONS="${_OPTIONS} -M --home ${_HOME}"
+			_CHOWN="true"
+		else
+			_OPTIONS="${_OPTIONS} -m --home ${_HOME}"
+			_CHOWN="false"
+		fi
+	fi
+
+	if [ -n "${_UID}" ]
+	then
+		_OPTIONS="${_OPTIONS} --uid ${_UID}"
+	fi
+
+	if [ -n "${_GID}" ]
+	then
+		_OPTIONS="${_OPTIONS} --gid ${_GID}"
+	fi
+
+	if [ -n "${_DEFAULT_GROUPS}" ]
+	then
+		_OPTIONS="${_OPTIONS} --groups $(echo ${_DEFAULT_GROUPS} | sed -e 's| |,|g')"
+	fi
+
+	if [ "${_SYSTEM_USER}" = "true" ]
+	then
+		_OPTIONS="${_OPTIONS} --system"
+	fi
+
+	if [ -n "${_FULLNAME}" ]
+	then
+		_OPTIONS="${_OPTIONS} --comment "
+	fi
+
+	if ! getent passwd "${_NAME}" > /dev/null 2>&1
+	then
+		useradd ${_OPTIONS} "${_FULLNAME}" ${_NAME}
+
+		if [ "${_CHOWN}" = "true" ]
+		then
+			chown ${_NAME}:${_NAME} "${_HOME}" -R
+		fi
+
+		if [ -n "${_PASSWORD}" ] && [ -z "${_PASSWORD_CRYPTED}" ]
+		then
+
+chpasswd << EOF
+${_NAME}:${_PASSWORD}
+EOF
+
+		fi
+
+		if [ -n "${_PASSWORD_CRYPTED}" ]
+		then
+			usermod --password=${_PASSWORD_CRYPTED} ${_NAME}
+		fi
+	else
+		echo "W: user \"${_NAME}\" already exists, not creating new user."
+	fi
+done
