@@ -95,6 +95,153 @@ then
 	db_set live-debconfig/passwd/root-password-crypted ""
 fi
 
+# user name
+if db_get live-debconfig/passwd/user-name
+then
+	_USER_NAME="${RET}" # string (w/ empty)
+fi
+
+if [ -z "${_USER_NAME}" ]
+then
+	db_fset live-debconfig/passwd/user-name seen false
+
+	db_settitle live-debconfig/title
+	db_input high live-debconfig/passwd/user-name || true
+	db_go
+
+	db_get live-debconfig/passwd/user-name
+	_USER_NAME="${RET}" # string (w/ empty)
+
+	db_fset live-debconfig/passwd/user-name seen false
+	db_set live-debconfig/passwd/user-name ""
+fi
+
+# user fullname
+if [ -n "${_USER_NAME}" ]
+then
+	db_get live-debconfig/passwd/user-fullname
+	_USER_FULLNAME="${RET}" # string (w/ empty)
+
+	db_set live-debconfig/passwd/user-fullname "${_USER_FULLNAME}"
+	db_fset live-debconfig/passwd/user-fullname seen false
+
+	db_settitle live-debconfig/title
+	db_input high live-debconfig/passwd/user-fullname || true
+	db_go
+
+	db_get live-debconfig/passwd/user-fullname
+	_USER_FULLNAME="${RET}" # string (w/ empty)
+
+	db_fset live-debconfig/passwd/user-fullname seen false
+	db_set live-debconfig/passwd/user-fullname ""
+
+	# user password
+	if [ -z "${_USER_PASSWORD}" ]
+	then
+		db_fset live-debconfig/passwd/user-password seen false
+
+		db_settitle live-debconfig/title
+		db_input high live-debconfig/passwd/user-password || true
+		db_go
+
+		db_get live-debconfig/passwd/user-password
+		_USER_PASSWORD="${RET}" # password
+
+		db_fset live-debconfig/passwd/user-password seen false
+		db_set live-debconfig/passwd/user-password ""
+	fi
+
+	# user password (again)
+	if [ -n "${_USER_PASSWORD}" ]
+	then
+		if db_get live-debconfig/passwd/user-password-again
+		then
+			_USER_PASSWORD_AGAIN="${RET}" # password
+		fi
+
+		if [ -z "${_USER_PASSWORD_AGAIN}" ]
+		then
+			db_fset live-debconfig/passwd/user-password-again seen false
+
+			db_settitle live-debconfig/title
+			db_input high live-debconfig/passwd/user-password-again || true
+			db_go
+
+			db_get live-debconfig/passwd/user-password-again
+			_USER_PASSWORD_AGAIN="${RET}" # password
+
+			db_fset live-debconfig/passwd/user-password-again seen false
+			db_set live-debconfig/passwd/user-password-again ""
+		fi
+	fi
+
+	if [ -n "${_USER_PASSWORD}" ] && [ -n "${_USER_PASSWORD_AGAIN}" ]
+	then
+		if [ "${_USER_PASSWORD}" != "${_USER_PASSWORD_AGAIN}" ]
+		then
+			# FIXME: should display debconf error and ask again (if interactive, otherwise it loops)
+			echo "W: user \"${_USER_NAME}\" passwords do not match, not setting user password."
+
+			_USER_PASSWORD=""
+			_USER_PASSWORD_AGAIN=""
+		fi
+	fi
+
+	# user password crypted
+	if db_get live-debconfig/passwd/user-password-crypted
+	then
+		_USER_PASSWORD_CRYPTED="${RET}" # password
+
+		db_fset live-debconfig/passwd/user-password-crypted seen false
+		db_set live-debconfig/passwd/user-password-crypted ""
+	fi
+
+	# user home
+	if db_get live-debconfig/passwd/user-home
+	then
+		_USER_HOME="${RET:-/home/${_USER_NAME}}" # string (w/o empty)
+
+		db_fset live-debconfig/passwd/user-home seen false
+		db_set live-debconfig/passwd/user-home ""
+	fi
+
+	# user uid
+	if db_get live-debconfig/passwd/user-uid
+	then
+		_USER_UID="${RET}" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user-uid seen false
+		db_set live-debconfig/passwd/user-uid ""
+	fi
+
+	# user gid
+	if db_get live-debconfig/passwd/user-gid
+	then
+		_USER_GID="${RET}" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user-gid seen false
+		db_set live-debconfig/passwd/user-gid ""
+	fi
+
+	# user default-groups
+	if db_get live-debconfig/passwd/user-default-groups
+	then
+		_USER_DEFAULT_GROUPS="${RET}" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user-default-groups seen false
+		db_set live-debconfig/passwd/user-default-groups ""
+	fi
+
+	# user system-user
+	if db_get live-debconfig/passwd/user-system-user
+	then
+		_USER_SYSTEM_USER="${RET}" # boolean
+
+		db_fset live-debconfig/passwd/user-system-user seen false
+		db_set live-debconfig/passwd/user-system-user ""
+	fi
+fi
+
 db_stop
 
 # Setup passwd
@@ -121,4 +268,73 @@ fi
 if [ -n "${_ROOT_PASSWORD_CRYPTED}" ]
 then
 	usermod --password=${_ROOT_PASSWORD_CRYPTED} root
+fi
+
+if [ -n "${_USER_NAME}" ]
+then
+	_USER_OPTIONS=""
+
+	if [ -n "${_USER_HOME}" ]
+	then
+		if [ -e "${_USER_HOME}" ]
+		then
+			_USER_OPTIONS="${_USER_OPTIONS} -M --home ${_USER_HOME}"
+			_USER_CHOWN="true"
+		else
+			_USER_OPTIONS="${_USER_OPTIONS} -m --home ${_USER_HOME}"
+			_USER_CHOWN="false"
+		fi
+	fi
+
+	if [ -n "${_USER_UID}" ]
+	then
+		_USER_OPTIONS="${_USER_OPTIONS} --uid ${_USER_UID}"
+	fi
+
+	if [ -n "${_USER_GID}" ]
+	then
+		_USER_OPTIONS="${_USER_OPTIONS} --gid ${_USER_GID}"
+	fi
+
+	if [ -n "${_USER_DEFAULT_GROUPS}" ]
+	then
+		_USER_OPTIONS="${_USER_OPTIONS} --groups $(echo ${_USER_DEFAULT_GROUPS} | sed -e 's| |,|g')"
+	fi
+
+	if [ "${_USER_SYSTEM_USER}" = "true" ]
+	then
+		_USER_OPTIONS="${_USER_OPTIONS} --system"
+	fi
+
+	if [ -n "${_USER_FULLNAME}" ]
+	then
+		_USER_OPTIONS="${_USER_OPTIONS} --comment "
+	fi
+
+
+	if ! getent passwd "${_USER_NAME}" > /dev/null 2>&1
+	then
+		useradd ${_USER_OPTIONS} "${_USER_FULLNAME}" ${_USER_NAME}
+
+		if [ "${_USER_CHOWN}" = "true" ]
+		then
+			chown ${_USER_NAME}:${_USER_NAME} "${_USER_HOME}" -R
+		fi
+
+		if [ -n "${_USER_PASSWORD}" ] && [ -z "${_USER_PASSWORD_CRYPTED}" ]
+		then
+
+chpasswd << EOF
+${_USER_NAME}:${_USER_PASSWORD}
+EOF
+
+		fi
+
+		if [ -n "${_USER_PASSWORD_CRYPTED}" ]
+		then
+			usermod --password=${_USER_PASSWORD_CRYPTED} ${_USER_NAME}
+		fi
+	else
+		echo "W: user \"${_USER_NAME}\" already exists, not creating new user."
+	fi
 fi

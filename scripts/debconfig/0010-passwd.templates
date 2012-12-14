@@ -26,3 +26,54 @@ Description: live-debconfig: root password (again)?
 Template: live-debconfig/passwd/root-password-crypted
 Type: password
 Description: internal
+
+Template: live-debconfig/passwd/user-name
+Type: string
+Description: live-debconfig: user account name?
+ What should be the account name of the to be created user?
+ .
+ If empty, no user is being created.
+
+Template: live-debconfig/passwd/user-fullname
+Type: string
+Description: live-debconfig: user fullname?
+ What should be the users descriptive fullname?
+
+Template: live-debconfig/passwd/user-password
+Type: password
+Description: live-debconfig: user password?
+ What should be the passwort for the user account of this system?
+ .
+ If left empty (default), no change will be applied.
+
+Template: live-debconfig/passwd/user-password-again
+Type: password
+Description: live-debconfig: user password (again)?
+ Please enter user password again for confirmation.
+ .
+ If first and second user password do not match,
+ password setting is skipped.
+
+Template: live-debconfig/passwd/user-password-crypted
+Type: password
+Description: internal
+
+Template: live-debconfig/passwd/user-home
+Type: string
+Description: internal
+
+Template: live-debconfig/passwd/user-uid
+Type: string
+Description: internal
+
+Template: live-debconfig/passwd/user-gid
+Type: string
+Description: internal
+
+Template: live-debconfig/passwd/user-default-groups
+Type: string
+Description: internal
+
+Template: live-debconfig/passwd/user-system-user
+Type: boolean
+Description: internal
