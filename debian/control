@@ -12,7 +12,7 @@ Vcs-Git: git://live.debian.net/git/live-debconfig.git
 Package: live-debconfig
 Architecture: all
 Depends: ${misc:Depends}, debconf
-Recommends: live-debconfig-doc
+Recommends: live-debconfig-doc, debconf-utils
 Description: Live System Configuration Scripts
  live-debconfig contains the scripts that configure a live system during the
  build process.

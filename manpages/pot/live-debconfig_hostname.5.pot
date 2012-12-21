@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig VERSION\n"
-"POT-Creation-Date: 2012-12-13 17:10+0100\n"
+"POT-Creation-Date: 2012-12-22 16:40+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,104 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. type: TH
-#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
+#: en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "LIVE-DEBCONFIG"
 msgstr ""
 
 #. type: TH
-#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
+#: en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2012-12-13"
+msgid "2012-12-22"
 msgstr ""
 
 #. type: TH
-#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
+#: en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "4.0~a11-1"
 msgstr ""
 
 #. type: TH
-#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
+#: en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "Debian Live Project"
 msgstr ""
 
 #. type: SH
-#: en/live-debconfig.7:11 en/live-debconfig_hostname.5:11
+#: en/live-debconfig-get-selections.1:11 en/live-debconfig.7:11
+#: en/live-debconfig_hostname.5:11
 #, no-wrap
 msgid "NAME"
 msgstr ""
 
 #. type: SH
-#: en/live-debconfig.7:14 en/live-debconfig_hostname.5:14
+#: en/live-debconfig-get-selections.1:14 en/live-debconfig.7:14
+#: en/live-debconfig_hostname.5:14
 #, no-wrap
 msgid "DESCRIPTION"
+msgstr ""
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:23 en/live-debconfig.7:33
+#: en/live-debconfig_hostname.5:54
+#, no-wrap
+msgid "SEE ALSO"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:27 en/live-debconfig_hostname.5:62
+msgid "I<live-debconfig>(7)"
+msgstr ""
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:28 en/live-debconfig.7:42
+#: en/live-debconfig_hostname.5:65
+#, no-wrap
+msgid "HOMEPAGE"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:30 en/live-debconfig.7:44
+#: en/live-debconfig_hostname.5:67
+msgid ""
+"More information about live-debconfig and the Debian Live project can be "
+"found on the homepage at E<lt>I<http://live.debian.net/>E<gt> and in the "
+"manual at E<lt>I<http://live.debian.net/manual/>E<gt>."
+msgstr ""
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:31 en/live-debconfig.7:45
+#: en/live-debconfig_hostname.5:68
+#, no-wrap
+msgid "BUGS"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:33 en/live-debconfig.7:47
+#: en/live-debconfig_hostname.5:70
+msgid ""
+"Bugs can be reported by submitting a bugreport for the live-debconfig "
+"package in the Debian Bug Tracking System at E<lt>I<http://bugs.debian.org/"
+">E<gt> or by writing a mail to the Debian Live mailing list at E<lt>I<debian-"
+"live@lists.debian.org>E<gt>."
+msgstr ""
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:34 en/live-debconfig.7:48
+#: en/live-debconfig_hostname.5:71
+#, no-wrap
+msgid "AUTHOR"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:35 en/live-debconfig.7:49
+#: en/live-debconfig_hostname.5:72
+msgid ""
+"live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
 msgstr ""
 
 #. type: Plain text
@@ -57,12 +122,6 @@ msgstr ""
 msgid ""
 "B<live-debconfig> contains the scripts that configure a Live system during "
 "the build process (live-build)."
-msgstr ""
-
-#. type: SH
-#: en/live-debconfig.7:33 en/live-debconfig_hostname.5:54
-#, no-wrap
-msgid "SEE ALSO"
 msgstr ""
 
 #. type: Plain text
@@ -83,47 +142,6 @@ msgstr ""
 #. type: Plain text
 #: en/live-debconfig.7:41 en/live-debconfig_hostname.5:64
 msgid "I<live-tools>(7)"
-msgstr ""
-
-#. type: SH
-#: en/live-debconfig.7:42 en/live-debconfig_hostname.5:65
-#, no-wrap
-msgid "HOMEPAGE"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:44 en/live-debconfig_hostname.5:67
-msgid ""
-"More information about live-debconfig and the Debian Live project can be "
-"found on the homepage at E<lt>I<http://live.debian.net/>E<gt> and in the "
-"manual at E<lt>I<http://live.debian.net/manual/>E<gt>."
-msgstr ""
-
-#. type: SH
-#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:68
-#, no-wrap
-msgid "BUGS"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:70
-msgid ""
-"Bugs can be reported by submitting a bugreport for the live-debconfig "
-"package in the Debian Bug Tracking System at E<lt>I<http://bugs.debian.org/"
-">E<gt> or by writing a mail to the Debian Live mailing list at E<lt>I<debian-"
-"live@lists.debian.org>E<gt>."
-msgstr ""
-
-#. type: SH
-#: en/live-debconfig.7:48 en/live-debconfig_hostname.5:71
-#, no-wrap
-msgid "AUTHOR"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:49 en/live-debconfig_hostname.5:72
-msgid ""
-"live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
 msgstr ""
 
 #. type: Plain text
@@ -202,9 +220,4 @@ msgstr ""
 msgid ""
 "B<Warning:> the new hostname will be set in the /etc/hostname file, "
 "overwriting any previous content without prior prompt or backup."
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:62
-msgid "I<live-debconfig>(7)"
 msgstr ""
