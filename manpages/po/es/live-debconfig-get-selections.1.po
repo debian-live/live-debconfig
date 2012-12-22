@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a11-1\n"
 "POT-Creation-Date: 2012-12-22 17:19+0100\n"
-"PO-Revision-Date: 2012-08-17 00:17+0100\n"
+"PO-Revision-Date: 2012-12-22 18:45+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -56,12 +56,14 @@ msgid ""
 "B<live-debconfig-get-selections> - output contents of the live-debconfig(7) "
 "debconf database"
 msgstr ""
+"B<live-debconfig-get-selections> - muestra el contenido de la base de datos "
+"debconf de live-debconfig(7)"
 
 #. type: SH
 #: en/live-debconfig-get-selections.1:14 en/live-debconfig-set-selections.1:14
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr ""
+msgstr "SINOPSIS"
 
 #. type: IP
 #: en/live-debconfig-get-selections.1:16 en/live-debconfig.7:36
@@ -82,17 +84,20 @@ msgid ""
 "B<live-debconfig-get-selections> outputs the content of the live-debconfig"
 "(7) debconf database in a format understandable by debconf-set-selections(1)."
 msgstr ""
+"B<live-debconfig-get-selections> muestra el contenido de la base de datos "
+"debconf de live-debconfig(7) en un formato comprensible por debconf-set-"
+"selections(1)."
 
 #. type: SH
 #: en/live-debconfig-get-selections.1:20
 #, no-wrap
 msgid "OPTIONS"
-msgstr ""
+msgstr "OPCIONES"
 
 #. type: Plain text
 #: en/live-debconfig-get-selections.1:22
 msgid "B<live-debconfig-get-selections> has no options."
-msgstr ""
+msgstr "B<live-debconfig-get-selections> no tiene opciones."
 
 #. type: SH
 #: en/live-debconfig-get-selections.1:23 en/live-debconfig-set-selections.1:21
