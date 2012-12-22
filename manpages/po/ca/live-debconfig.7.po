@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a11-1\n"
 "POT-Creation-Date: 2012-12-22 17:20+0100\n"
-"PO-Revision-Date: 2012-08-17 00:41+0100\n"
+"PO-Revision-Date: 2012-12-22 18:27+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: ca\n"
@@ -247,17 +247,18 @@ msgstr ""
 #: en/live-debconfig.7:33
 #, no-wrap
 msgid "TOOLS"
-msgstr ""
+msgstr "EINES"
 
 #. type: Plain text
 #: en/live-debconfig.7:35
 msgid "B<live-debconfig> currently features the following additional tools."
 msgstr ""
+"B<live-debconfig> actualment compta amb les següents eines addicionals."
 
 #. type: Plain text
 #: en/live-debconfig.7:38
 msgid "outputs contents of the live-debconfig(7) debconf database."
-msgstr ""
+msgstr "mostra el contingut de la base de dades debconf de live-debconfig(7)"
 
 #. type: IP
 #: en/live-debconfig.7:38
@@ -268,7 +269,7 @@ msgstr "B<live-debconfig-set-selections>"
 #. type: Plain text
 #: en/live-debconfig.7:40
 msgid "inserts new values into the live-debconfig(7) debconf database."
-msgstr ""
+msgstr "inserta nous valors a la base de dades debconf de live-debconfig(7)"
 
 #. type: Plain text
 #: en/live-debconfig.7:43 en/live-debconfig_hostname.5:56
