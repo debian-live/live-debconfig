@@ -1,0 +1,54 @@
+.\" live-debconfig(7) - System Configuration Scripts
+.\" Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+.\"
+.\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+.\" This is free software, and you are welcome to redistribute it
+.\" under certain conditions; see COPYING for details.
+.\"
+.\"
+.\"*******************************************************************
+.\"
+.\" This file was generated with po4a. Translate the source file.
+.\"
+.\"*******************************************************************
+.TH LIVE\-DEBCONFIG 1 22.12.2012 4.0~a11\-1 "Proyecto Debian Live"
+
+.SH NOMBRE
+\fBlive\-debconfig\-set\-selections\fP \- insert new values into the
+live\-debconfig(7) debconf database
+
+.SH SYNOPSIS
+\fBlive\-debconfig\-set\-selections\fP \fIFILE\fP
+.br
+live\-debconfig\-get\-selections | ssh \fIHOST\fP \fBlive\-debconfig\-set\-selections\fP
+
+.SH DESCRIPCIÓN
+\fBlive\-debconfig\-set\-selections\fP inserts new values into the
+live\-debconfig(7) debconf database, see debconf\-set\-selections(1) for more
+information about the data format.
+.SH FICHEROS
+.IP \fB/var/lib/live/debconfig/systemrc\fP 4
+.IP \fB/var/lib/live/debconfig/config.dat\fP 4
+.IP \fB/var/lib/live/debconfig/passwords.dat\fP 4
+.IP \fB/var/lib/live/debconfig/templates.dat\fP 4
+
+.SH "VER TAMBIÉN"
+\fIdebconf\-set\-selections\fP(1)
+.PP
+\fIlive\-debconfig\fP(7)
+
+.SH "PÁGINA WEB"
+Se puede encontrar más información acerca de live\-debconfig y el proyecto
+Debian Live en su página principal en <\fIhttp://live.debian.net/\fP> y
+en el manual en <\fIhttp://live.debian.net/manual/\fP>.
+
+.SH ERRORES
+Se puede notificar los fallos enviando un informe de errores sobre el
+paquete live\-debconfig en el Debian Bug Tracking System en
+<\fIhttp://bugs.debian.org/\fP> o escribiendo un mensaje a la lista de
+correo de Debian Live a la dirección
+<\fIdebian\-live@lists.debian.org\fP>.
+
+.SH AUTOR
+live\-debconfig fue escrito por Daniel Baumann
+<\fIdaniel@debian.org\fP>.

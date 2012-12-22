@@ -63,7 +63,7 @@ msgstr ""
 #: en/live-debconfig-get-selections.1:14
 #, no-wrap
 msgid "SYNOPSIS"
-msgstr ""
+msgstr "SYNTAX"
 
 #. type: Plain text
 #: en/live-debconfig-get-selections.1:16

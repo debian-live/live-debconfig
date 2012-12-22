@@ -14,20 +14,19 @@
 .TH LIVE\-DEBCONFIG 1 22.12.2012 4.0~a11\-1 "Debian Live Projekt"
 
 .SH NAME
-\fBlive\-debconfig\-get\-selections\fP \- git den Inhalt der live\-debconfig(7)
-debconf Datenbank aus
+\fBlive\-debconfig\-set\-selections\fP \- fügt neue Werte in die live\-debconfig(7)
+debconf Datenbank ein
 
 .SH SYNTAX
-\fBlive\-debconfig\-get\-selections\fP
+\fBlive\-debconfig\-set\-selections\fP \fIDATEI\fP
+.br
+live\-debconfig\-get\-selections | ssh \fIRECHNER\fP
+\fBlive\-debconfig\-set\-selections\fP
 
 .SH BESCHREIBUNG
-\fBlive\-debconfig\-get\-selections\fP gibt den Inhalt der live\-debconfig(7)
-debconf Datenbank in einem Format aus, das von debconf\-set\-selections(1)
-verstanden wird.
-
-.SH OPTIONEN
-\fBlive\-debconfig\-get\-selections\fP hat keine Optionen.
-
+\fBlive\-debconfig\-get\-selections\fP fügt neue Werte in die live\-debconfig(7)
+debconf Datenbank ein, siehe debconf\-set\-selections(1) für weitere
+Informationen zum Datenformat.
 .SH DATEIEN
 .IP \fB/var/lib/live/debconfig/systemrc\fP 4
 .IP \fB/var/lib/live/debconfig/config.dat\fP 4
@@ -35,7 +34,7 @@ verstanden wird.
 .IP \fB/var/lib/live/debconfig/templates.dat\fP 4
 
 .SH "SIEHE AUCH"
-\fIdebconf\-get\-selections\fP(1)
+\fIdebconf\-set\-selections\fP(1)
 .PP
 \fIlive\-debconfig\fP(7)
 
