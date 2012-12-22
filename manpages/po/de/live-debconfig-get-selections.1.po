@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a11-1\n"
-"POT-Creation-Date: 2012-12-22 17:07+0100\n"
+"POT-Creation-Date: 2012-12-22 17:19+0100\n"
 "PO-Revision-Date: 2010-05-24 09:59+0300\n"
 "Last-Translator: Daniel Baumann <daniel@debian.org>\n"
 "Language-Team: none\n"
@@ -16,36 +16,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. type: TH
-#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
-#: en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "LIVE-DEBCONFIG"
 msgstr "LIVE-DEBCONFIG"
 
 #. type: TH
-#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
-#: en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "2012-12-22"
 msgstr "22.12.2012"
 
 #. type: TH
-#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
-#: en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "4.0~a11-1"
 msgstr "4.0~a11-1"
 
 #. type: TH
-#: en/live-debconfig-get-selections.1:9 en/live-debconfig.7:9
-#: en/live-debconfig_hostname.5:9
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
 msgid "Debian Live Project"
 msgstr "Debian Live Projekt"
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:11 en/live-debconfig.7:11
-#: en/live-debconfig_hostname.5:11
+#: en/live-debconfig-get-selections.1:11 en/live-debconfig-set-selections.1:11
+#: en/live-debconfig.7:11 en/live-debconfig_hostname.5:11
 #, no-wrap
 msgid "NAME"
 msgstr "NAME"
@@ -60,19 +60,20 @@ msgstr ""
 "debconf Datenbank aus"
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:14
+#: en/live-debconfig-get-selections.1:14 en/live-debconfig-set-selections.1:14
 #, no-wrap
 msgid "SYNOPSIS"
 msgstr "SYNTAX"
 
-#. type: Plain text
-#: en/live-debconfig-get-selections.1:16
+#. type: IP
+#: en/live-debconfig-get-selections.1:16 en/live-debconfig.7:36
+#, no-wrap
 msgid "B<live-debconfig-get-selections>"
 msgstr "B<live-debconfig-get-selections>"
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:17 en/live-debconfig.7:14
-#: en/live-debconfig_hostname.5:14
+#: en/live-debconfig-get-selections.1:17 en/live-debconfig-set-selections.1:19
+#: en/live-debconfig.7:14 en/live-debconfig_hostname.5:14
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "BESCHREIBUNG"
@@ -99,38 +100,38 @@ msgid "B<live-debconfig-get-selections> has no options."
 msgstr "B<live-debconfig-get-selections> hat keine Optionen."
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:23
+#: en/live-debconfig-get-selections.1:23 en/live-debconfig-set-selections.1:21
 #, no-wrap
 msgid "FILES"
 msgstr "DATEIEN"
 
 #. type: IP
-#: en/live-debconfig-get-selections.1:24
+#: en/live-debconfig-get-selections.1:24 en/live-debconfig-set-selections.1:22
 #, no-wrap
 msgid "B</var/lib/live/debconfig/systemrc>"
 msgstr "B</var/lib/live/debconfig/systemrc>"
 
 #. type: IP
-#: en/live-debconfig-get-selections.1:25
+#: en/live-debconfig-get-selections.1:25 en/live-debconfig-set-selections.1:23
 #, no-wrap
 msgid "B</var/lib/live/debconfig/config.dat>"
 msgstr "B</var/lib/live/debconfig/config.dat>"
 
 #. type: IP
-#: en/live-debconfig-get-selections.1:26
+#: en/live-debconfig-get-selections.1:26 en/live-debconfig-set-selections.1:24
 #, no-wrap
 msgid "B</var/lib/live/debconfig/passwords.dat>"
 msgstr "B</var/lib/live/debconfig/passwords.dat>"
 
 #. type: IP
-#: en/live-debconfig-get-selections.1:27
+#: en/live-debconfig-get-selections.1:27 en/live-debconfig-set-selections.1:25
 #, no-wrap
 msgid "B</var/lib/live/debconfig/templates.dat>"
 msgstr "B</var/lib/live/debconfig/templates.dat>"
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:29 en/live-debconfig.7:33
-#: en/live-debconfig_hostname.5:54
+#: en/live-debconfig-get-selections.1:29 en/live-debconfig-set-selections.1:27
+#: en/live-debconfig.7:41 en/live-debconfig_hostname.5:54
 #, no-wrap
 msgid "SEE ALSO"
 msgstr "SIEHE AUCH"
@@ -141,20 +142,21 @@ msgid "I<debconf-get-selections>(1)"
 msgstr "I<debconf-get-selections>(1)"
 
 #. type: Plain text
-#: en/live-debconfig-get-selections.1:33 en/live-debconfig_hostname.5:62
+#: en/live-debconfig-get-selections.1:33 en/live-debconfig-set-selections.1:31
+#: en/live-debconfig_hostname.5:62
 msgid "I<live-debconfig>(7)"
 msgstr "I<live-debconfig>(7)"
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:34 en/live-debconfig.7:42
-#: en/live-debconfig_hostname.5:65
+#: en/live-debconfig-get-selections.1:34 en/live-debconfig-set-selections.1:32
+#: en/live-debconfig.7:50 en/live-debconfig_hostname.5:65
 #, no-wrap
 msgid "HOMEPAGE"
 msgstr "HOMEPAGE"
 
 #. type: Plain text
-#: en/live-debconfig-get-selections.1:36 en/live-debconfig.7:44
-#: en/live-debconfig_hostname.5:67
+#: en/live-debconfig-get-selections.1:36 en/live-debconfig-set-selections.1:34
+#: en/live-debconfig.7:52 en/live-debconfig_hostname.5:67
 msgid ""
 "More information about live-debconfig and the Debian Live project can be "
 "found on the homepage at E<lt>I<http://live.debian.net/>E<gt> and in the "
@@ -165,15 +167,15 @@ msgstr ""
 "unter E<lt>I<http://live.debian.net/manual/>E<gt> gefunden werden."
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:37 en/live-debconfig.7:45
-#: en/live-debconfig_hostname.5:68
+#: en/live-debconfig-get-selections.1:37 en/live-debconfig-set-selections.1:35
+#: en/live-debconfig.7:53 en/live-debconfig_hostname.5:68
 #, no-wrap
 msgid "BUGS"
 msgstr "FEHLER"
 
 #. type: Plain text
-#: en/live-debconfig-get-selections.1:39 en/live-debconfig.7:47
-#: en/live-debconfig_hostname.5:70
+#: en/live-debconfig-get-selections.1:39 en/live-debconfig-set-selections.1:37
+#: en/live-debconfig.7:55 en/live-debconfig_hostname.5:70
 msgid ""
 "Bugs can be reported by submitting a bugreport for the live-debconfig "
 "package in the Debian Bug Tracking System at E<lt>I<http://bugs.debian.org/"
@@ -187,15 +189,15 @@ msgstr ""
 "werden."
 
 #. type: SH
-#: en/live-debconfig-get-selections.1:40 en/live-debconfig.7:48
-#: en/live-debconfig_hostname.5:71
+#: en/live-debconfig-get-selections.1:40 en/live-debconfig-set-selections.1:38
+#: en/live-debconfig.7:56 en/live-debconfig_hostname.5:71
 #, no-wrap
 msgid "AUTHOR"
 msgstr "AUTOR"
 
 #. type: Plain text
-#: en/live-debconfig-get-selections.1:41 en/live-debconfig.7:49
-#: en/live-debconfig_hostname.5:72
+#: en/live-debconfig-get-selections.1:41 en/live-debconfig-set-selections.1:39
+#: en/live-debconfig.7:57 en/live-debconfig_hostname.5:72
 msgid ""
 "live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
 msgstr ""
