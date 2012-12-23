@@ -1,3 +1,35 @@
+live-debconfig (4.0~a12-1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Adding simple script for ferm.
+  * Stripping away commas after scripts have been multiselected.
+  * Bailout early in ferm script if system has no ferm installed.
+  * Renumbering scripts.
+  * Prefixing all network related fields in ifupdown script with ipv4 in
+    preparation for ipv6 support.
+  * Adding script for passwd.
+  * Renumbering scripts.
+  * Updating branding in various cases to make it harmonize with the rest
+    of the live packages.
+  * Correcting spelling typo in bug script.
+  * Extending passwd script to set the root password.
+  * Extending passwd script to create a user account.
+  * Adding support for multiple user creation at the same time in passwd
+    script.
+  * Adding live-debconfig-get-selections for easy output of the local
+    debconf database.
+  * Adding live-debconfig-set-selections for easy input into the local
+    debconf database.
+  * Adding references to live-debconfig-get-selections and live-debconfig-
+    set-selections in live-debconfig manpage.
+
+  [ chals ]
+  * Updating Catalan translation of man pages.
+  * Updating Spanish translation of man pages.
+  * Updating French translation of man pages.
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 23 Dec 2012 08:22:52 +0100
+
 live-debconfig (4.0~a11-1) unstable; urgency=low
 
   * Show scripts in debconf multiselect dialog alphabetically sorted.
