@@ -11,14 +11,14 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH LIVE\-DEBCONFIG 7 06.12.2012 4.0~a11\-1 "Projet Debian Live"
+.TH LIVE\-DEBCONFIG 7 23.12.2012 4.0~a12\-1 "Projet Debian Live"
 
 .SH NOM
 \fBlive\-debconfig\fP \- Scripts de configuration du système
 
 .SH DESCRIPTION
-\fBlive\-debconfig\fP contient les scripts qui configurent un système Debian
-Live pendant le processus de construction (live\-build).
+\fBlive\-debconfig\fP contient les scripts qui configurent un système Live
+pendant le processus de construction (live\-build).
 
 .SH SCRIPTS
 \fBlive\-debconfig\fP contient les scripts suivants sur /lib/live/debconfig.
@@ -41,6 +41,15 @@ active ou désactive selinux (/selinux), voir \fIlive\-debconfig_selinux\fP(5).
 .IP \fBopenssh\-server\fP 4
 recrée les clés de l'hôte openssh\-server (/etc/ssh/ssh_host_key*), voir
 \fIlive\-debconfig_openssh\-server\fP(5).
+
+.SH OUTILS
+\fBlive\-debconfig\fP contient actuellement les outils supplémentaires suivants.
+
+.IP \fBlive\-debconfig\-get\-selections\fP 4
+montre le contenu de la base de données debconf de live\-debconfig(7)
+.IP \fBlive\-debconfig\-set\-selections\fP 4
+insère de nouvelles valeurs dans la base de données debconf de
+live\-debconfig(7)
 
 .SH "VOIR AUSSI"
 \fIlive\-boot\fP(7)

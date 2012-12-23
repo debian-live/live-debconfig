@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a12-1\n"
 "POT-Creation-Date: 2012-12-23 08:20+0100\n"
-"PO-Revision-Date: 2012-07-31 14:56+0200\n"
+"PO-Revision-Date: 2012-12-22 18:23+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: ca\n"
@@ -51,11 +51,47 @@ msgid "NAME"
 msgstr "NOM"
 
 #. type: SH
+#: en/live-debconfig-get-selections.1:14 en/live-debconfig-set-selections.1:14
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "SINOPSI"
+
+#. type: SH
 #: en/live-debconfig-get-selections.1:17 en/live-debconfig-set-selections.1:19
 #: en/live-debconfig.7:14 en/live-debconfig_hostname.5:14
 #, no-wrap
 msgid "DESCRIPTION"
 msgstr "DESCRIPCIÓ"
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:23 en/live-debconfig-set-selections.1:21
+#, no-wrap
+msgid "FILES"
+msgstr "FITXERS"
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:24 en/live-debconfig-set-selections.1:22
+#, no-wrap
+msgid "B</var/lib/live/debconfig/systemrc>"
+msgstr "B</var/lib/live/debconfig/systemrc>"
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:25 en/live-debconfig-set-selections.1:23
+#, no-wrap
+msgid "B</var/lib/live/debconfig/config.dat>"
+msgstr "B</var/lib/live/debconfig/config.dat>"
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:26 en/live-debconfig-set-selections.1:24
+#, no-wrap
+msgid "B</var/lib/live/debconfig/passwords.dat>"
+msgstr "B</var/lib/live/debconfig/passwords.dat>"
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:27 en/live-debconfig-set-selections.1:25
+#, no-wrap
+msgid "B</var/lib/live/debconfig/templates.dat>"
+msgstr "B</var/lib/live/debconfig/templates.dat>"
 
 #. type: SH
 #: en/live-debconfig-get-selections.1:29 en/live-debconfig-set-selections.1:27
@@ -127,118 +163,38 @@ msgstr ""
 "org>E<gt>."
 
 #. type: Plain text
-#: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
+#: en/live-debconfig-set-selections.1:13
 msgid ""
-"B<live-debconfig> contains the scripts that configure a Live system during "
-"the build process (live-build)."
+"B<live-debconfig-set-selections> - insert new values into the live-debconfig"
+"(7) debconf database"
 msgstr ""
-"B<live-debconfig> conté els scripts que configuren un sistema Live durant el "
-"procés de construcció (live-build)."
+"B<live-debconfig-set-selections> - insertar nous valors a la base de dades "
+"debconf de live-debconfig(7)"
 
 #. type: Plain text
-#: en/live-debconfig.7:43 en/live-debconfig_hostname.5:56
-msgid "I<live-boot>(7)"
-msgstr "I<live-boot>(7)"
+#: en/live-debconfig-set-selections.1:16
+msgid "B<live-debconfig-set-selections> I<FILE>"
+msgstr "B<live-debconfig-set-selections> I<FILE>"
 
 #. type: Plain text
-#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:58
-msgid "I<live-build>(7)"
-msgstr "I<live-build>(7)"
-
-#. type: Plain text
-#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:60
-msgid "I<live-config>(7)"
-msgstr "I<live-config>(7)"
-
-#. type: Plain text
-#: en/live-debconfig.7:49 en/live-debconfig_hostname.5:64
-msgid "I<live-tools>(7)"
-msgstr "I<live-tools>(7)"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:13
-msgid "B<live-debconfig> - hostname script"
-msgstr "B<live-debconfig> - script hostname"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:18
-msgid "This script sets the systems hostname in the /etc/hostname file."
-msgstr ""
-"Aquest script estableix el nom del amfitrió del sistema al fitxer /etc/"
-"hostname"
-
-#. type: SH
-#: en/live-debconfig_hostname.5:19
-#, no-wrap
-msgid "PRESEEDING"
-msgstr "PRECONFIGURACIÓ"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:21
+#: en/live-debconfig-set-selections.1:18
 msgid ""
-"The hostname script currently features the following preseeding options."
+"live-debconfig-get-selections | ssh I<HOST> B<live-debconfig-set-selections>"
 msgstr ""
-"El script hostname actualment inclou les opcions de preconfiguració següents."
-
-#. type: IP
-#: en/live-debconfig_hostname.5:22
-#, no-wrap
-msgid "B<live-debconfig live-debconfig/hostname/hostname string> I<HOSTNAME>"
-msgstr "B<live-debconfig live-debconfig/hostname/hostname string> I<HOSTNAME>"
+"live-debconfig-get-selections | ssh I<HOST> B<live-debconfig-set-selections>"
 
 #. type: Plain text
-#: en/live-debconfig_hostname.5:24
-msgid "Allows to set the hostname of the system."
-msgstr "Permet establir el nom d'amfitrió del sistema."
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:28
+#: en/live-debconfig-set-selections.1:21
 msgid ""
-"If no value is preseeded, a suitable default is being suggested in a debconf "
-"prompt. If no value is entered in the debconf prompt, the default value is "
-"being used. The default value is determined automatically:"
+"B<live-debconfig-set-selections> inserts new values into the live-debconfig"
+"(7) debconf database, see debconf-set-selections(1) for more information "
+"about the data format."
 msgstr ""
-"Si no hi ha cap valor preconfigurat, es suggereix un valor per defecte en un "
-"prompt de debconf. Si no s'introdueix cap valor al prompt de debconf, "
-"s'utilitza el valor per defecte. El valor per defecte es determina de forma "
-"automàtica:"
+"B<live-debconfig-set-selections> inserta nous valors a la base de dades "
+"debconf de live-debconfig(7), veure debconf-set-selections(1) per més "
+"informació sobre el format de les dades."
 
 #. type: Plain text
-#: en/live-debconfig_hostname.5:32
-#, no-wrap
-msgid "  1. I<HOSTNAME> is set to the string in the /etc/hostname file, if existing and non-empty.\n"
-msgstr "  1. I<HOSTNAME> s'estableix al fitxer /etc/hostname si existeix i no és buit.\n"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:36
-#, no-wrap
-msgid "  2. I<HOSTNAME> is set to the distributor's ID as in the /etc/os-release file, if existing and non-empty.\n"
-msgstr "  2. I<HOSTNAME> s'estableix a l'ID del distribuïdor, com al fitxer /etc/os-release, si existeix i no és buit.\n"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:40
-#, no-wrap
-msgid "  3. I<HOSTNAME> is set to the distributor's ID as in the I<lsb_release>(1) program, if installed and non-empty.\n"
-msgstr "  3. I<HOSTNAME> s'estableix a l'ID del distribuïdor, com al programa I<lsb_release>(1) si està instaŀlat in no és buit.\n"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:44
-#, no-wrap
-msgid "  4. I<HOSTNAME> is set to B<progress-linux> if the /etc/progress-linux_version file is existing.\n"
-msgstr "  4. I<HOSTNAME> s'estableix a B<progress-linux> si existeix el fitxer /etc/progress-linux_version\n"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:48
-#, no-wrap
-msgid "  5. I<HOSTNAME> is set to B<debian> as a fallback.\n"
-msgstr "  5. I<HOSTNAME> s'estableix a B<debian> com a forma alternativa.\n"
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:52
-msgid ""
-"B<Warning:> the new hostname will be set in the /etc/hostname file, "
-"overwriting any previous content without prior prompt or backup."
-msgstr ""
-"B<Advertència:> el nou nom d'amfitrió s'afegirà al fitxer /etc/hostname "
-"sobreescrivint qualsevol contingut anterior sense previ avís o còpia de "
-"seguretat."
+#: en/live-debconfig-set-selections.1:29
+msgid "I<debconf-set-selections>(1)"
+msgstr "I<debconf-set-selections>(1)"

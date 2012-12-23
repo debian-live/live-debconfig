@@ -6,13 +6,13 @@
 .\" under certain conditions; see COPYING for details.
 .\"
 .\"
-.TH LIVE\-DEBCONFIG 7 2012\-12\-06 4.0~a11-1 "Debian Live Project"
+.TH LIVE\-DEBCONFIG 7 2012\-12\-23 4.0~a12-1 "Debian Live Project"
 
 .SH NAME
 \fBlive\-debconfig\fR \- System Configuration Scripts
 
 .SH DESCRIPTION
-\fBlive\-debconfig\fR contains the scripts that configure a Debian Live system during the build process (live\-build).
+\fBlive\-debconfig\fR contains the scripts that configure a Live system during the build process (live\-build).
 
 .SH SCRIPTS
 \fBlive\-debconfig\fR currently features the following scripts in /lib/live/debconfig.
@@ -29,6 +29,14 @@ configure the access to the hardware clock (/etc/default/hwclock), see \fIlive\-
 enables or disables selinux (/selinux), see \fIlive\-debconfig_selinux\fR(5).
 .IP "\fBopenssh\-server\fR" 4
 recreates openssh-server host keys (/etc/ssh/ssh_host_key*), see \fIlive\-debconfig_openssh\-server\fR(5).
+
+.SH TOOLS
+\fBlive\-debconfig\fR currently features the following additional tools.
+
+.IP "\fBlive\-debconfig\-get\-selections\fR" 4
+outputs contents of the live\-debconfig(7) debconf database.
+.IP "\fBlive\-debconfig\-set\-selections\fR" 4
+inserts new values into the live\-debconfig(7) debconf database.
 
 .SH SEE ALSO
 \fIlive\-boot\fR(7)

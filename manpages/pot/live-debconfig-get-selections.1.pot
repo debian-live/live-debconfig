@@ -51,6 +51,25 @@ msgstr ""
 msgid "NAME"
 msgstr ""
 
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:13
+msgid ""
+"B<live-debconfig-get-selections> - output contents of the live-debconfig(7) "
+"debconf database"
+msgstr ""
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:14 en/live-debconfig-set-selections.1:14
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:16 en/live-debconfig.7:36
+#, no-wrap
+msgid "B<live-debconfig-get-selections>"
+msgstr ""
+
 #. type: SH
 #: en/live-debconfig-get-selections.1:17 en/live-debconfig-set-selections.1:19
 #: en/live-debconfig.7:14 en/live-debconfig_hostname.5:14
@@ -58,11 +77,64 @@ msgstr ""
 msgid "DESCRIPTION"
 msgstr ""
 
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:19
+msgid ""
+"B<live-debconfig-get-selections> outputs the content of the live-debconfig"
+"(7) debconf database in a format understandable by debconf-set-selections(1)."
+msgstr ""
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:20
+#, no-wrap
+msgid "OPTIONS"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:22
+msgid "B<live-debconfig-get-selections> has no options."
+msgstr ""
+
+#. type: SH
+#: en/live-debconfig-get-selections.1:23 en/live-debconfig-set-selections.1:21
+#, no-wrap
+msgid "FILES"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:24 en/live-debconfig-set-selections.1:22
+#, no-wrap
+msgid "B</var/lib/live/debconfig/systemrc>"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:25 en/live-debconfig-set-selections.1:23
+#, no-wrap
+msgid "B</var/lib/live/debconfig/config.dat>"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:26 en/live-debconfig-set-selections.1:24
+#, no-wrap
+msgid "B</var/lib/live/debconfig/passwords.dat>"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:27 en/live-debconfig-set-selections.1:25
+#, no-wrap
+msgid "B</var/lib/live/debconfig/templates.dat>"
+msgstr ""
+
 #. type: SH
 #: en/live-debconfig-get-selections.1:29 en/live-debconfig-set-selections.1:27
 #: en/live-debconfig.7:41 en/live-debconfig_hostname.5:54
 #, no-wrap
 msgid "SEE ALSO"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:31
+msgid "I<debconf-get-selections>(1)"
 msgstr ""
 
 #. type: Plain text
@@ -116,109 +188,4 @@ msgstr ""
 #: en/live-debconfig.7:57 en/live-debconfig_hostname.5:72
 msgid ""
 "live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
-msgid ""
-"B<live-debconfig> contains the scripts that configure a Live system during "
-"the build process (live-build)."
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:43 en/live-debconfig_hostname.5:56
-msgid "I<live-boot>(7)"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:58
-msgid "I<live-build>(7)"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:60
-msgid "I<live-config>(7)"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:49 en/live-debconfig_hostname.5:64
-msgid "I<live-tools>(7)"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:13
-msgid "B<live-debconfig> - hostname script"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:18
-msgid "This script sets the systems hostname in the /etc/hostname file."
-msgstr ""
-
-#. type: SH
-#: en/live-debconfig_hostname.5:19
-#, no-wrap
-msgid "PRESEEDING"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:21
-msgid ""
-"The hostname script currently features the following preseeding options."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig_hostname.5:22
-#, no-wrap
-msgid "B<live-debconfig live-debconfig/hostname/hostname string> I<HOSTNAME>"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:24
-msgid "Allows to set the hostname of the system."
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:28
-msgid ""
-"If no value is preseeded, a suitable default is being suggested in a debconf "
-"prompt. If no value is entered in the debconf prompt, the default value is "
-"being used. The default value is determined automatically:"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:32
-#, no-wrap
-msgid "  1. I<HOSTNAME> is set to the string in the /etc/hostname file, if existing and non-empty.\n"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:36
-#, no-wrap
-msgid "  2. I<HOSTNAME> is set to the distributor's ID as in the /etc/os-release file, if existing and non-empty.\n"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:40
-#, no-wrap
-msgid "  3. I<HOSTNAME> is set to the distributor's ID as in the I<lsb_release>(1) program, if installed and non-empty.\n"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:44
-#, no-wrap
-msgid "  4. I<HOSTNAME> is set to B<progress-linux> if the /etc/progress-linux_version file is existing.\n"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:48
-#, no-wrap
-msgid "  5. I<HOSTNAME> is set to B<debian> as a fallback.\n"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig_hostname.5:52
-msgid ""
-"B<Warning:> the new hostname will be set in the /etc/hostname file, "
-"overwriting any previous content without prior prompt or backup."
 msgstr ""

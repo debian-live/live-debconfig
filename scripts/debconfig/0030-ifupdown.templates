@@ -23,76 +23,76 @@ Description: live-debconfig: Loopback Interface Comment?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/eth0-method
+Template: live-debconfig/ifupdown/eth0-ipv4-method
 Type: select
 Choices: dhcp, static, none
 Default:
-Description: live-debconfig: Ethernet Interface Method?
+Description: live-debconfig: Ethernet Interface Method (IPv4)?
  What method should be used to configure the ethernet interface?
  .
  This defaults to dhcp and will require that you run a dhcp-server in your
  network.
 
-Template: live-debconfig/ifupdown/eth0-comment
+Template: live-debconfig/ifupdown/eth0-ipv4-comment
 Type: string
 Default:
-Description: live-debconfig: Ethernet Interface Comment?
+Description: live-debconfig: Ethernet Interface Comment (IPv4)?
  What optional comment would you like to give to the ethernet interface?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/eth0-address
+Template: live-debconfig/ifupdown/eth0-ipv4-address
 Type: string
 Default:
-Description: live-debconfig: Ethernet IP Address?
+Description: live-debconfig: Ethernet IP Address (IPv4)?
  What should be the IP address of the current system?
  .
  This defaults to 192.168.1.2.
 
-Template: live-debconfig/ifupdown/eth0-broadcast
+Template: live-debconfig/ifupdown/eth0-ipv4-broadcast
 Type: string
 Default:
-Description: live-debconfig: Ethernet Broadcast Address?
+Description: live-debconfig: Ethernet Broadcast Address (IPv4)?
  What should be the broadcast address of the current system?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/eth0-gateway
+Template: live-debconfig/ifupdown/eth0-ipv4-gateway
 Type: string
 Default:
-Description: live-debconfig: Ethernet Gateway Address?
+Description: live-debconfig: Ethernet Gateway Address (IPv4)?
  What should be the gateway address of the current system?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/eth0-mtu
+Template: live-debconfig/ifupdown/eth0-ipv4-mtu
 Type: string
 Default:
-Description: live-debconfig: Ethernet MTU?
+Description: live-debconfig: Ethernet MTU (IPv4)?
  What should be the MTU for the Ethernet device?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/eth0-netmask
+Template: live-debconfig/ifupdown/eth0-ipv4-netmask
 Type: string
 Default:
-Description: live-debconfig: Ethernet Network Mask?
+Description: live-debconfig: Ethernet Network Mask (IPv4)?
  What should be the netmask of the current system?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/eth0-network
+Template: live-debconfig/ifupdown/eth0-ipv4-network
 Type: string
 Default:
-Description: live-debconfig: Ethernet Network Address?
+Description: live-debconfig: Ethernet Network Address (IPv4)?
  What should be the network address of the current system?
  .
  This defaults to empty.
 
-Template: live-debconfig/ifupdown/eth0-post-up
+Template: live-debconfig/ifupdown/eth0-ipv4-post-up
 Type: string
 Default:
-Description: live-debconfig: Ethernet post-up Command?
+Description: live-debconfig: Ethernet post-up Command (IPv4)?
  What should be the post-up command for eth0?
  .
  This defaults to empty.

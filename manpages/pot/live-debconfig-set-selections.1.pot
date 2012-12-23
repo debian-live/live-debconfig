@@ -51,10 +51,10 @@ msgstr ""
 msgid "NAME"
 msgstr ""
 
-#. type: IP
-#: en/live-debconfig-get-selections.1:16 en/live-debconfig.7:36
+#. type: SH
+#: en/live-debconfig-get-selections.1:14 en/live-debconfig-set-selections.1:14
 #, no-wrap
-msgid "B<live-debconfig-get-selections>"
+msgid "SYNOPSIS"
 msgstr ""
 
 #. type: SH
@@ -65,10 +65,46 @@ msgid "DESCRIPTION"
 msgstr ""
 
 #. type: SH
+#: en/live-debconfig-get-selections.1:23 en/live-debconfig-set-selections.1:21
+#, no-wrap
+msgid "FILES"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:24 en/live-debconfig-set-selections.1:22
+#, no-wrap
+msgid "B</var/lib/live/debconfig/systemrc>"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:25 en/live-debconfig-set-selections.1:23
+#, no-wrap
+msgid "B</var/lib/live/debconfig/config.dat>"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:26 en/live-debconfig-set-selections.1:24
+#, no-wrap
+msgid "B</var/lib/live/debconfig/passwords.dat>"
+msgstr ""
+
+#. type: IP
+#: en/live-debconfig-get-selections.1:27 en/live-debconfig-set-selections.1:25
+#, no-wrap
+msgid "B</var/lib/live/debconfig/templates.dat>"
+msgstr ""
+
+#. type: SH
 #: en/live-debconfig-get-selections.1:29 en/live-debconfig-set-selections.1:27
 #: en/live-debconfig.7:41 en/live-debconfig_hostname.5:54
 #, no-wrap
 msgid "SEE ALSO"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-get-selections.1:33 en/live-debconfig-set-selections.1:31
+#: en/live-debconfig_hostname.5:62
+msgid "I<live-debconfig>(7)"
 msgstr ""
 
 #. type: SH
@@ -119,149 +155,32 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: en/live-debconfig.7:13
-msgid "B<live-debconfig> - System Configuration Scripts"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
+#: en/live-debconfig-set-selections.1:13
 msgid ""
-"B<live-debconfig> contains the scripts that configure a Live system during "
-"the build process (live-build)."
-msgstr ""
-
-#. type: SH
-#: en/live-debconfig.7:17
-#, no-wrap
-msgid "SCRIPTS"
+"B<live-debconfig-set-selections> - insert new values into the live-debconfig"
+"(7) debconf database"
 msgstr ""
 
 #. type: Plain text
-#: en/live-debconfig.7:19
+#: en/live-debconfig-set-selections.1:16
+msgid "B<live-debconfig-set-selections> I<FILE>"
+msgstr ""
+
+#. type: Plain text
+#: en/live-debconfig-set-selections.1:18
 msgid ""
-"B<live-debconfig> currently features the following scripts in /lib/live/"
-"debconfig."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig.7:20
-#, no-wrap
-msgid "B<hostname>"
+"live-debconfig-get-selections | ssh I<HOST> B<live-debconfig-set-selections>"
 msgstr ""
 
 #. type: Plain text
-#: en/live-debconfig.7:22
+#: en/live-debconfig-set-selections.1:21
 msgid ""
-"sets the systems hostname (/etc/hostname), see I<live-debconfig_hostname>(5)."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig.7:22
-#, no-wrap
-msgid "B<ifupdown>"
+"B<live-debconfig-set-selections> inserts new values into the live-debconfig"
+"(7) debconf database, see debconf-set-selections(1) for more information "
+"about the data format."
 msgstr ""
 
 #. type: Plain text
-#: en/live-debconfig.7:24
-msgid ""
-"configures the systems network settings (/etc/network/interfaces, /etc/"
-"resolv.conf, /etc/hosts), see I<live-debconfig_ifupdown>(5)."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig.7:24
-#, no-wrap
-msgid "B<sysvinit>"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:26
-msgid ""
-"configures the systems type for Linux Containers, LXC (/etc/inittab) and "
-"disables some services not needed for LXC, see I<live-debconfig_sysvinit>(5)."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig.7:26
-#, no-wrap
-msgid "B<util-linux>"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:28
-msgid ""
-"configure the access to the hardware clock (/etc/default/hwclock), see "
-"I<live-debconfig_util-linux>(5)."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig.7:28
-#, no-wrap
-msgid "B<selinux>"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:30
-msgid ""
-"enables or disables selinux (/selinux), see I<live-debconfig_selinux>(5)."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig.7:30
-#, no-wrap
-msgid "B<openssh-server>"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:32
-msgid ""
-"recreates openssh-server host keys (/etc/ssh/ssh_host_key*), see I<live-"
-"debconfig_openssh-server>(5)."
-msgstr ""
-
-#. type: SH
-#: en/live-debconfig.7:33
-#, no-wrap
-msgid "TOOLS"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:35
-msgid "B<live-debconfig> currently features the following additional tools."
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:38
-msgid "outputs contents of the live-debconfig(7) debconf database."
-msgstr ""
-
-#. type: IP
-#: en/live-debconfig.7:38
-#, no-wrap
-msgid "B<live-debconfig-set-selections>"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:40
-msgid "inserts new values into the live-debconfig(7) debconf database."
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:43 en/live-debconfig_hostname.5:56
-msgid "I<live-boot>(7)"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:45 en/live-debconfig_hostname.5:58
-msgid "I<live-build>(7)"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:47 en/live-debconfig_hostname.5:60
-msgid "I<live-config>(7)"
-msgstr ""
-
-#. type: Plain text
-#: en/live-debconfig.7:49 en/live-debconfig_hostname.5:64
-msgid "I<live-tools>(7)"
+#: en/live-debconfig-set-selections.1:29
+msgid "I<debconf-set-selections>(1)"
 msgstr ""
