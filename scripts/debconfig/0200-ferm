@@ -15,12 +15,6 @@ export DEBCONF_SYSTEMRC
 
 . /usr/share/debconf/confmodule
 
-if [ ! -e /usr/sbin/ferm ]
-then
-	# no ferm installed
-	exit 0
-fi
-
 db_get live-debconfig/ferm/ipv4-ports
 _IPV4_PORTS="${RET}" # string (w/ empty)
 
