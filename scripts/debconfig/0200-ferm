@@ -73,4 +73,6 @@ EOF
 
 sed -e "s|@IPV4_PORTS@|${_IPV4_PORTS}|" /etc/ferm/ferm.conf.tmp > /etc/ferm/ferm.conf
 
+rm -f /etc/ferm/ferm.conf.tmp
+
 # reload ferm
