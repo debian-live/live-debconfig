@@ -45,7 +45,7 @@ Cmdline ()
 
 			--nodebconfig)
 				# Don't run any script
-				_SCRIPTS=""
+				_SCRIPTS="nodebconfig"
 				;;
 
 			# Special options
@@ -77,7 +77,7 @@ Cmdline ()
 	then
 		for _NODEBCONFIG in $(echo ${LIVE_NODEBCONFIGS} | sed -e 's|,| |g')
 		do
-			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|$(ls /lib/live/debconfig/????-${_NODEBCONFIG} 2> /dev/null || echo none)||")"
+			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|$(ls /lib/live/debconfig/????-${_NODEBCONFIG} 2> /dev/null || echo nodebconfig)||")"
 		done
 	fi
 }

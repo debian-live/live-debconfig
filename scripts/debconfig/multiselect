@@ -25,10 +25,15 @@ then
 	db_subst live-debconfig/scripts CHOICES "${_SCRIPTS}"
 	db_subst live-debconfig/scripts CHOICES_C "${_SCRIPTS_C}"
 
-	if [ -n "${_CMDLINE}" ]
-	then
-		db_set live-debconfig/scripts ${_CMDLINE}
-	fi
+	case "${_CMDLINE}" in
+		nodebconfig)
+			db_set live-debconfig/scripts 
+			;;
+
+		*)
+			db_set live-debconfig/scripts ${_CMDLINE}
+			;;
+	esac
 
 	db_fset live-debconfig/scripts seen false
 
