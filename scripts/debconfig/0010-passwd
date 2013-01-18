@@ -354,7 +354,7 @@ fi
 # single user creation
 if [ -n "${_USER_NAME}" ]
 then
-	_USER_OPTIONS=""
+	_USER_OPTIONS="--user-group"
 
 	if [ -n "${_USER_HOME}" ]
 	then
@@ -439,7 +439,7 @@ do
 		continue
 	fi
 
-	_OPTIONS=""
+	_OPTIONS="--user-group"
 
 	if [ -n "${_HOME}" ]
 	then
