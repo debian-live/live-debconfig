@@ -70,8 +70,6 @@ Cmdline ()
 		do
 			_SCRIPTS="${_SCRIPTS} $(ls /lib/live/debconfig/????-${_DEBCONFIG} 2> /dev/null || true)"
 		done
-
-		_SCRIPTS="$(echo ${_SCRIPTS} | grep -v '\.templates$')"
 	fi
 
 	# Exclude requested scripts
@@ -81,8 +79,6 @@ Cmdline ()
 		do
 			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|$(ls /lib/live/debconfig/????-${_NODEBCONFIG} 2> /dev/null || echo none)||")"
 		done
-
-		_SCRIPTS="$(echo ${_SCRIPTS} | grep -v '\.templates$')"
 	fi
 }
 
