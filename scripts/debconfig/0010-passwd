@@ -380,7 +380,17 @@ then
 
 	if [ -n "${_USER_DEFAULT_GROUPS}" ]
 	then
-		_USER_OPTIONS="${_USER_OPTIONS} --groups $(echo ${_USER_DEFAULT_GROUPS} | sed -e 's| |,|g')"
+		_GROUPS=""
+
+		for _GROUP in ${_USER_DEFAULT_GROUPS}
+		do
+			if getent group "${_GROUP}" > /dev/null 2>&1
+			then
+				_GROUPS="${_GROUPS} ${_GROUP}"
+			fi
+		done
+
+		_USER_OPTIONS="${_USER_OPTIONS} --groups $(echo ${_GROUPS} | sed -e 's| |,|g')"
 	fi
 
 	if [ "${_USER_SYSTEM_USER}" = "true" ]
@@ -465,7 +475,17 @@ do
 
 	if [ -n "${_DEFAULT_GROUPS}" ]
 	then
-		_OPTIONS="${_OPTIONS} --groups $(echo ${_DEFAULT_GROUPS} | sed -e 's| |,|g')"
+		_GROUPS=""
+
+		for _GROUP in ${_DEFAULT_GROUPS}
+		do
+			if getent group "${_GROUP}" > /dev/null 2>&1
+			then
+				_GROUPS="${_GROUPS} ${_GROUP}"
+			fi
+		done
+
+		_OPTIONS="${_OPTIONS} --groups $(echo ${_GROUPS} | sed -e 's| |,|g')"
 	fi
 
 	if [ "${_SYSTEM_USER}" = "true" ]
