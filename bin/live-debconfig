@@ -45,7 +45,7 @@ Cmdline ()
 
 			--nodebconfig)
 				# Don't run any script
-				_SCRIPTS=""
+				_SCRIPTS="nodebconfig"
 				;;
 
 			# Special options
@@ -70,8 +70,6 @@ Cmdline ()
 		do
 			_SCRIPTS="${_SCRIPTS} $(ls /lib/live/debconfig/????-${_DEBCONFIG} 2> /dev/null || true)"
 		done
-
-		_SCRIPTS="$(echo ${_SCRIPTS} | grep -v '\.templates$')"
 	fi
 
 	# Exclude requested scripts
@@ -79,10 +77,8 @@ Cmdline ()
 	then
 		for _NODEBCONFIG in $(echo ${LIVE_NODEBCONFIGS} | sed -e 's|,| |g')
 		do
-			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|$(ls /lib/live/debconfig/????-${_NODEBCONFIG} 2> /dev/null || echo none)||")"
+			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|$(ls /lib/live/debconfig/????-${_NODEBCONFIG} 2> /dev/null || echo nodebconfig)||")"
 		done
-
-		_SCRIPTS="$(echo ${_SCRIPTS} | grep -v '\.templates$')"
 	fi
 }
 
