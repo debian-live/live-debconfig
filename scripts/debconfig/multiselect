@@ -30,6 +30,9 @@ then
 			db_set live-debconfig/scripts 
 			;;
 
+		"")
+			;;
+
 		*)
 			db_set live-debconfig/scripts $(echo ${_CMDLINE} | sed -e 's| |, |g')
 			;;
