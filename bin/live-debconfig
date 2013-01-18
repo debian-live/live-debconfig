@@ -34,12 +34,12 @@ Cmdline ()
 
 			--debconfig)
 				# Run all scripts
-				_SCRIPTS="$(ls /lib/live/debconfig/????-* | grep -v '\.templates$')"
+				_SCRIPTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
 				;;
 
 			--nodebconfig=*)
 				# Don't run requested scripts
-				_SCRIPTS="$(ls /lib/live/debconfig/????-* | grep -v '\.templates$')"
+				_SCRIPTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
 				LIVE_NODEBCONFIGS="${_PARAMETER#*nodebconfig=}"
 				;;
 
@@ -68,7 +68,7 @@ Cmdline ()
 	then
 		for _DEBCONFIG in $(echo ${LIVE_DEBCONFIGS} | sed -e 's|,| |g')
 		do
-			_SCRIPTS="${_SCRIPTS} $(ls /lib/live/debconfig/????-${_DEBCONFIG} 2> /dev/null || true)"
+			_SCRIPTS="${_SCRIPTS} ${_DEBCONFIG}"
 		done
 	fi
 
@@ -77,7 +77,7 @@ Cmdline ()
 	then
 		for _NODEBCONFIG in $(echo ${LIVE_NODEBCONFIGS} | sed -e 's|,| |g')
 		do
-			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|$(ls /lib/live/debconfig/????-${_NODEBCONFIG} 2> /dev/null || echo nodebconfig)||")"
+			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|${_NODEBCONFIG}||")"
 		done
 	fi
 }
@@ -162,9 +162,13 @@ Main ()
 
 	for _SCRIPT in ${_SCRIPTS}
 	do
-		[ "${LIVE_DEBUG}" = "true" ] && echo "[$(date +'%F %T')] live-debconfig: ${_SCRIPT}" >> /var/log/live/debconfig.log
-
-		${_SCRIPT}
+		if ls /lib/live/debconfig/????-${_SCRIPT} > /dev/null
+		then
+			[ "${LIVE_DEBUG}" = "true" ] && echo "[$(date +'%F %T')] live-debconfig: ${_SCRIPT}" >> /var/log/live/debconfig.log
+			/lib/live/debconfig/????-${_SCRIPT}
+		else
+			echo "W: ${_SCRIPT} - no such script in /lib/live/debconfig, skipping."
+		fi
 	done
 }
 

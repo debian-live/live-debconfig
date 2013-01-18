@@ -17,13 +17,11 @@ export DEBCONF_SYSTEMRC
 
 _CMDLINE="${@}"
 
-_SCRIPTS="$(for _SCRIPT in $(ls /lib/live/debconfig/????-* | grep -v '\.templates$' | sed -e 's|[0-9][0-9][0-9][0-9]-||g' | sort); do echo -n "$(basename ${_SCRIPT}), "; done | sed -e 's|, $||')"
-_SCRIPTS_C="$(for _SCRIPT in $(echo ${_SCRIPTS} | sed -e 's|,| |g'); do echo -n "$(ls /lib/live/debconfig/????-${_SCRIPT}), "; done | sed -e 's|, $||')"
+_SCRIPTS="$(cd /lib/live/debconfig && for _SCRIPT in $(ls ????-* | grep -v '\.templates$' | sed -e 's|[0-9][0-9][0-9][0-9]-||g' | sort); do echo -n "${_SCRIPT}, "; done | sed -e 's|, $||')"
 
 if [ -n "${_SCRIPTS}" ]
 then
 	db_subst live-debconfig/scripts CHOICES "${_SCRIPTS}"
-	db_subst live-debconfig/scripts CHOICES_C "${_SCRIPTS_C}"
 
 	case "${_CMDLINE}" in
 		nodebconfig)
