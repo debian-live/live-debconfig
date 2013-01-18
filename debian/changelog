@@ -1,3 +1,13 @@
+live-debconfig (4.0~a14-1) unstable; urgency=low
+
+  * Removing some no longer needed grep calls to filter out templates from
+    debconf scripts loops.
+  * Correcting --nodebconfig parameter handling.
+  * Correcting --debconfig parameter handling.
+  * Also account for no script selection in multiselect dialog.
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 18 Jan 2013 15:19:29 +0100
+
 live-debconfig (4.0~a13-1) unstable; urgency=low
 
   * Updating year in all copyright notices.
