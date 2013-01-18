@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ## live-debconfig(7) - System Configuration Scripts
-## Copyright (C) 2006-2012 Daniel Baumann <daniel@debian.org>
+## Copyright (C) 2006-2013 Daniel Baumann <daniel@debian.org>
 ##
 ## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
 ## This is free software, and you are welcome to redistribute it
@@ -14,12 +14,6 @@ DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
 export DEBCONF_SYSTEMRC
 
 . /usr/share/debconf/confmodule
-
-if [ ! -e /usr/sbin/ferm ]
-then
-	# no ferm installed
-	exit 0
-fi
 
 db_get live-debconfig/ferm/ipv4-ports
 _IPV4_PORTS="${RET}" # string (w/ empty)
@@ -78,5 +72,7 @@ table filter {
 EOF
 
 sed -e "s|@IPV4_PORTS@|${_IPV4_PORTS}|" /etc/ferm/ferm.conf.tmp > /etc/ferm/ferm.conf
+
+rm -f /etc/ferm/ferm.conf.tmp
 
 # reload ferm
