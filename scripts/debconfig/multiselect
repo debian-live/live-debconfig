@@ -31,7 +31,7 @@ then
 			;;
 
 		*)
-			db_set live-debconfig/scripts ${_CMDLINE}
+			db_set live-debconfig/scripts $(echo ${_CMDLINE} | sed -e 's| |, |g')
 			;;
 	esac
 
