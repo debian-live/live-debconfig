@@ -1,3 +1,15 @@
+live-debconfig (4.0~a13-1) unstable; urgency=low
+
+  * Updating year in all copyright notices.
+  * Updating manpage year handling for 2013.
+  * Removing check if the package is installed in the ferm script as there
+    is apparently no good way of doing a two stage install (first unpack
+    packages, second run maintainer scripts) within lxc-debconfig yet
+    where we run live-debconfig before installing packages.
+  * Cleaning up temporary file in ferm script.
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 18 Jan 2013 12:21:32 +0100
+
 live-debconfig (4.0~a12-1) unstable; urgency=low
 
   [ Daniel Baumann ]
