@@ -6,6 +6,5 @@ Template: live-debconfig/scripts
 Type: multiselect
 Default:
 Choices: ${CHOICES}
-Choices-C: ${CHOICES_C}
 Description: live-debconfig: Scripts?
  Which scripts should be run to configure the current system?

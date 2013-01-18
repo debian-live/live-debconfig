@@ -354,7 +354,7 @@ fi
 # single user creation
 if [ -n "${_USER_NAME}" ]
 then
-	_USER_OPTIONS=""
+	_USER_OPTIONS="--user-group"
 
 	if [ -n "${_USER_HOME}" ]
 	then
@@ -375,12 +375,25 @@ then
 
 	if [ -n "${_USER_GID}" ]
 	then
-		_USER_OPTIONS="${_USER_OPTIONS} --gid ${_USER_GID}"
+		if getent group "${_USER_GID}" > /dev/null 2>&1
+		then
+			_USER_OPTIONS="${_USER_OPTIONS} --gid ${_USER_GID}"
+		fi
 	fi
 
 	if [ -n "${_USER_DEFAULT_GROUPS}" ]
 	then
-		_USER_OPTIONS="${_USER_OPTIONS} --groups $(echo ${_USER_DEFAULT_GROUPS} | sed -e 's| |,|g')"
+		_GROUPS=""
+
+		for _GROUP in ${_USER_DEFAULT_GROUPS}
+		do
+			if getent group "${_GROUP}" > /dev/null 2>&1
+			then
+				_GROUPS="${_GROUPS} ${_GROUP}"
+			fi
+		done
+
+		_USER_OPTIONS="${_USER_OPTIONS} --groups $(echo ${_GROUPS} | sed -e 's| |,|g')"
 	fi
 
 	if [ "${_USER_SYSTEM_USER}" = "true" ]
@@ -439,7 +452,7 @@ do
 		continue
 	fi
 
-	_OPTIONS=""
+	_OPTIONS="--user-group"
 
 	if [ -n "${_HOME}" ]
 	then
@@ -460,12 +473,25 @@ do
 
 	if [ -n "${_GID}" ]
 	then
-		_OPTIONS="${_OPTIONS} --gid ${_GID}"
+		if getent group "${_GID}" > /dev/null 2>&1
+		then
+			_OPTIONS="${_OPTIONS} --gid ${_GID}"
+		fi
 	fi
 
 	if [ -n "${_DEFAULT_GROUPS}" ]
 	then
-		_OPTIONS="${_OPTIONS} --groups $(echo ${_DEFAULT_GROUPS} | sed -e 's| |,|g')"
+		_GROUPS=""
+
+		for _GROUP in ${_DEFAULT_GROUPS}
+		do
+			if getent group "${_GROUP}" > /dev/null 2>&1
+			then
+				_GROUPS="${_GROUPS} ${_GROUP}"
+			fi
+		done
+
+		_OPTIONS="${_OPTIONS} --groups $(echo ${_GROUPS} | sed -e 's| |,|g')"
 	fi
 
 	if [ "${_SYSTEM_USER}" = "true" ]
