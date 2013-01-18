@@ -375,7 +375,10 @@ then
 
 	if [ -n "${_USER_GID}" ]
 	then
-		_USER_OPTIONS="${_USER_OPTIONS} --gid ${_USER_GID}"
+		if getent group "${_USER_GID}" > /dev/null 2>&1
+		then
+			_USER_OPTIONS="${_USER_OPTIONS} --gid ${_USER_GID}"
+		fi
 	fi
 
 	if [ -n "${_USER_DEFAULT_GROUPS}" ]
@@ -470,7 +473,10 @@ do
 
 	if [ -n "${_GID}" ]
 	then
-		_OPTIONS="${_OPTIONS} --gid ${_GID}"
+		if getent group "${_GID}" > /dev/null 2>&1
+		then
+			_OPTIONS="${_OPTIONS} --gid ${_GID}"
+		fi
 	fi
 
 	if [ -n "${_DEFAULT_GROUPS}" ]
