@@ -1,3 +1,18 @@
+live-debconfig (4.0~a15-1) unstable; urgency=low
+
+  * Changing preseeding of script names such that the exact filename
+    (consisting of full path, four-digit prefix, and name) doesn't have to
+    be specified, but rather the name of the script only.
+  * Avoiding double-empty lines as initial seperator in
+    /etc/network/interfaces.
+  * Using --user-group in passwd script for useradd by default.
+  * Avoid failing in passwd if groups the user should be added to do not
+    (yet) exist.
+  * Avoid failing in passwd if gid for a group the user should be added to
+    does not (yet) exist.
+
+ -- Daniel Baumann <daniel@debian.org>  Fri, 18 Jan 2013 20:40:33 +0100
+
 live-debconfig (4.0~a14-1) unstable; urgency=low
 
   * Removing some no longer needed grep calls to filter out templates from
