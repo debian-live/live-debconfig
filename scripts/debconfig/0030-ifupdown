@@ -272,13 +272,14 @@ EOF
 
 case "${_LO_ENABLE}" in
 	true)
+		echo >> /etc/network/interfaces.tmp
+
 		if [ -n "${_LO_COMMENT}" ]
 		then
 			echo "# ${_LO_COMMENT}" >> /etc/network/interfaces.tmp
 		fi
 
 cat >> /etc/network/interfaces.tmp << EOF
-
 auto lo
 iface lo inet loopback
 EOF
@@ -314,7 +315,6 @@ do
 		none)
 
 cat >> /etc/network/interfaces.tmp << EOF
-
 iface eth${_NUMBER} inet manual
 EOF
 
@@ -323,7 +323,6 @@ EOF
 		dhcp)
 
 cat >> /etc/network/interfaces.tmp << EOF
-
 auto eth${_NUMBER}
 iface eth${_NUMBER} inet dhcp
 EOF
@@ -333,7 +332,6 @@ EOF
 		static)
 
 cat >> /etc/network/interfaces.tmp << EOF
-
 auto eth${_NUMBER}
 iface eth${_NUMBER} inet static
 	address		${_IPV4_ADDRESS}
