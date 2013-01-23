@@ -3,7 +3,7 @@ live-debconfig (4.0~a15-1) unstable; urgency=low
   * Changing preseeding of script names such that the exact filename
     (consisting of full path, four-digit prefix, and name) doesn't have to
     be specified, but rather the name of the script only.
-  * Avoiding double-empty lines as initial seperator in
+  * Avoiding double-empty lines as initial separator in
     /etc/network/interfaces.
   * Using --user-group in passwd script for useradd by default.
   * Avoid failing in passwd if groups the user should be added to do not
@@ -147,7 +147,7 @@ live-debconfig (4.0~a4-1) unstable; urgency=low
   * Correcting /etc/default/hwclock handling in util-linux script for
     cases where it was locally removed.
   * Correcting version check of util-linux in util-linux script.
-  * Adding whitespace seperaters in generated resolv.conf in ifupdown
+  * Adding whitespace separaters in generated resolv.conf in ifupdown
     script.
   * Only reading existing nameserver settings in ifupdown script from
     /etc/resolv.conf if the file is existing.
@@ -158,7 +158,7 @@ live-debconfig (4.0~a4-1) unstable; urgency=low
   * Adding a workaround in ifupdown script when reading defaults for
     nameserver addresses from resolv.conf to get rid of newlines as
     debconf can not handle multiline return values in assignments.
-  * Evening out whitespace seperation in ifupdown script when generating
+  * Evening out whitespace separation in ifupdown script when generating
     /etc/network/interfaces.
   * Correcting db_setttile typo in ifupdown script.
   * Correcting db_input typo in ifupdown script.
