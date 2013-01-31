@@ -1,3 +1,19 @@
+live-debconfig (4.0~a17-1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Correcting package description in example packaging.
+
+  [ Tom Jampen ]
+  * Correcting line break and indentation in example package copyright
+    file.
+
+  [ Daniel Baumann ]
+  * Adding support for setting users login shell in passwd script.
+  * Setting home by default also for multi-user creation.
+  * Setting default shell automatically to bash.
+
+ -- Daniel Baumann <daniel@debian.org>  Thu, 31 Jan 2013 09:13:02 +0100
+
 live-debconfig (4.0~a16-1) unstable; urgency=low
 
   * Dropping dpkg compression level.
