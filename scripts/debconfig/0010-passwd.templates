@@ -74,6 +74,10 @@ Template: live-debconfig/passwd/user-default-groups
 Type: string
 Description: internal
 
+Template: live-debconfig/passwd/user-login-shell
+Type: string
+Description: internal
+
 Template: live-debconfig/passwd/user-system-user
 Type: boolean
 Description: internal

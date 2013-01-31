@@ -232,6 +232,15 @@ then
 		db_set live-debconfig/passwd/user-default-groups ""
 	fi
 
+	# user login shell
+	if db_get live-debconfig/passwd/user-login-shell
+	then
+		_USER_LOGIN_SHELL="${RETL:-/bin/bash}" # string (w/o empty)
+
+		db_fset live-debconfig/passwd/user-login-shell seen false
+		db_set live-debconfig/passwd/user-login-shell ""
+	fi
+
 	# user system-user
 	if db_get live-debconfig/passwd/user-system-user
 	then
@@ -280,7 +289,7 @@ do
 
 	if db_get live-debconfig/passwd/user${_NUMBER}-home
 	then
-		eval _USER${_NUMBER}_HOME="\"${RET}\"" # string (w/ empty)
+		eval _USER${_NUMBER}_HOME="\"${RET:-/home/${_USER_NAME}}\"" # string (w/o empty)
 
 		db_fset live-debconfig/passwd/user${_NUMBER}-home seen false
 		db_set live-debconfig/passwd/user${_NUMBER}-home ""
@@ -308,6 +317,14 @@ do
 
 		db_fset live-debconfig/passwd/user${_NUMBER}-default-groups seen false
 		db_set live-debconfig/passwd/user${_NUMBER}-default-groups ""
+	fi
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-login-shell
+	then
+		eval _USER${_NUMBER}_LOGIN_SHELL="\"${RET:-/bin/bash}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-login-shell seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-login-shell ""
 	fi
 
 	if db_get live-debconfig/passwd/user${_NUMBER}-system-user
@@ -396,6 +413,11 @@ then
 		_USER_OPTIONS="${_USER_OPTIONS} --groups $(echo ${_GROUPS} | sed -e 's| |,|g')"
 	fi
 
+	if [ -n "${_USER_LOGIN_SHELL}" ]
+	then
+		_USER_OPTIONS="${_USER_OPTIONS} --shell ${_USER_LOGIN_SHELL}"
+	fi
+
 	if [ "${_USER_SYSTEM_USER}" = "true" ]
 	then
 		_USER_OPTIONS="${_USER_OPTIONS} --system"
@@ -444,6 +466,7 @@ do
 	eval _UID="$`echo _USER${_NUMBER}_UID`"
 	eval _GID="$`echo _USER${_NUMBER}_GID`"
 	eval _DEFAULT_GROUPS="$`echo _USER${_NUMBER}_DEFAULT_GROUPS`"
+	eval _LOGIN_SHELL="$`echo _USER${_NUMBER}_LOGIN_SHELL`"
 	eval _SYSTEM_USER="$`echo _USER${_NUMBER}_SYSTEM_USER`"
 	eval _FULLNAME="$`echo _USER${_NUMBER}_FULLNAME`"
 
@@ -492,6 +515,11 @@ do
 		done
 
 		_OPTIONS="${_OPTIONS} --groups $(echo ${_GROUPS} | sed -e 's| |,|g')"
+	fi
+
+	if [ -n "${_LOGIN_SHELL}" ]
+	then
+		_OPTIONS="${_OPTIONS} --shell ${_LOGIN_SHELL}"
 	fi
 
 	if [ "${_SYSTEM_USER}" = "true" ]
