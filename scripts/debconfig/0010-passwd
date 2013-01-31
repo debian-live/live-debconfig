@@ -289,7 +289,7 @@ do
 
 	if db_get live-debconfig/passwd/user${_NUMBER}-home
 	then
-		eval _USER${_NUMBER}_HOME="\"${RET}\"" # string (w/ empty)
+		eval _USER${_NUMBER}_HOME="\"${RET:-/home/${_USER_NAME}}\"" # string (w/o empty)
 
 		db_fset live-debconfig/passwd/user${_NUMBER}-home seen false
 		db_set live-debconfig/passwd/user${_NUMBER}-home ""
