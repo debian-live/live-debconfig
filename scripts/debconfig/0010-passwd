@@ -235,7 +235,7 @@ then
 	# user login shell
 	if db_get live-debconfig/passwd/user-login-shell
 	then
-		_USER_LOGIN_SHELL="${RET}" # string (w/ empty)
+		_USER_LOGIN_SHELL="${RETL:-/bin/bash}" # string (w/o empty)
 
 		db_fset live-debconfig/passwd/user-login-shell seen false
 		db_set live-debconfig/passwd/user-login-shell ""
@@ -321,7 +321,7 @@ do
 
 	if db_get live-debconfig/passwd/user${_NUMBER}-login-shell
 	then
-		eval _USER${_NUMBER}_LOGIN_SHELL="\"${RET}\"" # string (w/ empty)
+		eval _USER${_NUMBER}_LOGIN_SHELL="\"${RET:-/bin/bash}\"" # string (w/ empty)
 
 		db_fset live-debconfig/passwd/user${_NUMBER}-login-shell seen false
 		db_set live-debconfig/passwd/user${_NUMBER}-login-shell ""
