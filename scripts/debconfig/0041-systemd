@@ -1,0 +1,136 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2013 Daniel Baumann <daniel@debian.org>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+if [ ! -e /lib/systemd/systemd ]
+then
+	# System does not use systemd
+	exit 0
+fi
+
+Defaults ()
+{
+	_LXC_ENABLE="${_LXC_ENABLE:-false}"
+	_LXC_CONSOLES="${_LXC_CONSOLES:-6}"
+}
+
+db_get live-debconfig/systemd/lxc-enable
+_LXC_ENABLE="${RET}" # boolean
+
+db_get live-debconfig/systemd/lxc-consoles
+_LXC_CONSOLES="${RET}" # string (w/o empty)
+
+Defaults
+
+db_set live-debconfig/systemd/lxc-enable "${_LXC_ENABLE}"
+db_fset live-debconfig/systemd/lxc-enable seen false
+
+db_set live-debconfig/systemd/lxc-consoles "${_LXC_CONSOLES}"
+db_fset live-debconfig/systemd/lxc-consoles seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/systemd/lxc-enable || true
+db_go
+
+db_get live-debconfig/systemd/lxc-enable
+_LXC_ENABLE="${RET}" # boolean
+
+case "${_LXC_ENABLE}" in
+	true)
+		db_settitle live-debconfig/title
+		db_input high live-debconfig/systemd/lxc-consoles || true
+		db_go
+
+		db_get live-debconfig/systemd/lxc-consoles
+		_LXC_CONSOLES="${RET}" # string (w/o empty)
+
+		Defaults
+		;;
+
+	false)
+
+		;;
+esac
+
+db_stop
+
+case "${_LXC_ENABLE}" in
+	true)
+		# Disable sulogin
+		ln -sf /dev/null /etc/systemd/system/console-shell.service
+
+		# Disable ctrlaltdel
+		ln -sf /dev/null /etc/systemd/system/ctrl-alt-del.target
+
+		# Disable normal getty
+		rm -f /etc/systemd/system/getty.target.wants/getty@*.service
+
+		# Enable container getty
+		sed -e 's|^ *BindTo=|#BindTo=|' /lib/systemd/system/getty@.service > /etc/systemd/system/getty.target.wants/getty@console.service
+
+		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
+		do
+			sed -e 's|^ *BindTo=|#BindTo=|' /lib/systemd/system/getty@.service > /etc/systemd/system/getty.target.wants/getty@tty${_CONSOLE}.service
+		done
+
+		# Enable powerfail for lxc-shutdown
+		ln -sf /lib/systemd/system/reboot.target /etc/systemd/system/sigpwr.target
+
+		# Disable default cpu and cpupacct
+		grep -Eq '^ *JoinControllers=' /etc/systemd/system.conf || echo "JoinControllers=" >> /etc/systemd/system.conf
+
+		sed -e 's|^ *JoinControllers=.*|JoinControllers=|' /etc/systemd/system.conf > /etc/systemd/system.conf.tmp
+		mv /etc/systemd/system.conf.tmp /etc/systemd/system.conf
+
+		# squeeze and newer only has /dev/tty and /dev/tty0 by default,
+		# therefore creating missing device nodes for tty1-4.
+		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
+		do
+			if [ ! -e "/dev/tty${_CONSOLE}" ]
+			then
+				mknod "/dev/tty${_CONSOLE}" c 4 "${_CONSOLE}"
+			fi
+		done
+
+		# FIXME
+		systemctl disable systemd-journald.service
+		systemctl disable systemd-update-utmp-runlevel.service
+		;;
+
+	false)
+		# Reenable sulogin
+		if [ -L /etc/systemd/system/console-shell.service ] && [ "$(readlink /etc/systemd/system/console-shell.service)" = "/dev/null" ]
+		then
+			rm -f /etc/systemd/system/console-shell.service
+		fi
+
+		# Reenable ctrlaltdel
+		if [ -L /etc/systemd/system/ctrl-alt-del.target ] && [ "$(readlink /etc/systemd/system/ctrl-alt-del.target)" = "/dev/null" ]
+		then
+			rm -f /etc/systemd/system/ctrl-alt-del.target
+		fi
+
+		# Reenable normal getty
+		rm -f /etc/systemd/system/getty.target.wants/getty@*.service
+		ln -sf /lib/systemd/system/getty@.service /etc/systemd/system/getty.target.wants/getty@tty1.service
+
+		# Reenable powerfail for lxc-shutdown
+		if [ -L /etc/systemd/system/sigpwr.target ] && [ "$(readlink /etc/systemd/system/sigpwr.target)" = "/lib/systemd/system/reboot.target" ]
+		then
+			rm -f /etc/systemd/system/sigpwr.target
+		fi
+		;;
+esac
