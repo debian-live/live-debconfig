@@ -1,3 +1,12 @@
+live-debconfig (4.0~a18-1) unstable; urgency=low
+
+  * Populating new getty entries in sysvinit script on progress-linux with
+    the --no-hostname option.
+  * Adding systemd script for lxc support (Closes: #604631).
+  * Renumbering scripts.
+
+ -- Daniel Baumann <daniel@debian.org>  Sat, 09 Feb 2013 00:44:27 +0100
+
 live-debconfig (4.0~a17-1) unstable; urgency=low
 
   [ Daniel Baumann ]
