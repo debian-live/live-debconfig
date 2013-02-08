@@ -117,12 +117,19 @@ case "${_LXC_ENABLE}" in
 		#  c1:23:respawn:/sbin/getty 38400 tty1
 		#  c2:23:respawn:/sbin/getty 38400 tty2
 
+		if [ -e /etc/progress-linux_version ]
+		then
+			_OPTIONS="--nohostname 38400"
+		else
+			_OPTIONS="38400"
+		fi
+
 		# Assemble new entries
-		_CONSOLES="\n#-- live-debconfig begin\n1:2345:respawn:/sbin/getty 38400 console"
+		_CONSOLES="\n#-- live-debconfig begin\n1:2345:respawn:/sbin/getty ${_OPTIONS} console"
 
 		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
 		do
-			_CONSOLES="${_CONSOLES}\nc${_CONSOLE}:12345:respawn:/sbin/getty 38400 tty${_CONSOLE} linux"
+			_CONSOLES="${_CONSOLES}\nc${_CONSOLE}:12345:respawn:/sbin/getty ${_OPTIONS} tty${_CONSOLE} linux"
 		done
 
 		_CONSOLES="${_CONSOLES}\n#-- live-debconfig end"
