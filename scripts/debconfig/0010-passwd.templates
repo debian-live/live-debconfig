@@ -27,6 +27,10 @@ Template: live-debconfig/passwd/root-password-crypted
 Type: password
 Description: internal
 
+Template: live-debconfig/passwd/root-key-local
+Type: string
+Description: internal
+
 Template: live-debconfig/passwd/user-name
 Type: string
 Description: live-debconfig: user account name?
@@ -56,6 +60,10 @@ Description: live-debconfig: user password (again)?
 
 Template: live-debconfig/passwd/user-password-crypted
 Type: password
+Description: internal
+
+Template: live-debconfig/passwd/user-key-local
+Type: string
 Description: internal
 
 Template: live-debconfig/passwd/user-home
