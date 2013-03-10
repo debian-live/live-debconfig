@@ -1,3 +1,9 @@
+live-debconfig (4.0~a20-1) unstable; urgency=low
+
+  * Removing all references to my old email address.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 10 Mar 2013 22:30:28 +0100
+
 live-debconfig (4.0~a19-1) unstable; urgency=low
 
   * Adding example preseed file.
