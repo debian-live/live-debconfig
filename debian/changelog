@@ -1,3 +1,13 @@
+live-debconfig (4.0~a19-1) unstable; urgency=low
+
+  * Adding example preseed file.
+  * Adding single local key for root and users.
+  * Correcting spelling typos, thanks to Adam D. Barratt <adam@adam-
+    barratt.org.uk>.
+  * Adding multiple local keys for root and users.
+
+ -- Daniel Baumann <daniel@debian.org>  Sun, 10 Mar 2013 19:16:15 +0100
+
 live-debconfig (4.0~a18-1) unstable; urgency=low
 
   * Populating new getty entries in sysvinit script on progress-linux with
