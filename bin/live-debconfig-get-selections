@@ -61,7 +61,7 @@ Main ()
 	if [ ! -x "$(which debconf-get-selections 2>/dev/null)" ]
 	then
 		echo "E: debconf-get-selections - command not found"
-		echo "I: debconf-utils can be optained from:"
+		echo "I: debconf-utils can be obtained from:"
 		echo "I:   http://ftp.debian.org/debian/pool/main/d/debconf/"
 		echo "I: On Debian based systems, po4a can be installed with:"
 		echo "I:   apt-get install debconf-utils"

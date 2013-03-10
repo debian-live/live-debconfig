@@ -95,6 +95,33 @@ then
 	db_set live-debconfig/passwd/root-password-crypted ""
 fi
 
+# root local ssh key
+if db_get live-debconfig/passwd/root-key-local
+then
+	_ROOT_KEY_LOCAL="${RET}" # string (w/ empty)
+
+	db_fset live-debconfig/passwd/root-key-local seen false
+	db_set live-debconfig/passwd/root-key-local ""
+fi
+
+# root local ssh keys
+_KEYS="0"
+
+while db_get live-debconfig/passwd/root-key${_KEYS}-local && [ "${RET}" ]
+do
+	if db_get live-debconfig/passwd/root-key${_KEYS}-local
+	then
+		eval _ROOT_KEY${_KEYS}_LOCAL="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/root-key${_KEYS}-local seen false
+		db_set live-debconfig/passwd/root-key${_KEYS}-local ""
+	fi
+
+	_KEYS="$((${_KEYS} + 1))"
+done
+
+_ROOT_KEYS_LOCAL="${_KEYS}"
+
 # user name
 if db_get live-debconfig/passwd/user-name
 then
@@ -196,6 +223,33 @@ then
 		db_set live-debconfig/passwd/user-password-crypted ""
 	fi
 
+	# user local ssh key
+	if db_get live-debconfig/passwd/user-key-local
+	then
+		_USER_KEY_LOCAL="${RET}" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user-key-local seen false
+		db_set live-debconfig/passwd/user-key-local ""
+	fi
+
+	# user local ssh keys
+	_KEYS="0"
+
+	while db_get live-debconfig/passwd/user-key${_KEYS}-local && [ "${RET}" ]
+	do
+		if db_get live-debconfig/passwd/user-key${_KEYS}-local
+		then
+			eval _USER_KEY${_KEYS}_LOCAL="\"${RET}\"" # string (w/ empty)
+
+			db_fset live-debconfig/passwd/user-key${_KEYS}-local seen false
+			db_set live-debconfig/passwd/user-key${_KEYS}-local ""
+		fi
+
+		_KEYS="$((${_KEYS} + 1))"
+	done
+
+	_USER_KEYS_LOCAL="${_KEYS}"
+
 	# user home
 	if db_get live-debconfig/passwd/user-home
 	then
@@ -287,6 +341,31 @@ do
 		db_set live-debconfig/passwd/user${_NUMBER}-password-crypted ""
 	fi
 
+	_KEYS="0"
+
+	while db_get live-debconfig/passwd/user${_NUMBER}-key${_KEYS}-local && [ "${RET}" ]
+	do
+		if db_get live-debconfig/passwd/user${_NUMBER}-key${_KEYS}-local
+		then
+			eval _USER_KEY${_KEYS}_LOCAL="\"${RET}\"" # string (w/ empty)
+
+			db_fset live-debconfig/passwd/user${_NUMBER}-key${_KEYS}-local seen false
+			db_set live-debconfig/passwd/user${_NUMBER}-key${_KEYS}-local ""
+		fi
+
+		_KEYS="$((${_KEYS} + 1))"
+	done
+
+	eval _USER${_NUMBER}_KEYS_LOCAL="${_KEYS}"
+
+	if db_get live-debconfig/passwd/user${_NUMBER}-key-local
+	then
+		eval _USER${_NUMBER}_KEY_LOCAL="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/passwd/user${_NUMBER}-key-local seen false
+		db_set live-debconfig/passwd/user${_NUMBER}-key-local ""
+	fi
+
 	if db_get live-debconfig/passwd/user${_NUMBER}-home
 	then
 		eval _USER${_NUMBER}_HOME="\"${RET:-/home/${_USER_NAME}}\"" # string (w/o empty)
@@ -366,6 +445,32 @@ fi
 if [ -n "${_ROOT_PASSWORD_CRYPTED}" ]
 then
 	usermod --password=${_ROOT_PASSWORD_CRYPTED} root
+fi
+
+if [ -n "${_ROOT_KEY_LOCAL}" ]
+then
+	mkdir -p /root/.ssh
+
+	echo "${_ROOT_KEY_LOCAL}" >> /root/.ssh/authorized_keys
+fi
+
+for _KEY in ${_ROOT_KEYS_LOCAL}
+do
+	eval _KEY_LOCAL="$`echo _ROOT_KEY${_KEY}_LOCAL`"
+
+	if [ -n "${_KEY_LOCAL}" ]
+	then
+		mkdir -p /root/.ssh
+
+		echo "${_KEY_LOCAL}" >> /root/.ssh/authorized_keys
+	fi
+done
+
+if [ -e /root/.ssh/authorized_keys ]
+then
+	chown root:root /root/.ssh -R
+	chmod 0700 /root/.ssh
+	chmod 0600 /root/.ssh/authorized_keys
 fi
 
 # single user creation
@@ -454,6 +559,34 @@ EOF
 	else
 		echo "W: user \"${_USER_NAME}\" already exists, not creating new user."
 	fi
+
+	# FIXME: probably should do a lookup of users home directory,
+	# for now we asume it's ${_USER_HOME}
+	if [ -n "${_USER_HOME}" ] && [ -n "${_USER_KEY_LOCAL}" ]
+	then
+		mkdir -p "${_USER_HOME}/.ssh"
+
+		echo "${_USER_KEY_LOCAL}" >> "${_USER_HOME}/.ssh/authorized_keys"
+	fi
+
+	for _KEY in ${_USER_KEYS_LOCAL}
+	do
+		eval _KEY_LOCAL="$`echo _USER_KEY${_KEY}_LOCAL`"
+
+		if [ -n "${_KEY_LOCAL}" ]
+		then
+			mkdir -p "${_USER_HOME}/.ssh"
+
+			echo "${_KEY_LOCAL}" >> "${_USER_HOME}/.ssh/authorized_keys"
+		fi
+	done
+
+	if [ -e "${_USER_HOME}/.ssh/authorized_keys" ]
+	then
+		chown ${_USER_NAME}:${_USER_NAME} "${_USER_HOME}/.ssh" -R
+		chmod 0700 "${_USER_HOME}/.ssh"
+		chmod 0600 "${_USER_HOME}/.ssh/authorized_keys"
+	fi
 fi
 
 # multiple user creation
@@ -462,6 +595,8 @@ do
 	eval _NAME="$`echo _USER${_NUMBER}_NAME`"
 	eval _PASSWORD="$`echo _USER${_NUMBER}_PASSWORD`"
 	eval _PASSWORD_CRYPTED="$`echo _USER${_NUMBER}_PASSWORD_CRYPTED`"
+	eval _KEY_LOCAL="$`echo _USER${_NUMBER}_KEY_LOCAL`"
+	eval _KEYS_LOCAL="$`echo _USER${_NUMBER}_KEYS_LOCAL`"
 	eval _HOME="$`echo _USER${_NUMBER}_HOME`"
 	eval _UID="$`echo _USER${_NUMBER}_UID`"
 	eval _GID="$`echo _USER${_NUMBER}_GID`"
@@ -556,5 +691,33 @@ EOF
 		fi
 	else
 		echo "W: user \"${_NAME}\" already exists, not creating new user."
+	fi
+
+	# FIXME: probably should do a lookup of users home directory,
+	# for now we asume it's ${_HOME}
+	if [ -n "${_HOME}" ] && [ -n "${_KEY_LOCAL}" ]
+	then
+		mkdir -p "${_HOME}/.ssh"
+
+		echo "${_KEY_LOCAL}" >> "${_HOME}/.ssh/authorized_keys"
+	fi
+
+	for _KEY in ${_KEYS_LOCAL}
+	do
+		eval _KEY_LOCAL="$`echo _USER${_NUMBER}_KEY${_KEY}_LOCAL`"
+
+		if [ -n "${_KEY_LOCAL}" ]
+		then
+			mkdir -p "${_USER_HOME}/.ssh"
+
+			echo "${_KEY_LOCAL}" >> "${_USER_HOME}/.ssh/authorized_keys"
+		fi
+	done
+
+	if [ -e "${_HOME}/.ssh/authorized_keys" ]
+	then
+		chown ${_NAME}:${_NAME} "${_HOME}/.ssh" -R
+		chmod 0700 "${_HOME}/.ssh"
+		chmod 0600 "${_HOME}/.ssh/authorized_keys"
 	fi
 done
