@@ -6,7 +6,7 @@ live-debconfig (4.0~a19-1) unstable; urgency=low
     barratt.org.uk>.
   * Adding multiple local keys for root and users.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 10 Mar 2013 19:16:15 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 10 Mar 2013 19:16:15 +0100
 
 live-debconfig (4.0~a18-1) unstable; urgency=low
 
@@ -15,7 +15,7 @@ live-debconfig (4.0~a18-1) unstable; urgency=low
   * Adding systemd script for lxc support (Closes: #604631).
   * Renumbering scripts.
 
- -- Daniel Baumann <daniel@debian.org>  Sat, 09 Feb 2013 00:44:27 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sat, 09 Feb 2013 00:44:27 +0100
 
 live-debconfig (4.0~a17-1) unstable; urgency=low
 
@@ -31,14 +31,14 @@ live-debconfig (4.0~a17-1) unstable; urgency=low
   * Setting home by default also for multi-user creation.
   * Setting default shell automatically to bash.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 31 Jan 2013 09:13:02 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 31 Jan 2013 09:13:02 +0100
 
 live-debconfig (4.0~a16-1) unstable; urgency=low
 
   * Dropping dpkg compression level.
   * Correcting spelling typos in changelog to make lintian happy.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 25 Jan 2013 13:24:03 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 25 Jan 2013 13:24:03 +0100
 
 live-debconfig (4.0~a15-1) unstable; urgency=low
 
@@ -53,7 +53,7 @@ live-debconfig (4.0~a15-1) unstable; urgency=low
   * Avoid failing in passwd if gid for a group the user should be added to
     does not (yet) exist.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 18 Jan 2013 20:40:33 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 18 Jan 2013 20:40:33 +0100
 
 live-debconfig (4.0~a14-1) unstable; urgency=low
 
@@ -63,7 +63,7 @@ live-debconfig (4.0~a14-1) unstable; urgency=low
   * Correcting --debconfig parameter handling.
   * Also account for no script selection in multiselect dialog.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 18 Jan 2013 15:19:29 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 18 Jan 2013 15:19:29 +0100
 
 live-debconfig (4.0~a13-1) unstable; urgency=low
 
@@ -75,7 +75,7 @@ live-debconfig (4.0~a13-1) unstable; urgency=low
     where we run live-debconfig before installing packages.
   * Cleaning up temporary file in ferm script.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 18 Jan 2013 12:21:32 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 18 Jan 2013 12:21:32 +0100
 
 live-debconfig (4.0~a12-1) unstable; urgency=low
 
@@ -107,13 +107,13 @@ live-debconfig (4.0~a12-1) unstable; urgency=low
   * Updating Spanish translation of man pages.
   * Updating French translation of man pages.
 
- -- Daniel Baumann <daniel@debian.org>  Sun, 23 Dec 2012 08:22:52 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Sun, 23 Dec 2012 08:22:52 +0100
 
 live-debconfig (4.0~a11-1) unstable; urgency=low
 
   * Show scripts in debconf multiselect dialog alphabetically sorted.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 06 Dec 2012 20:32:59 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 06 Dec 2012 20:32:59 +0100
 
 live-debconfig (4.0~a10-1) unstable; urgency=low
 
@@ -129,7 +129,7 @@ live-debconfig (4.0~a10-1) unstable; urgency=low
   * Adding local-options for dpkg-source in live-debconfig-foobar example
     package too.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 06 Dec 2012 20:18:08 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 06 Dec 2012 20:18:08 +0100
 
 live-debconfig (4.0~a9-1) unstable; urgency=low
 
@@ -137,7 +137,7 @@ live-debconfig (4.0~a9-1) unstable; urgency=low
     when using static addresses only.
   * Add powerfail entries for lxc-shutdown in sysvinit script.
 
- -- Daniel Baumann <daniel@debian.org>  Mon, 26 Nov 2012 21:21:40 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 26 Nov 2012 21:21:40 +0100
 
 live-debconfig (4.0~a8-1) unstable; urgency=low
 
@@ -146,7 +146,7 @@ live-debconfig (4.0~a8-1) unstable; urgency=low
   * Adding stub of an example packaging for customization purposes
     (analog to live-config).
 
- -- Daniel Baumann <daniel@debian.org>  Mon, 12 Nov 2012 15:49:21 +0100
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 12 Nov 2012 15:49:21 +0100
 
 live-debconfig (4.0~a7-1) unstable; urgency=low
 
@@ -154,13 +154,13 @@ live-debconfig (4.0~a7-1) unstable; urgency=low
   * Updating package descriptions.
   * Adding support for mtu values in ifupdown script.
 
- -- Daniel Baumann <daniel@debian.org>  Tue, 23 Oct 2012 14:55:43 +0200
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 23 Oct 2012 14:55:43 +0200
 
 live-debconfig (4.0~a6-1) unstable; urgency=low
 
   * Adding support for post-up commands in ifupdown script.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 20 Sep 2012 14:17:58 +0200
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 20 Sep 2012 14:17:58 +0200
 
 live-debconfig (4.0~a5-1) unstable; urgency=low
 
@@ -171,7 +171,7 @@ live-debconfig (4.0~a5-1) unstable; urgency=low
   * Adding the other language translations for automatic date
     conversion.
 
- -- Daniel Baumann <daniel@debian.org>  Wed, 22 Aug 2012 09:55:31 +0200
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 22 Aug 2012 09:55:31 +0200
 
 live-debconfig (4.0~a4-1) unstable; urgency=low
 
@@ -234,7 +234,7 @@ live-debconfig (4.0~a3-1) unstable; urgency=low
     ifupdown script.
   * Adding some todo notes to ifupdown script.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 16 Aug 2012 15:43:09 +0200
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 16 Aug 2012 15:43:09 +0200
 
 live-debconfig (4.0~a2-1) unstable; urgency=low
 
@@ -257,10 +257,10 @@ live-debconfig (4.0~a2-1) unstable; urgency=low
   * Add mountkernfs.sh and mountall.sh to the list of services disabled
     in lxc containers.
 
- -- Daniel Baumann <daniel@debian.org>  Fri, 10 Aug 2012 23:08:14 +0200
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 10 Aug 2012 23:08:14 +0200
 
 live-debconfig (4.0~a1-1) unstable; urgency=low
 
   * Initial release.
 
- -- Daniel Baumann <daniel@debian.org>  Thu, 02 Aug 2012 22:23:52 +0200
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 02 Aug 2012 22:23:52 +0200

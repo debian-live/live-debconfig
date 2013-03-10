@@ -1,13 +1,13 @@
 # German translations for live-debconfig package
-# Copyright (C) 2006-2013 Daniel Baumann <daniel@debian.org>
+# Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
 # This file is distributed under the same license as the live-debconfig package.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a19-1\n"
-"POT-Creation-Date: 2013-03-10 19:14+0100\n"
+"POT-Creation-Date: 2013-03-10 19:34+0100\n"
 "PO-Revision-Date: 2010-05-24 09:59+0300\n"
-"Last-Translator: Daniel Baumann <daniel@debian.org>\n"
+"Last-Translator: Daniel Baumann <mail@daniel-baumann.ch>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -122,9 +122,10 @@ msgstr "AUTOR"
 #: en/live-debconfig-get-selections.1:41 en/live-debconfig-set-selections.1:39
 #: en/live-debconfig.7:57 en/live-debconfig_hostname.5:72
 msgid ""
-"live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
+"live-debconfig was written by Daniel Baumann E<lt>I<mail@daniel-baumann."
+"ch>E<gt>."
 msgstr ""
-"live-debconfig wurde von Daniel Baumann E<lt>I<daniel@debian.org>E<gt> "
+"live-debconfig wurde von Daniel Baumann E<lt>I<mail@daniel-baumann.ch>E<gt> "
 "geschrieben."
 
 #. type: Plain text

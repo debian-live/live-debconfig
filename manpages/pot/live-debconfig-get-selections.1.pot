@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig VERSION\n"
-"POT-Creation-Date: 2013-03-10 19:14+0100\n"
+"POT-Creation-Date: 2013-03-10 19:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -187,5 +187,6 @@ msgstr ""
 #: en/live-debconfig-get-selections.1:41 en/live-debconfig-set-selections.1:39
 #: en/live-debconfig.7:57 en/live-debconfig_hostname.5:72
 msgid ""
-"live-debconfig was written by Daniel Baumann E<lt>I<daniel@debian.org>E<gt>."
+"live-debconfig was written by Daniel Baumann E<lt>I<mail@daniel-baumann."
+"ch>E<gt>."
 msgstr ""
