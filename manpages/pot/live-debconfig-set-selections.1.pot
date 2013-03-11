@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig VERSION\n"
-"POT-Creation-Date: 2013-03-10 22:31+0100\n"
+"POT-Creation-Date: 2013-03-11 06:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,7 +27,7 @@ msgstr ""
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2013-03-10"
+msgid "2013-03-11"
 msgstr ""
 
 #. type: TH
@@ -41,7 +41,7 @@ msgstr ""
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "Debian Live Project"
+msgid "Live Systems Project"
 msgstr ""
 
 #. type: SH
@@ -118,9 +118,9 @@ msgstr ""
 #: en/live-debconfig-get-selections.1:36 en/live-debconfig-set-selections.1:34
 #: en/live-debconfig.7:52 en/live-debconfig_hostname.5:67
 msgid ""
-"More information about live-debconfig and the Debian Live project can be "
-"found on the homepage at E<lt>I<http://live.debian.net/>E<gt> and in the "
-"manual at E<lt>I<http://live.debian.net/manual/>E<gt>."
+"More information about live-debconfig and the Live Systems project can be "
+"found on the homepage at E<lt>I<http://live-systems.org/>E<gt> and in the "
+"manual at E<lt>I<http://live-systems.org/manual/>E<gt>."
 msgstr ""
 
 #. type: SH
@@ -135,8 +135,8 @@ msgstr ""
 #: en/live-debconfig.7:55 en/live-debconfig_hostname.5:70
 msgid ""
 "Bugs can be reported by submitting a bugreport for the live-debconfig "
-"package in the Debian Bug Tracking System at E<lt>I<http://bugs.debian.org/"
-">E<gt> or by writing a mail to the Debian Live mailing list at E<lt>I<debian-"
+"package in the Bug Tracking System at E<lt>I<http://bugs.debian.org/>E<gt> "
+"or by writing a mail to the Live Systems mailing list at E<lt>I<debian-"
 "live@lists.debian.org>E<gt>."
 msgstr ""
 
