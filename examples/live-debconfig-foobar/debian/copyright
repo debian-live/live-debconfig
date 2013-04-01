@@ -5,7 +5,7 @@ Source: http://www.example.org/foobar/
 Comment:
  This package is based on the live-debconfig-foobar example package
  included in live-debconfig which can be obtained from
- http://live.debian.net/devel/live-debconfig/.
+ http://live-systems.org/devel/live-debconfig/.
 
 Files: *
 Copyright:
