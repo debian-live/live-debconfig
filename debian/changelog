@@ -1,3 +1,9 @@
+live-debconfig (4.0~a21-1) unstable; urgency=low
+
+  * Debranding package for derivatives.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 01 Apr 2013 08:37:43 +0200
+
 live-debconfig (4.0~a20-1) unstable; urgency=low
 
   * Removing all references to my old email address.
