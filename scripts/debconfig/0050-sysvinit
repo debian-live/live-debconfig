@@ -155,8 +155,7 @@ case "${_LXC_ENABLE}" in
 
 		mv /etc/inittab.tmp /etc/inittab
 
-		# squeeze and newer only has /dev/tty and /dev/tty0 by default,
-		# therefore creating missing device nodes for tty1-4.
+		# squeeze and newer have /dev/tty and /dev/tty0 by default
 		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
 		do
 			if [ ! -e "/dev/tty${_CONSOLE}" ]

@@ -95,8 +95,7 @@ case "${_LXC_ENABLE}" in
 		sed -e 's|^ *JoinControllers=.*|JoinControllers=|' /etc/systemd/system.conf > /etc/systemd/system.conf.tmp
 		mv /etc/systemd/system.conf.tmp /etc/systemd/system.conf
 
-		# squeeze and newer only has /dev/tty and /dev/tty0 by default,
-		# therefore creating missing device nodes for tty1-4.
+		# squeeze and newer have /dev/tty and /dev/tty0 by default
 		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
 		do
 			if [ ! -e "/dev/tty${_CONSOLE}" ]
