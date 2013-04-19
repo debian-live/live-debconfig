@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: live-debconfig 4.0~a21-1\n"
-"POT-Creation-Date: 2013-04-01 08:36+0300\n"
-"PO-Revision-Date: 2012-07-30 14:39+0200\n"
+"Project-Id-Version: live-debconfig 4.0~a22-1\n"
+"POT-Creation-Date: 2013-04-19 15:52+0300\n"
+"PO-Revision-Date: 2013-04-13 21:00+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -26,22 +26,21 @@ msgstr "LIVE-DEBCONFIG"
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2013-04-01"
-msgstr "01.04.2013"
+msgid "2013-04-19"
+msgstr "19.04.2013"
+
+#. type: TH
+#: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
+#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
+msgid "4.0~a22-1"
+msgstr "4.0~a22-1"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~a21-1"
-msgstr "4.0~a21-1"
-
-#. type: TH
-#: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
-#: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
-#, fuzzy, no-wrap
 msgid "Live Systems Project"
-msgstr "Proyecto Debian Live"
+msgstr "Proyecto Live Systems"
 
 #. type: SH
 #: en/live-debconfig-get-selections.1:11 en/live-debconfig-set-selections.1:11
@@ -80,14 +79,13 @@ msgstr "PÁGINA WEB"
 #. type: Plain text
 #: en/live-debconfig-get-selections.1:36 en/live-debconfig-set-selections.1:34
 #: en/live-debconfig.7:52 en/live-debconfig_hostname.5:67
-#, fuzzy
 msgid ""
 "More information about live-debconfig and the Live Systems project can be "
 "found on the homepage at E<lt>I<http://live-systems.org/>E<gt> and in the "
 "manual at E<lt>I<http://live-systems.org/manual/>E<gt>."
 msgstr ""
 "Se puede encontrar más información acerca de live-debconfig y el proyecto "
-"Debian Live en su página principal en E<lt>I<http://live-systems.org/>E<gt> "
+"Live Systems en su página principal en E<lt>I<http://live-systems.org/>E<gt> "
 "y en el manual en E<lt>I<http://live-systems.org/manual/>E<gt>."
 
 #. type: SH
@@ -100,7 +98,6 @@ msgstr "ERRORES"
 #. type: Plain text
 #: en/live-debconfig-get-selections.1:39 en/live-debconfig-set-selections.1:37
 #: en/live-debconfig.7:55 en/live-debconfig_hostname.5:70
-#, fuzzy
 msgid ""
 "Bugs can be reported by submitting a bugreport for the live-debconfig "
 "package in the Bug Tracking System at E<lt>I<http://bugs.debian.org/>E<gt> "
@@ -108,9 +105,10 @@ msgid ""
 "live@lists.debian.org>E<gt>."
 msgstr ""
 "Se puede notificar los fallos enviando un informe de errores sobre el "
-"paquete live-debconfig en el Debian Bug Tracking System en E<lt>I<http://"
-"bugs.debian.org/>E<gt> o escribiendo un mensaje a la lista de correo de "
-"Debian Live a la dirección E<lt>I<debian-live@lists.debian.org>E<gt>."
+"paquete live-debconfig en el sistema de seguimiento de errores en "
+"E<lt>I<http://bugs.debian.org/>E<gt> o escribiendo un mensaje a la lista de "
+"correo de Live Systems a la dirección E<lt>I<debian-live@lists.debian."
+"org>E<gt>."
 
 #. type: SH
 #: en/live-debconfig-get-selections.1:40 en/live-debconfig-set-selections.1:38

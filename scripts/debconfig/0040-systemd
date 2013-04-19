@@ -25,6 +25,7 @@ Defaults ()
 {
 	_LXC_ENABLE="${_LXC_ENABLE:-false}"
 	_LXC_CONSOLES="${_LXC_CONSOLES:-6}"
+	_LXC_DISABLE_SERVICES="${_LXC_DISABLE_SERVICES:-checkroot.service dev-hugepages.mount dev-mqueue.mount proc-sys-fs-binfmt_misc.automount remount-rootfs.service run-lock.mount run-user.mount swap.target sys-kernel-debug.mount sys-kernel-security.mount systemd-modules-load.service systemd-remount-api-vfs.service systemd-sysctl.service systemd-update-utmp-runlevel.service udev.service udev-settle.service udev-trigger.service user.mount var-lock.mount systemd-update-utmp-runlevel.service}"
 }
 
 db_get live-debconfig/systemd/lxc-enable
@@ -33,6 +34,9 @@ _LXC_ENABLE="${RET}" # boolean
 db_get live-debconfig/systemd/lxc-consoles
 _LXC_CONSOLES="${RET}" # string (w/o empty)
 
+db_get live-debconfig/systemd/lxc-disable-services
+_LXC_DISABLE_SERVICES="${RET}" # string (w/o empty)
+
 Defaults
 
 db_set live-debconfig/systemd/lxc-enable "${_LXC_ENABLE}"
@@ -40,6 +44,9 @@ db_fset live-debconfig/systemd/lxc-enable seen false
 
 db_set live-debconfig/systemd/lxc-consoles "${_LXC_CONSOLES}"
 db_fset live-debconfig/systemd/lxc-consoles seen false
+
+db_set live-debconfig/systemd/lxc-disable-services "${_LXC_DISABLE_SERVICES}"
+db_fset live-debconfig/systemd/lxc-disable-services seen false
 
 db_settitle live-debconfig/title
 db_input high live-debconfig/systemd/lxc-enable || true
@@ -56,6 +63,9 @@ case "${_LXC_ENABLE}" in
 
 		db_get live-debconfig/systemd/lxc-consoles
 		_LXC_CONSOLES="${RET}" # string (w/o empty)
+
+		db_get live-debconfig/systemd/lxc-disable-services
+		_LXC_DISABLE_SERVICES="${RET}" # string (w/o empty)
 
 		Defaults
 		;;
@@ -81,8 +91,13 @@ case "${_LXC_ENABLE}" in
 		# Enable container getty
 		sed -e 's|^ *BindTo=|#BindTo=|' /lib/systemd/system/getty@.service > /etc/systemd/system/getty.target.wants/getty@console.service
 
-		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
+		for _CONSOLE in $(seq 0 ${_LXC_CONSOLES})
 		do
+			if [ -L /etc/systemd/system/getty.target.wants/getty@tty${_CONSOLE}.service ]
+			then
+				rm -f /etc/systemd/system/getty.target.wants/getty@tty${_CONSOLE}.service
+			fi
+
 			sed -e 's|^ *BindTo=|#BindTo=|' /lib/systemd/system/getty@.service > /etc/systemd/system/getty.target.wants/getty@tty${_CONSOLE}.service
 		done
 
@@ -95,8 +110,7 @@ case "${_LXC_ENABLE}" in
 		sed -e 's|^ *JoinControllers=.*|JoinControllers=|' /etc/systemd/system.conf > /etc/systemd/system.conf.tmp
 		mv /etc/systemd/system.conf.tmp /etc/systemd/system.conf
 
-		# squeeze and newer only has /dev/tty and /dev/tty0 by default,
-		# therefore creating missing device nodes for tty1-4.
+		# squeeze and newer have /dev/tty and /dev/tty0 by default
 		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
 		do
 			if [ ! -e "/dev/tty${_CONSOLE}" ]
@@ -105,9 +119,11 @@ case "${_LXC_ENABLE}" in
 			fi
 		done
 
-		# FIXME
-		systemctl disable systemd-journald.service
-		systemctl disable systemd-update-utmp-runlevel.service
+		# Remove uneeded services in a container
+		for _SERVICE in ${_LXC_DISABLE_SERVICES}
+		do
+			systemctl disable ${_SERVICE}
+		done
 		;;
 
 	false)
@@ -132,5 +148,11 @@ case "${_LXC_ENABLE}" in
 		then
 			rm -f /etc/systemd/system/sigpwr.target
 		fi
+
+		# Renable services
+		for _SERVICE in ${_LXC_DISABLE_SERVICES}
+		do
+			systemctl enable ${_SERVICE}
+		done
 		;;
 esac
