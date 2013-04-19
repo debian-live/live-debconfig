@@ -83,6 +83,11 @@ case "${_LXC_ENABLE}" in
 
 		for _CONSOLE in $(seq 0 ${_LXC_CONSOLES})
 		do
+			if [ -L /etc/systemd/system/getty.target.wants/getty@tty${_CONSOLE}.service ]
+			then
+				rm -f /etc/systemd/system/getty.target.wants/getty@tty${_CONSOLE}.service
+			fi
+
 			sed -e 's|^ *BindTo=|#BindTo=|' /lib/systemd/system/getty@.service > /etc/systemd/system/getty.target.wants/getty@tty${_CONSOLE}.service
 		done
 
