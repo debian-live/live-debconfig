@@ -1,0 +1,20 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/procps/net.ipv4.ip_forward
+Type: boolean
+Default:
+Description: live-debconfig: enable ipv4.ip_forward?
+ IP forwarding also known as routing is a functions for forwarding packets
+ between interfaces, which lets the computer act as a firewall, or router.
+ .
+ Note that this is an important variable for Network Address Translation,
+ firewalling, routing, masquerading, and all other things where actually
+ packets are let through the computer to another network.
+ .
+ On normal systems there should be no need for IP forwarding to be turned on.
+ However, on the host system that e.g. runs Linux Containers (LXC) connected
+ through a bridge, IP forwarding needs to be enabled.
+ .
+ The default value is no.

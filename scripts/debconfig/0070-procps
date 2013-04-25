@@ -1,0 +1,78 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+Defaults ()
+{
+	if [ -z "${_NET_IPV4_IP_FORWARD}" ]
+	then
+		if [ -e /etc/sysctl.d/net.ipv4.ip_forward.conf ]
+		then
+			_NET_IPV4_IP_FORWARD="$(grep '^ *net.ipv4.ip_forward' /etc/sysctl.d/net.ipv4.ip_forward.conf | sed -e 's|.*=* ||')"
+		fi
+
+		_NET_IPV4_IP_FORWARD="${_NET_IPV4_IP_FORWARD:-0}"
+	fi
+}
+
+db_get live-debconfig/procps/net.ipv4.ip_forward
+_NET_IPV4_IP_FORWARD="${RET}" # string w/
+
+Defaults
+
+db_set live-debconfig/procps/net.ipv4.ip_forward "${_NET_IPV4_IP_FORWARD}"
+db_fset live-debconfig/procps/net.ipv4.ip_forward seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/procps/net.ipv4.ip_forward || true
+db_go
+
+db_get live-debconfig/procps/net.ipv4.ip_forward
+_NET_IPV4_IP_FORWARD="${RET}" # string w/
+
+Defaults
+
+db_stop
+
+# translate debconf boolean into 'yes' and 'no'
+# (this is better than using a select in debconf with Choices-C,
+# otherwise all translators would need to translate 'yes' and 'no').
+case "${_NET_IPV4_IP_FORWARD}" in
+	true)
+		_NET_IPV4_IP_FORWARD="1"
+		;;
+
+	false)
+		_NET_IPV4_IP_FORWARD="0"
+		;;
+esac
+
+if [ -e /etc/sysctl.d/net.ipv4.ip_forward.conf ]
+then
+	cp /etc/sysctl.d/net.ipv4.ip_forward.conf /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
+else
+	mkdir -p /etc/sysctl.d
+	touch /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
+fi
+
+# Set the net.ipv4.ip_forward parameters
+grep -Eq '^ *net.ipv4.ip_forward' /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp || \
+	echo "net.ipv4.ip_forward" >> /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
+
+sed -i -e "s|^ *net.ipv4.ip_forward.*|net.ipv4.ip_forward = ${_NET_IPV4_IP_FORWARD}|" \
+	/etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
+
+mv /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp /etc/sysctl.d/net.ipv4.ip_forward.conf
