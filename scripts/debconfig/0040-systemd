@@ -122,7 +122,7 @@ case "${_LXC_ENABLE}" in
 		# Remove uneeded services in a container
 		for _SERVICE in ${_LXC_DISABLE_SERVICES}
 		do
-			systemctl disable ${_SERVICE}
+			systemctl mask ${_SERVICE}
 		done
 		;;
 
@@ -152,7 +152,7 @@ case "${_LXC_ENABLE}" in
 		# Renable services
 		for _SERVICE in ${_LXC_DISABLE_SERVICES}
 		do
-			systemctl enable ${_SERVICE}
+			systemctl unmask ${_SERVICE}
 		done
 		;;
 esac
