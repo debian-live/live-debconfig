@@ -124,6 +124,9 @@ case "${_LXC_ENABLE}" in
 		do
 			systemctl mask ${_SERVICE}
 		done
+
+		# Disable setting CapabilityBoundingSet for journald
+		sed -e 's/^ *CapabilityBoundingSet/\#&/' /lib/systemd/system/systemd-journald.service > /etc/systemd/system/systemd-journald.service
 		;;
 
 	false)
@@ -154,5 +157,8 @@ case "${_LXC_ENABLE}" in
 		do
 			systemctl unmask ${_SERVICE}
 		done
+
+		# Restore journald capabilities
+		rm -f /etc/systemd/system/systemd-journald.service
 		;;
 esac
