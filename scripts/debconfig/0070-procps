@@ -26,10 +26,23 @@ Defaults ()
 
 		_NET_IPV4_IP_FORWARD="${_NET_IPV4_IP_FORWARD:-0}"
 	fi
+
+	if [ -z "${_VM_SWAPPINESS}" ]
+	then
+		if [ -e /etc/sysctl.d/vm.swappiness.conf ]
+		then
+			_VM_SWAPPINESS="$(grep '^ *vm.swappiness' /etc/sysctl.d/vm.swappiness.conf | sed -e 's|.*=* ||')"
+		fi
+
+		_VM_SWAPPINESS="${_VM_SWAPPINESS:-60}"
+	fi
 }
 
 db_get live-debconfig/procps/net.ipv4.ip_forward
 _NET_IPV4_IP_FORWARD="${RET}" # string w/
+
+db_get live-debconfig/procps/vm.swappiness
+_VM_SWAPPINESS="${RET}" # string w/
 
 Defaults
 
@@ -42,6 +55,16 @@ db_go
 
 db_get live-debconfig/procps/net.ipv4.ip_forward
 _NET_IPV4_IP_FORWARD="${RET}" # string w/
+
+db_set live-debconfig/procps/vm.swappiness "${_VM_SWAPPINESS}"
+db_fset live-debconfig/procps/vm.swappiness seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/procps/vm.swappiness || true
+db_go
+
+db_get live-debconfig/procps/vm.swappiness
+_VM_SWAPPINESS="${RET}" # string w/
 
 Defaults
 
@@ -60,6 +83,7 @@ case "${_NET_IPV4_IP_FORWARD}" in
 		;;
 esac
 
+# Set the net.ipv4.ip_forward parameters
 if [ -e /etc/sysctl.d/net.ipv4.ip_forward.conf ]
 then
 	cp /etc/sysctl.d/net.ipv4.ip_forward.conf /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
@@ -68,7 +92,6 @@ else
 	touch /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
 fi
 
-# Set the net.ipv4.ip_forward parameters
 grep -Eq '^ *net.ipv4.ip_forward' /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp || \
 	echo "net.ipv4.ip_forward" >> /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
 
@@ -76,3 +99,20 @@ sed -i -e "s|^ *net.ipv4.ip_forward.*|net.ipv4.ip_forward = ${_NET_IPV4_IP_FORWA
 	/etc/sysctl.d/net.ipv4.ip_forward.conf.tmp
 
 mv /etc/sysctl.d/net.ipv4.ip_forward.conf.tmp /etc/sysctl.d/net.ipv4.ip_forward.conf
+
+# Set the vm.swappiness
+if [ -e /etc/sysctl.d/vm.swappiness.conf ]
+then
+	cp /etc/sysctl.d/vm.swappiness.conf /etc/sysctl.d/vm.swappiness.conf.tmp
+else
+	mkdir -p /etc/sysctl.d
+	touch /etc/sysctl.d/vm.swappiness.conf.tmp
+fi
+
+grep -Eq '^ *vm.swappiness' /etc/sysctl.d/vm.swappiness.conf.tmp || \
+	echo "vm.swappiness" >> /etc/sysctl.d/vm.swappiness.conf.tmp
+
+sed -i -e "s|^ *vm.swappiness.*|vm.swappiness = ${_VM_SWAPPINESS}|" \
+	/etc/sysctl.d/vm.swappiness.conf.tmp
+
+mv /etc/sysctl.d/vm.swappiness.conf.tmp /etc/sysctl.d/vm.swappiness.conf

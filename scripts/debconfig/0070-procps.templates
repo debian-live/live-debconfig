@@ -18,3 +18,18 @@ Description: live-debconfig: enable ipv4.ip_forward?
  through a bridge, IP forwarding needs to be enabled.
  .
  The default value is no.
+
+Template: live-debconfig/procps/vm.swappiness
+Type: boolean
+Default:
+Description: live-debconfig: set vm.swappiness?
+ Swappiness is a kernel property to change the balance between swapping out
+ runtime memory and dropping pages from the system page cache.
+ .
+ Swappiness can be set to values between 0 and 100 inclusive.
+ .
+ A low value means the kernel will try to avoid swapping as much as possible
+ where a higher value instead will make the kernel aggressively try to use
+ swap space.
+ .
+ The default value is 60.
