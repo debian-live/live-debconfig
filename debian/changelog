@@ -1,3 +1,32 @@
+live-debconfig (4.0~a23-1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Adding procps script.
+  * Adding files section to live-debconfig manpage.
+  * Adding vm.swappiness in procfs script.
+
+  [ Nik Lutz ]
+  * Replacing 'systemctl disable' with 'systemctl mask' in the systemd
+    script.
+
+  [ Daniel Baumann ]
+  * Adding a script do make dbus work inside a container running systemd,
+    thanks to Nik Lutz <nik@netstyle.ch> for the initial work on this.
+
+  [ Nik Lutz ]
+  * Configure systemd-journald to work inside containers running systemd.
+  * Adding rescue.target to the list of services to be disabled in systemd
+    containers (minutes after boot systemd starts reporting on
+    rescue.target failures).
+
+  [ Daniel Baumann ]
+  * Importing global preseed files from /var/lib/live/debconfig/preseed,
+    if any.
+  * Adding /var/lib/live/debconfig/preseed/ to files section in manpage.
+  * Autogenerating preseed example file from debconf files.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 28 May 2013 14:32:56 +0200
+
 live-debconfig (4.0~a22-1) unstable; urgency=low
 
   [ chals ]
