@@ -151,6 +151,15 @@ Main ()
 
 	Setup_debconf
 
+	# Import global debconf preseed files for live-debconfig
+	for _FILE in /var/lib/live/debconfig/preseed/*
+	do
+		if [ -e "${_FILE}" ]
+		then
+			live-debconfig-set-selections "${_FILE}"
+		fi
+	done
+
 	# Show debconf multiselect dialog
 	/lib/live/debconfig/multiselect ${_SCRIPTS}
 
