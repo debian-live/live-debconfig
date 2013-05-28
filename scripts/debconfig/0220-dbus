@@ -1,0 +1,62 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+if [ ! -e /lib/systemd/systemd ]
+then
+	# System does not use systemd
+	exit 0
+fi
+
+if [ ! -e /usr/bin/dbus-daemon ]
+then
+	# dbus not installed
+	exit 0
+fi
+
+Defaults ()
+{
+	_OOMSCOREADJUST="${_OOMSCOREADJUST:-true}"
+}
+
+db_get live-debconfig/dbus/oomscoreadjust
+_OOMSCOREADJUST="${RET}" # boolean
+
+Defaults
+
+db_set live-debconfig/dbus/oomscoreadjust "${_OOMSCOREADJUST}"
+db_fset live-debconfig/dbus/oomscoreadjust seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/dbus/oomscoreadjust || true
+db_go
+
+db_get live-debconfig/dbus/oomscoreadjust
+_OOMSCOREADJUST="${RET}" # boolean
+
+db_stop
+
+case "${_OOMSCOREADJUST}" in
+	false)
+		# Updating service file
+		sed -e 's|^ *OOMScoreAdjust|\#&|' /lib/systemd/system/dbus.service > /etc/systemd/system/dbus.service
+		;;
+
+	true)
+		# Reenable sulogin
+		rm -f /etc/systemd/system/dbus.service
+		;;
+esac

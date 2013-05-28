@@ -1,0 +1,12 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/dbus/oomscoreadjust
+Type: boolean
+Default: true
+Description: live-debconfig: OOMScoreAdjust in dbus' systemd service?
+ The OOMScoreAdjust configuration parameter in the dbus systemd service can be removed.
+ This is only required in a Linux container (LXC) where OOMScoreAdjust is not allowed.
+ .
+ This defaults to true.

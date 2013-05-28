@@ -25,8 +25,9 @@ Description: live-debconfig: Which services to disable for LXC?
  Some services are not useful in containers and should be disabled.
  .
  This defaults to checkroot.service dev-hugepages.mount dev-mqueue.mount
- proc-sys-fs-binfmt_misc.automount remount-rootfs.service run-lock.mount
- run-user.mount swap.target sys-kernel-debug.mount sys-kernel-security.mount
- systemd-modules-load.service systemd-remount-api-vfs.service
- systemd-sysctl.service systemd-update-utmp-runlevel.service udev.service
- udev-settle.service udev-trigger.service user.mount var-lock.mount.
+ proc-sys-fs-binfmt_misc.automount remount-rootfs.service rescue.target
+ run-lock.mount run-user.mount swap.target sys-kernel-debug.mount
+ sys-kernel-security.mount systemd-modules-load.service
+ systemd-remount-api-vfs.service systemd-sysctl.service
+ systemd-update-utmp-runlevel.service udev.service udev-settle.service
+ udev-trigger.service user.mount var-lock.mount.
