@@ -20,6 +20,7 @@ Defaults ()
 	if [ -z "${_FOO}" ]
 	then
 		# FIXME
+		:
 	fi
 }
 

@@ -1,0 +1,70 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Scripts
+## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+Defaults ()
+{
+	if [ -z "${_IMKLOG}" ]
+	then
+		for _FILE in /etc/rsyslog.conf /etc/rsyslog.d/*
+		do
+			#if [ -e "${_FILE}" ] && grep -Eqs '^ *\$ModLoad *imklog' "${_FILE}" && ! grep -Eqs '^ *#\$ModLoad *imklog' "${_FILE}"
+			if [ -e "${_FILE}" ] && grep -Eqs '^ *\$ModLoad *imklog' "${_FILE}"
+			then
+				_IMKLOG="${_IMKLOG:-true}"
+			else
+				_IMKLOG="${_IMKLOG:-false}"
+			fi
+		done
+
+		_IMKLOG="${_IMKLOG:-true}"
+	fi
+}
+
+db_get live-debconfig/rsyslog/imklog
+_IMKLOG="${RET}" # boolean
+
+Defaults
+
+db_set live-debconfig/rsyslog/imklog "${_IMKLOG}"
+db_fset live-debconfig/rsyslog/imklog seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/rsyslog/imklog || true
+db_go
+
+db_get live-debconfig/rsyslog/imklog
+_IMKLOG="${RET}" # boolean
+
+Defaults
+
+db_stop
+
+for _FILE in /etc/rsyslog.conf /etc/rsyslog.d/*
+do
+	if [ -e "${_FILE}" ]
+	then
+		case "${_IMKLOG}" in
+			true)
+				sed -i -e 's|^ *#$ModLoad *imklog|$ModLoad imklog|' "${_FILE}"
+				;;
+
+			false)
+				sed -i -e 's|^ *$ModLoad *imklog|#$ModLoad imklog|' "${_FILE}"
+				;;
+		esac
+	fi
+done
