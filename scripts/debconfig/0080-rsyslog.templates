@@ -1,0 +1,15 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/rsyslog/imklog
+Type: boolean
+Default:
+Description: live-debconfig: log kernel messages?
+ Is it desired to log kernel messages?
+ .
+ On normal systems the kernel messages should be logged. However, on Linux
+ Containers (LXC) by default the kernel messages should not be logged within the
+ container.
+ .
+ The default value is yes.
