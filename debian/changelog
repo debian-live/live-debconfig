@@ -1,3 +1,11 @@
+live-debconfig (4.0~a24-1) unstable; urgency=low
+
+  * Correcting debconf field type for vm.swappiness in procps script.
+  * Adding dummy noop in example script to pass testsuite.
+  * Adding rsyslog script (Closes: #711170).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Wed, 05 Jun 2013 10:53:19 +0200
+
 live-debconfig (4.0~a23-1) unstable; urgency=low
 
   [ Daniel Baumann ]
