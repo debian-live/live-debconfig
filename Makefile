@@ -12,7 +12,7 @@ SHELL := sh -e
 
 LANGUAGES = $(shell cd manpages/po && ls)
 
-SCRIPTS = frontend/* scripts/*/*
+SCRIPTS = frontend/* comonents/*
 
 all: build
 
@@ -58,8 +58,8 @@ install:
 	mkdir -p $(DESTDIR)/bin
 	cp frontend/* $(DESTDIR)/bin
 
-	mkdir -p $(DESTDIR)/lib/live
-	cp -r scripts/* $(DESTDIR)/lib/live
+	mkdir -p $(DESTDIR)/lib/live/debconfig
+	cp -r components/* $(DESTDIR)/lib/live/debconfig
 
 	# Installing docs
 	mkdir -p $(DESTDIR)/usr/share/doc/live-debconfig
