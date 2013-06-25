@@ -4,8 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: live-debconfig 4.0~a24-1\n"
-"POT-Creation-Date: 2013-06-25 11:23+0300\n"
+"Project-Id-Version: live-debconfig 4.0~a25-1\n"
+"POT-Creation-Date: 2013-06-25 11:31+0300\n"
 "PO-Revision-Date: 2013-04-13 21:05+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
@@ -24,7 +24,7 @@ msgstr "LIVE-DEBCONFIG"
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
-#, fuzzy, no-wrap
+#, no-wrap
 msgid "2013-06-25"
 msgstr "25.06.2013"
 
@@ -32,8 +32,8 @@ msgstr "25.06.2013"
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~a24-1"
-msgstr "4.0~a24-1"
+msgid "4.0~a25-1"
+msgstr "4.0~a25-1"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9

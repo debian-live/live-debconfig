@@ -1,3 +1,13 @@
+live-debconfig (4.0~a25-1) unstable; urgency=low
+
+  * Reorganizing frontend in source tree.
+  * Reorganizing components in source tree.
+  * Updating example packaging.
+  * Using component consistently when refering to live-debconfs executable
+    parts.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 25 Jun 2013 11:31:15 +0200
+
 live-debconfig (4.0~a24-1) unstable; urgency=low
 
   * Correcting debconf field type for vm.swappiness in procps script.
