@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a25-1\n"
 "POT-Creation-Date: 2013-06-25 11:31+0300\n"
-"PO-Revision-Date: 2013-04-13 21:00+0100\n"
+"PO-Revision-Date: 2013-06-25 21:47+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -137,39 +137,32 @@ msgstr ""
 
 #. type: Plain text
 #: en/live-debconfig.7:13
-#, fuzzy
-#| msgid "B<live-debconfig> - System Configuration Scripts"
 msgid "B<live-debconfig> - System Configuration Components"
-msgstr "B<live-debconfig> - Scripts de Configuración del Sistema"
+msgstr "B<live-debconfig> - Componentes de Configuración del Sistema"
 
 #. type: Plain text
 #: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
-#, fuzzy
 msgid ""
 "B<live-debconfig> contains the components that configure a Live system "
 "during the build process (live-build)."
 msgstr ""
-"B<live-debconfig> contiene los scripts que configuran un sistema Live "
+"B<live-debconfig> contiene los componentes que configuran un sistema Live "
 "durante el proceso de construcción (live-build)."
 
 #. type: SH
 #: en/live-debconfig.7:17
 #, no-wrap
 msgid "COMPONENTS"
-msgstr ""
+msgstr "COMPONENTES"
 
 #. type: Plain text
 #: en/live-debconfig.7:19
-#, fuzzy
-#| msgid ""
-#| "B<live-debconfig> currently features the following scripts in /lib/live/"
-#| "debconfig."
 msgid ""
 "B<live-debconfig> currently features the following components in /lib/live/"
 "debconfig."
 msgstr ""
-"B<live-debconfig> actualmente cuenta con los siguientes scripts en /lib/live/"
-"debconfig."
+"B<live-debconfig> actualmente cuenta con los siguientes componentes en /lib/"
+"live/debconfig."
 
 #. type: IP
 #: en/live-debconfig.7:20
