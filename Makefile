@@ -12,7 +12,7 @@ SHELL := sh -e
 
 LANGUAGES = $(shell cd manpages/po && ls)
 
-SCRIPTS = bin/* scripts/*/*
+SCRIPTS = frontend/* scripts/*/*
 
 all: build
 
@@ -56,7 +56,7 @@ build:
 install:
 	# Installing scripts
 	mkdir -p $(DESTDIR)/bin
-	cp bin/* $(DESTDIR)/bin
+	cp frontend/* $(DESTDIR)/bin
 
 	mkdir -p $(DESTDIR)/lib/live
 	cp -r scripts/* $(DESTDIR)/lib/live
