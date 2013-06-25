@@ -1,6 +1,6 @@
 #!/bin/sh
 
-## live-debconfig(7) - System Configuration Scripts
+## live-debconfig(7) - System Configuration Components
 ## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
 ##
 ## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
@@ -58,29 +58,19 @@ EOF
 
 Main ()
 {
-	if [ ! -x "$(which debconf-set-selections 2>/dev/null)" ]
+	if [ ! -x "$(which debconf-get-selections 2>/dev/null)" ]
 	then
-		echo "E: debconf-set-selections - command not found"
-		echo "I: debconf can be obtained from:"
+		echo "E: debconf-get-selections - command not found"
+		echo "I: debconf-utils can be obtained from:"
 		echo "I:   http://ftp.debian.org/debian/pool/main/d/debconf/"
 		echo "I: On Debian based systems, po4a can be installed with:"
-		echo "I:   apt-get install debconf"
+		echo "I:   apt-get install debconf-utils"
 		exit 1
 	fi
 
 	Setup_debconf
 
-	if [ -n "${1}" ]
-	then
-		# Preseed from file
-		debconf-set-selections "${1}"
-	else
-		# Preseed from stdin
-		while read _LINE
-		do
-			echo ${_LINE} | debconf-set-selections
-		done < /dev/stdin
-	fi
+	debconf-get-selections ${@}
 }
 
 Main ${@}

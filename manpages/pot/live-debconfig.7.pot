@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig VERSION\n"
-"POT-Creation-Date: 2013-06-05 10:53+0300\n"
+"POT-Creation-Date: 2013-06-25 11:31+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,14 +27,14 @@ msgstr ""
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2013-06-05"
+msgid "2013-06-25"
 msgstr ""
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~a24-1"
+msgid "4.0~a25-1"
 msgstr ""
 
 #. type: TH
@@ -128,26 +128,26 @@ msgstr ""
 
 #. type: Plain text
 #: en/live-debconfig.7:13
-msgid "B<live-debconfig> - System Configuration Scripts"
+msgid "B<live-debconfig> - System Configuration Components"
 msgstr ""
 
 #. type: Plain text
 #: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
 msgid ""
-"B<live-debconfig> contains the scripts that configure a Live system during "
-"the build process (live-build)."
+"B<live-debconfig> contains the components that configure a Live system "
+"during the build process (live-build)."
 msgstr ""
 
 #. type: SH
 #: en/live-debconfig.7:17
 #, no-wrap
-msgid "SCRIPTS"
+msgid "COMPONENTS"
 msgstr ""
 
 #. type: Plain text
 #: en/live-debconfig.7:19
 msgid ""
-"B<live-debconfig> currently features the following scripts in /lib/live/"
+"B<live-debconfig> currently features the following components in /lib/live/"
 "debconfig."
 msgstr ""
 

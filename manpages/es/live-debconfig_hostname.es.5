@@ -1,4 +1,4 @@
-.\" live-debconfig(7) - System Configuration Scripts
+.\" live-debconfig(7) - System Configuration Components
 .\" Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
 .\"
 .\" This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
@@ -11,21 +11,19 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH LIVE\-DEBCONFIG 5 05.06.2013 4.0~a24\-1 "Proyecto Live Systems"
+.TH LIVE\-DEBCONFIG 5 25.06.2013 4.0~a25\-1 "Proyecto Live Systems"
 
 .SH NOMBRE
-\fBlive\-debconfig\fP \- script hostname
+\fBlive\-debconfig\fP \- hostname component
 
 .SH DESCRIPCIÓN
-\fBlive\-debconfig\fP contiene los scripts que configuran un sistema Live
-durante el proceso de construcción (live\-build).
+\fBlive\-debconfig\fP contains the components that configure a Live system
+during the build process (live\-build).
 .PP
-Este script establece el nombre del anfitrión del sistema en el fichero
-/etc/hostname
+This component sets the systems hostname in the /etc/hostname file.
 
 .SH PRECONFIGURACIÓN
-El script hostname actualmente incluye las siguientes opciones de
-preconfiguración.
+The hostname component currently features the following preseeding options.
 
 .IP "\fBlive\-debconfig live\-debconfig/hostname/hostname string\fP \fIHOSTNAME\fP" 8
 Permite establecer el nombre del anfitrión del sistema.

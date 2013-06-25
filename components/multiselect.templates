@@ -1,0 +1,10 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/components
+Type: multiselect
+Default:
+Choices: ${CHOICES}
+Description: live-debconfig: Components?
+ Which components should be run to configure the current system?

@@ -5,19 +5,19 @@ _PRESEED_FILE="preseed.cfg"
 cat > "${_PRESEED_FILE}" << EOF
 # live-debconfig ($(cat ../VERSION))
 
-live-debconfig live-debconfig/scripts multiselect 
+live-debconfig live-debconfig/components multiselect 
 EOF
 
-for _SCRIPT in $(ls ../scripts/debconfig/????-* | grep -v ".templates")
+for _COMPONENT in $(ls ../components/????-* | grep -v ".templates")
 do
-	_SCRIPT_NAME="$(basename ${_SCRIPT} | sed -e 's|^[0-9][0-9][0-9][0-9]-||')"
+	_COMPONENT_NAME="$(basename ${_COMPONENT} | sed -e 's|^[0-9][0-9][0-9][0-9]-||')"
 
 cat >> "${_PRESEED_FILE}" << EOF
 
-# ${_SCRIPT_NAME}
+# ${_COMPONENT_NAME}
 EOF
 
-	for _DEBCONF in $(grep db_get ${_SCRIPT} | sed -e 's|.*db_get ||' -e 's|&&.*$||')
+	for _DEBCONF in $(grep db_get ${_COMPONENT} | sed -e 's|.*db_get ||' -e 's|&&.*$||')
 	do
 		if ! grep -qs "live-debconfig ${_DEBCONF}" "${_PRESEED_FILE}"
 		then
@@ -27,7 +27,7 @@ EOF
 				_TYPE=""
 			else
 				_COMMENT=""
-				_TYPE=" $(grep -A1 -m1 "^Template: ${_DEBCONF}" ../scripts/debconfig/*-${_SCRIPT_NAME}.templates | awk '/^Type: / { print $2 }')"
+				_TYPE=" $(grep -A1 -m1 "^Template: ${_DEBCONF}" ../components/*-${_COMPONENT_NAME}.templates | awk '/^Type: / { print $2 }')"
 			fi
 
 

@@ -1,0 +1,51 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Components
+## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+_CMDLINE="${@}"
+
+_COMPONENTS="$(cd /lib/live/debconfig && for _COMPONENT in $(ls ????-* | grep -v '\.templates$' | sed -e 's|[0-9][0-9][0-9][0-9]-||g' | sort); do echo -n "${_COMPONENT}, "; done | sed -e 's|, $||')"
+
+if [ -n "${_COMPONENTS}" ]
+then
+	db_subst live-debconfig/components CHOICES "${_COMPONENTS}"
+
+	case "${_CMDLINE}" in
+		nodebconfig)
+			db_set live-debconfig/components 
+			;;
+
+		"")
+			;;
+
+		*)
+			db_set live-debconfig/components $(echo ${_CMDLINE} | sed -e 's| |, |g')
+			;;
+	esac
+
+	db_fset live-debconfig/components seen false
+
+	db_settitle live-debconfig/title
+	db_input high live-debconfig/components || true
+	db_go
+
+	db_get live-debconfig/components
+	_COMPONENTS="$(echo ${RET} | sed -e 's|,| |g')" # multiselect
+
+	echo "_COMPONENTS=\"${_COMPONENTS}\"" > /var/lib/live/debconfig/multiselect
+
+	db_stop
+fi

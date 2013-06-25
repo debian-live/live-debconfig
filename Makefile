@@ -1,6 +1,6 @@
 # Makefile
 
-## live-debconfig(7) - System Configuration Scripts
+## live-debconfig(7) - System Configuration Components
 ## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
 ##
 ## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
@@ -12,7 +12,7 @@ SHELL := sh -e
 
 LANGUAGES = $(shell cd manpages/po && ls)
 
-SCRIPTS = bin/* scripts/*/*
+SCRIPTS = frontend/* comonents/*
 
 all: build
 
@@ -56,10 +56,10 @@ build:
 install:
 	# Installing scripts
 	mkdir -p $(DESTDIR)/bin
-	cp bin/* $(DESTDIR)/bin
+	cp frontend/* $(DESTDIR)/bin
 
-	mkdir -p $(DESTDIR)/lib/live
-	cp -r scripts/* $(DESTDIR)/lib/live
+	mkdir -p $(DESTDIR)/lib/live/debconfig
+	cp -r components/* $(DESTDIR)/lib/live/debconfig
 
 	# Installing docs
 	mkdir -p $(DESTDIR)/usr/share/doc/live-debconfig
