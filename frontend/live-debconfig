@@ -1,6 +1,6 @@
 #!/bin/sh
 
-## live-debconfig(7) - System Configuration Scripts
+## live-debconfig(7) - System Configuration Components
 ## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
 ##
 ## This program is free software: you can redistribute it and/or modify
@@ -28,24 +28,24 @@ Cmdline ()
 	do
 		case "${_PARAMETER}" in
 			--debconfig=*)
-				# Only run requested scripts
+				# Only run requested components
 				LIVE_DEBCONFIGS="${_PARAMETER#*debconfig=}"
 				;;
 
 			--debconfig)
-				# Run all scripts
-				_SCRIPTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
+				# Run all components
+				_COMPONENTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
 				;;
 
 			--nodebconfig=*)
-				# Don't run requested scripts
-				_SCRIPTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
+				# Don't run requested components
+				_COMPONENTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
 				LIVE_NODEBCONFIGS="${_PARAMETER#*nodebconfig=}"
 				;;
 
 			--nodebconfig)
-				# Don't run any script
-				_SCRIPTS="nodebconfig"
+				# Don't run any components
+				_COMPONENTS="nodebconfig"
 				;;
 
 			# Special options
@@ -55,29 +55,29 @@ Cmdline ()
 
 			*)
 				echo "Usage: live-debconfig"
-				echo "Usage: live-debconfig --debconfig|--debconfig=SCRIPT1,SCRIPT2,SCRIPT3"
-				echo "Usage: live-debconfig --nodebconfig|--nodebconfig=SCRIPT1,SCRIPT2,SCRIPT3"
+				echo "Usage: live-debconfig --debconfig|--debconfig=COMPONENT1,COMPONENT2,...,COMPONENTn"
+				echo "Usage: live-debconfig --nodebconfig|--nodebconfig=COMPONENT1,COMPONENT2,...,COMPONENTn"
 				echo "Usage: live-debconfig --debug"
 				exit 1
 				;;
 		esac
 	done
 
-	# Include requested scripts
+	# Include requested components
 	if [ -n "${LIVE_DEBCONFIGS}" ]
 	then
 		for _DEBCONFIG in $(echo ${LIVE_DEBCONFIGS} | sed -e 's|,| |g')
 		do
-			_SCRIPTS="${_SCRIPTS} ${_DEBCONFIG}"
+			_COMPONENTS="${_COMPONENTS} ${_DEBCONFIG}"
 		done
 	fi
 
-	# Exclude requested scripts
+	# Exclude requested components
 	if [ -n "${LIVE_NODEBCONFIGS}" ]
 	then
 		for _NODEBCONFIG in $(echo ${LIVE_NODEBCONFIGS} | sed -e 's|,| |g')
 		do
-			_SCRIPTS="$(echo ${_SCRIPTS} | sed -e "s|${_NODEBCONFIG}||")"
+			_COMPONENTS="$(echo ${_COMPONENTS} | sed -e "s|${_NODEBCONFIG}||")"
 		done
 	fi
 }
@@ -161,22 +161,22 @@ Main ()
 	done
 
 	# Show debconf multiselect dialog
-	/lib/live/debconfig/multiselect ${_SCRIPTS}
+	/lib/live/debconfig/multiselect ${_COMPONENTS}
 
 	. /var/lib/live/debconfig/multiselect
 	rm -f /var/lib/live/debconfig/multiselect
 
 	# Configuring system
-	_SCRIPTS="$(echo ${_SCRIPTS} | sed -e 's| |\n|g' | sort -u)"
+	_COMPONENTS="$(echo ${_COMPONENTS} | sed -e 's| |\n|g' | sort -u)"
 
-	for _SCRIPT in ${_SCRIPTS}
+	for _COMPONENT in ${_COMPONENTS}
 	do
-		if ls /lib/live/debconfig/????-${_SCRIPT} > /dev/null
+		if ls /lib/live/debconfig/????-${_COMPONENT} > /dev/null
 		then
-			[ "${LIVE_DEBUG}" = "true" ] && echo "[$(date +'%F %T')] live-debconfig: ${_SCRIPT}" >> /var/log/live/debconfig.log
-			/lib/live/debconfig/????-${_SCRIPT}
+			[ "${LIVE_DEBUG}" = "true" ] && echo "[$(date +'%F %T')] live-debconfig: ${_COMPONENT}" >> /var/log/live/debconfig.log
+			/lib/live/debconfig/????-${_COMPONENT}
 		else
-			echo "W: ${_SCRIPT} - no such script in /lib/live/debconfig, skipping."
+			echo "W: ${_COMPONENT} - no such component in /lib/live/debconfig, skipping."
 		fi
 	done
 }

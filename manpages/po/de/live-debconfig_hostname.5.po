@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig 4.0~a24-1\n"
-"POT-Creation-Date: 2013-06-05 10:53+0300\n"
+"POT-Creation-Date: 2013-06-25 11:23+0300\n"
 "PO-Revision-Date: 2013-04-13 21:07+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
@@ -26,8 +26,8 @@ msgstr "LIVE-DEBCONFIG"
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2013-06-05"
-msgstr "05.06.2013"
+msgid "2013-06-25"
+msgstr "25.06.2013"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
@@ -131,10 +131,10 @@ msgstr ""
 #. type: Plain text
 #: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
 msgid ""
-"B<live-debconfig> contains the scripts that configure a Live system during "
-"the build process (live-build)."
+"B<live-debconfig> contains the components that configure a Live system "
+"during the build process (live-build)."
 msgstr ""
-"B<live-debconfig> enthält die Skripte welche ein Live System während des "
+"B<live-debconfig> enthält die Komponente welche ein Live System während des "
 "Buildvorganges (live-build) konfigurieren."
 
 #. type: Plain text
@@ -159,13 +159,14 @@ msgstr "I<live-tools>(7)"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:13
-msgid "B<live-debconfig> - hostname script"
-msgstr "B<live-debconfig> - Hostname Skript"
+msgid "B<live-debconfig> - hostname component"
+msgstr "B<live-debconfig> - Hostname Komponente"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:18
-msgid "This script sets the systems hostname in the /etc/hostname file."
-msgstr "Dieses Skript setzt den Hostnamen des Systems in Datei /etc/hostname."
+msgid "This component sets the systems hostname in the /etc/hostname file."
+msgstr ""
+"Diese Komponente setzt den Hostnamen des Systems in Datei /etc/hostname."
 
 #. type: SH
 #: en/live-debconfig_hostname.5:19
@@ -176,8 +177,8 @@ msgstr "PRESEEDING"
 #. type: Plain text
 #: en/live-debconfig_hostname.5:21
 msgid ""
-"The hostname script currently features the following preseeding options."
-msgstr "Das Hostname Skript enthält derzeit folgende Preseeding Optionen."
+"The hostname component currently features the following preseeding options."
+msgstr "Die Hostname Komponente enthält derzeit folgende Preseeding Optionen."
 
 #. type: IP
 #: en/live-debconfig_hostname.5:22

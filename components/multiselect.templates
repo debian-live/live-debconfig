@@ -2,9 +2,9 @@ Template: live-debconfig/title
 Type: title
 Description: live-debconfig: System Configuration
 
-Template: live-debconfig/scripts
+Template: live-debconfig/components
 Type: multiselect
 Default:
 Choices: ${CHOICES}
-Description: live-debconfig: Scripts?
- Which scripts should be run to configure the current system?
+Description: live-debconfig: Components?
+ Which components should be run to configure the current system?

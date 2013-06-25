@@ -1,9 +1,9 @@
 #!/bin/sh
 
-## live-debconfig contains the scripts that configure a Live system during the
+## live-debconfig contains the components that configure a Live system during the
 ## build process (live-build).
 ##
-## This is the sysvinit script for live-debconfig.
+## This is the sysvinit component for live-debconfig.
 
 
 ### BEGIN INIT INFO
@@ -14,8 +14,8 @@
 # Should-Stop:
 # Default-Start:
 # Default-Stop:		0 6
-# Short-Description:	Live System Configuration Scripts
-# Description:		live-debconfig contains the scripts that configure a
+# Short-Description:	Live System Configuration Components
+# Description:		live-debconfig contains the components that configure a
 #			Live system during the build process (live-build).
 # X-Start-Before:
 # X-Stop-After:

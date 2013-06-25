@@ -1,6 +1,6 @@
 #!/bin/sh
 
-## live-debconfig(7) - System Configuration Scripts
+## live-debconfig(7) - System Configuration Components
 ## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
 ##
 ## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
@@ -17,35 +17,35 @@ export DEBCONF_SYSTEMRC
 
 _CMDLINE="${@}"
 
-_SCRIPTS="$(cd /lib/live/debconfig && for _SCRIPT in $(ls ????-* | grep -v '\.templates$' | sed -e 's|[0-9][0-9][0-9][0-9]-||g' | sort); do echo -n "${_SCRIPT}, "; done | sed -e 's|, $||')"
+_COMPONENTS="$(cd /lib/live/debconfig && for _COMPONENT in $(ls ????-* | grep -v '\.templates$' | sed -e 's|[0-9][0-9][0-9][0-9]-||g' | sort); do echo -n "${_COMPONENT}, "; done | sed -e 's|, $||')"
 
-if [ -n "${_SCRIPTS}" ]
+if [ -n "${_COMPONENTS}" ]
 then
-	db_subst live-debconfig/scripts CHOICES "${_SCRIPTS}"
+	db_subst live-debconfig/components CHOICES "${_COMPONENTS}"
 
 	case "${_CMDLINE}" in
 		nodebconfig)
-			db_set live-debconfig/scripts 
+			db_set live-debconfig/components 
 			;;
 
 		"")
 			;;
 
 		*)
-			db_set live-debconfig/scripts $(echo ${_CMDLINE} | sed -e 's| |, |g')
+			db_set live-debconfig/components $(echo ${_CMDLINE} | sed -e 's| |, |g')
 			;;
 	esac
 
-	db_fset live-debconfig/scripts seen false
+	db_fset live-debconfig/components seen false
 
 	db_settitle live-debconfig/title
-	db_input high live-debconfig/scripts || true
+	db_input high live-debconfig/components || true
 	db_go
 
-	db_get live-debconfig/scripts
-	_SCRIPTS="$(echo ${RET} | sed -e 's|,| |g')" # multiselect
+	db_get live-debconfig/components
+	_COMPONENTS="$(echo ${RET} | sed -e 's|,| |g')" # multiselect
 
-	echo "_SCRIPTS=\"${_SCRIPTS}\"" > /var/lib/live/debconfig/multiselect
+	echo "_COMPONENTS=\"${_COMPONENTS}\"" > /var/lib/live/debconfig/multiselect
 
 	db_stop
 fi
