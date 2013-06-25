@@ -14,16 +14,18 @@
 .TH LIVE\-DEBCONFIG 5 25.06.2013 4.0~a25\-1 "Projecte Live Systems"
 
 .SH NOM
-\fBlive\-debconfig\fP \- hostname component
+\fBlive\-debconfig\fP \- component hostname
 
 .SH DESCRIPCIÓ
-\fBlive\-debconfig\fP contains the components that configure a Live system
-during the build process (live\-build).
+\fBlive\-debconfig\fP conté els components que configuren un sistema Live durant
+el procés de construcció (live\-build).
 .PP
-This component sets the systems hostname in the /etc/hostname file.
+Aquest component estableix el nom del amfitrió del sistema al fitxer
+/etc/hostname
 
 .SH PRECONFIGURACIÓ
-The hostname component currently features the following preseeding options.
+El component hostname actualment inclou les opcions de preconfiguració
+següents.
 
 .IP "\fBlive\-debconfig live\-debconfig/hostname/hostname string\fP \fIHOSTNAME\fP" 8
 Permet establir el nom d'amfitrió del sistema.
