@@ -11,8 +11,8 @@ Vcs-Git: git://git.example.org/git/live-debconfig-foobar.git
 Package: live-debconfig-foobar
 Architecture: all
 Depends: ${misc:Depends}, live-debconfig (>= 4), live-debconfig (<< 5)
-Description: Additional Live System Configuration Scripts (foobar)
- live-debconfig contains the scripts that configure a live system during the
+Description: Additional Live System Configuration Components (foobar)
+ live-debconfig contains the components that configure a live system during the
  build process.
  .
- This package contains the additional foobar script(s).
+ This package contains the additional foobar component(s).
