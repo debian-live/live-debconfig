@@ -45,7 +45,7 @@ then
 	db_get live-debconfig/components
 	_COMPONENTS="$(echo ${RET} | sed -e 's|,| |g')" # multiselect
 
-	echo "_COMPONENTS=\"${_COMPONENTS}\"" > /var/lib/live/debconfig/multiselect
+	echo "_COMPONENTS=\"${_COMPONENTS}\"" > /var/lib/live/debconfig/components
 
 	db_stop
 fi

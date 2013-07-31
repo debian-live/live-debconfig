@@ -160,11 +160,11 @@ Main ()
 		fi
 	done
 
-	# Show debconf multiselect dialog
-	/lib/live/debconfig/multiselect ${_COMPONENTS}
+	# Show debconf components dialog
+	/lib/live/debconfig/components ${_COMPONENTS}
 
-	. /var/lib/live/debconfig/multiselect
-	rm -f /var/lib/live/debconfig/multiselect
+	. /var/lib/live/debconfig/components
+	rm -f /var/lib/live/debconfig/components
 
 	# Configuring system
 	_COMPONENTS="$(echo ${_COMPONENTS} | sed -e 's| |\n|g' | sort -u)"
