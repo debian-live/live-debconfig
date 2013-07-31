@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: live-debconfig 4.0~a25-1\n"
-"POT-Creation-Date: 2013-06-25 11:31+0300\n"
-"PO-Revision-Date: 2013-04-13 20:57+0100\n"
+"Project-Id-Version: live-debconfig 4.0~a26-1\n"
+"POT-Creation-Date: 2013-07-31 14:25+0300\n"
+"PO-Revision-Date: 2013-06-25 21:42+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: ca\n"
@@ -26,15 +26,15 @@ msgstr "LIVE-DEBCONFIG"
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2013-06-25"
-msgstr "25.06.2013"
+msgid "2013-07-31"
+msgstr "31.07.2013"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~a25-1"
-msgstr "4.0~a25-1"
+msgid "4.0~a26-1"
+msgstr "4.0~a26-1"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
@@ -129,13 +129,12 @@ msgstr ""
 
 #. type: Plain text
 #: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
-#, fuzzy
 msgid ""
 "B<live-debconfig> contains the components that configure a Live system "
 "during the build process (live-build)."
 msgstr ""
-"B<live-debconfig> conté els scripts que configuren un sistema Live durant el "
-"procés de construcció (live-build)."
+"B<live-debconfig> conté els components que configuren un sistema Live durant "
+"el procés de construcció (live-build)."
 
 #. type: Plain text
 #: en/live-debconfig.7:52 en/live-debconfig_hostname.5:56
@@ -159,18 +158,14 @@ msgstr "I<live-tools>(7)"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:13
-#, fuzzy
-#| msgid "B<live-debconfig> - hostname script"
 msgid "B<live-debconfig> - hostname component"
-msgstr "B<live-debconfig> - script hostname"
+msgstr "B<live-debconfig> - component hostname"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:18
-#, fuzzy
-#| msgid "This script sets the systems hostname in the /etc/hostname file."
 msgid "This component sets the systems hostname in the /etc/hostname file."
 msgstr ""
-"Aquest script estableix el nom del amfitrió del sistema al fitxer /etc/"
+"Aquest component estableix el nom del amfitrió del sistema al fitxer /etc/"
 "hostname"
 
 #. type: SH
@@ -181,13 +176,11 @@ msgstr "PRECONFIGURACIÓ"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:21
-#, fuzzy
-#| msgid ""
-#| "The hostname script currently features the following preseeding options."
 msgid ""
 "The hostname component currently features the following preseeding options."
 msgstr ""
-"El script hostname actualment inclou les opcions de preconfiguració següents."
+"El component hostname actualment inclou les opcions de preconfiguració "
+"següents."
 
 #. type: IP
 #: en/live-debconfig_hostname.5:22

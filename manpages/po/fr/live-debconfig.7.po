@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: live-debconfig 4.0~a25-1\n"
-"POT-Creation-Date: 2013-06-25 11:31+0300\n"
-"PO-Revision-Date: 2013-04-13 21:05+0100\n"
+"Project-Id-Version: live-debconfig 4.0~a26-1\n"
+"POT-Creation-Date: 2013-07-31 14:25+0300\n"
+"PO-Revision-Date: 2013-06-25 21:50+0100\n"
 "Last-Translator: Carlos Zuferri <chals@altorricon.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
@@ -25,15 +25,15 @@ msgstr "LIVE-DEBCONFIG"
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2013-06-25"
-msgstr "25.06.2013"
+msgid "2013-07-31"
+msgstr "31.07.2013"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~a25-1"
-msgstr "4.0~a25-1"
+msgid "4.0~a26-1"
+msgstr "4.0~a26-1"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
@@ -135,38 +135,31 @@ msgstr ""
 
 #. type: Plain text
 #: en/live-debconfig.7:13
-#, fuzzy
-#| msgid "B<live-debconfig> - System Configuration Scripts"
 msgid "B<live-debconfig> - System Configuration Components"
-msgstr "B<live-debconfig> - Scripts de configuration du système"
+msgstr "B<live-debconfig> - Composants de configuration du système"
 
 #. type: Plain text
 #: en/live-debconfig.7:16 en/live-debconfig_hostname.5:16
-#, fuzzy
 msgid ""
 "B<live-debconfig> contains the components that configure a Live system "
 "during the build process (live-build)."
 msgstr ""
-"B<live-debconfig> contient les scripts qui configurent un système Live "
+"B<live-debconfig> contient les composants qui configurent un système Live "
 "pendant le processus de construction (live-build)."
 
 #. type: SH
 #: en/live-debconfig.7:17
 #, no-wrap
 msgid "COMPONENTS"
-msgstr ""
+msgstr "COMPOSANTS"
 
 #. type: Plain text
 #: en/live-debconfig.7:19
-#, fuzzy
-#| msgid ""
-#| "B<live-debconfig> currently features the following scripts in /lib/live/"
-#| "debconfig."
 msgid ""
 "B<live-debconfig> currently features the following components in /lib/live/"
 "debconfig."
 msgstr ""
-"B<live-debconfig> contient les scripts suivants sur /lib/live/debconfig."
+"B<live-debconfig> contient les composants suivants sur /lib/live/debconfig."
 
 #. type: IP
 #: en/live-debconfig.7:20
