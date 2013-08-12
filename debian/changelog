@@ -1,3 +1,9 @@
+live-debconfig (4.0~a27-1) unstable; urgency=low
+
+  * Correcting wrong spelling of password in password component (Closes: #719471).
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 12 Aug 2013 10:33:43 +0200
+
 live-debconfig (4.0~a26-1) unstable; urgency=low
 
   * Renaming internal multiselect script to components.
