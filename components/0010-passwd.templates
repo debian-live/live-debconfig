@@ -11,7 +11,7 @@ Description: live-debconfig: Shadow passwords?
 Template: live-debconfig/passwd/root-password
 Type: password
 Description: live-debconfig: root password?
- What should be the passwort for the root account of this system?
+ What should be the password for the root account of this system?
  .
  If left empty (default), no change will be applied.
 
@@ -46,7 +46,7 @@ Description: live-debconfig: user fullname?
 Template: live-debconfig/passwd/user-password
 Type: password
 Description: live-debconfig: user password?
- What should be the passwort for the user account of this system?
+ What should be the password for the user account of this system?
  .
  If left empty (default), no change will be applied.
 
