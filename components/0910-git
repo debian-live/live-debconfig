@@ -1,0 +1,269 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Components
+## Copyright (C) 2006-2013 Daniel Baumann <mail@daniel-baumann.ch>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+## single repository (interactive)
+
+# repository url
+db_get live-debconfig/git/repository-url
+_REPOSITORY_URL="${RET}" # string (w/ empty)
+
+db_set live-debconfig/git/repository-url "${_REPOSITORY_URL}"
+db_fset live-debconfig/git/repository-url seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/git/repository-url || true
+db_go
+
+db_get live-debconfig/git/repository-url
+_REPOSITORY_URL="${RET}" # string (w/ empty)
+
+if [ -n "${_REPOSITORY_URL}" ]
+then
+	# repository directory
+	db_get live-debconfig/git/repository-directory
+	_REPOSITORY_DIRECTORY="${RET}" # string (w/ empty)
+
+	db_set live-debconfig/git/repository-directory "${_REPOSITORY_DIRECTORY}"
+	db_fset live-debconfig/git/repository-directory seen false
+
+	db_settitle live-debconfig/title
+	db_input high live-debconfig/git/repository-directory || true
+	db_go
+
+	db_get live-debconfig/git/repository-directory
+	_REPOSITORY_DIRECTORY="${RET}" # string (w/ empty)
+
+	# repository uid
+	db_get live-debconfig/git/repository-uid
+	_REPOSITORY_UID="${RET}" # string (w/ empty)
+
+	db_set live-debconfig/git/repository-uid "${_REPOSITORY_UID}"
+	db_fset live-debconfig/git/repository-uid seen false
+
+	db_settitle live-debconfig/title
+	db_input low live-debconfig/git/repository-uid || true
+	db_go
+
+	db_get live-debconfig/git/repository-uid
+	_REPOSITORY_UID="${RET}" # string (w/ empty)
+
+	# repository gid
+	db_get live-debconfig/git/repository-gid
+	_REPOSITORY_GID="${RET}" # string (w/ empty)
+
+	db_set live-debconfig/git/repository-gid "${_REPOSITORY_GID}"
+	db_fset live-debconfig/git/repository-gid seen false
+
+	db_settitle live-debconfig/title
+	db_input low live-debconfig/git/repository-gid || true
+	db_go
+
+	db_get live-debconfig/git/repository-gid
+	_REPOSITORY_GID="${RET}" # string (w/ empty)
+
+	# repository permission
+	db_get live-debconfig/git/repository-permission
+	_REPOSITORY_PERMISSION="${RET}" # string (w/ empty)
+
+	db_set live-debconfig/git/repository-permission "${_REPOSITORY_PERMISSION}"
+	db_fset live-debconfig/git/repository-permission seen false
+
+	db_settitle live-debconfig/title
+	db_input low live-debconfig/git/repository-permission || true
+	db_go
+
+	db_get live-debconfig/git/repository-permission
+	_REPOSITORY_PERMISSION="${RET}" # string (w/ empty)
+
+	# repository command
+	db_get live-debconfig/git/repository-command
+	_REPOSITORY_COMMAND="${RET}" # string (w/ empty)
+
+	db_set live-debconfig/git/repository-command "${_REPOSITORY_COMMAND}"
+	db_fset live-debconfig/git/repository-command seen false
+
+	db_settitle live-debconfig/title
+	db_input low live-debconfig/git/repository-command || true
+	db_go
+
+	db_get live-debconfig/git/repository-command
+	_REPOSITORY_COMMAND="${RET}" # string (w/ empty)
+fi
+
+## multiple repository (non-interactive)
+
+_NUMBER="0"
+
+while db_get live-debconfig/git/repository${_NUMBER}-url && [ "${RET}" ]
+do
+	# repository urls
+	if db_get live-debconfig/git/repository${_NUMBER}-url
+	then
+		eval _REPOSITORY${_NUMBER}_URL="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/git/repository${_NUMBER}-url seen false
+		db_set live-debconfig/git/repository${_NUMBER}-url ""
+	fi
+
+	# repository directorys
+	if db_get live-debconfig/git/repository${_NUMBER}-directory
+	then
+		eval _REPOSITORY${_NUMBER}_DIRECTORY="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/git/repository${_NUMBER}-directory seen false
+		db_set live-debconfig/git/repository${_NUMBER}-directory ""
+	fi
+
+	# repository uids
+	if db_get live-debconfig/git/repository${_NUMBER}-uid
+	then
+		eval _REPOSITORY${_NUMBER}_UID="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/git/repository${_NUMBER}-uid seen false
+		db_set live-debconfig/git/repository${_NUMBER}-uid ""
+	fi
+
+	# repository gids
+	if db_get live-debconfig/git/repository${_NUMBER}-gid
+	then
+		eval _REPOSITORY${_NUMBER}_GID="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/git/repository${_NUMBER}-gid seen false
+		db_set live-debconfig/git/repository${_NUMBER}-gid ""
+	fi
+
+	# repository permission
+	if db_get live-debconfig/git/repository${_NUMBER}-permission
+	then
+		eval _REPOSITORY${_NUMBER}_PERMISSION="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/git/repository${_NUMBER}-permission seen false
+		db_set live-debconfig/git/repository${_NUMBER}-permission ""
+	fi
+
+	# repository commands
+	if db_get live-debconfig/git/repository${_NUMBER}-command
+	then
+		eval _REPOSITORY${_NUMBER}_COMMAND="\"${RET}\"" # string (w/ empty)
+
+		db_fset live-debconfig/git/repository${_NUMBER}-command seen false
+		db_set live-debconfig/git/repository${_NUMBER}-command ""
+	fi
+
+	_NUMBER="$((${_NUMBER} + 1))"
+done
+
+_REPOSITORY_NUMBERS="${_NUMBER}"
+
+db_stop
+
+## checkout single repository
+
+if [ -n "${_REPOSITORY_URL}" ] && [ -n "${_REPOSITORY_DIRECTORY}" ]
+then
+	_REPOSITORY_PARENT_DIRECTORY="$(dirname ${_REPOSITORY_DIRECTORY})"
+
+	rmdir "${_REPOSITORY_DIRECTORY}" > /dev/null 2>&1 || true
+
+	if [ ! -e "${_REPOSITORY_DIRECTORY}" ]
+	then
+		mkdir -p "${_REPOSITORY_DIRECTORY}"
+
+		cd "${_REPOSITORY_PARENT_DIRECTORY}"
+		git clone "${_REPOSITORY_URL}" "$(basename ${_REPOSITORY_DIRECTORY})"
+
+		if [ -n "${_REPOSITORY_UID}" ]
+		then
+			_REPOSITORY_GID="${_REPOSITORY_GID:-${_REPOSITORY_UID}}"
+
+			if getent passwd "${_REPOSITORY_UID}" > /dev/null 2>&1 && \
+			   getent groups "${_REPOSITORY_GID}" > /dev/null 2>&1
+			then
+				chown ${_REPOSITORY_UID}:${_REPOSITORY_GID} ${_REPOSITORY_DIRECTORY} -R
+			fi
+		fi
+
+		if [ -n "${_REPOSITORY_PERMISSION}" ]
+		then
+			chmod "${_REPOSITORY_PERMISSION}" "${_REPOSITORY_DIRECTORY}"
+		fi
+
+		if [ -n "${_REPOSITORY_COMMAND}" ]
+		then
+			cd "${_REPOSITORY_DIRECTORY}"
+			${_REPOSITORY_COMMAND}
+		fi
+	else
+		echo "I: Skipping ${_REPOSITORY_URL}, ${_REPOSITORY_DIRECTORY} already exists and is non-empty."
+	fi
+fi
+
+## checkout multiple repositories
+
+for _NUMBER in $(seq 0 ${_REPOSITORY_NUMBERS})
+do
+	eval _URL="$`echo _REPOSITORY${_NUMBER}_URL`"
+	eval _DIRECTORY="$`echo _REPOSITORY${_NUMBER}_DIRECTORY`"
+	eval _UID="$`echo _REPOSITORY${_NUMBER}_UID`"
+	eval _GID="$`echo _REPOSITORY${_NUMBER}_GID`"
+	eval _PERMISSION="$`echo _REPOSITORY${_NUMBER}_PERMISSION`"
+	eval _COMMAND="$`echo _REPOSITORY${_NUMBER}_COMMAND`"
+
+	if [ -z "${_URL}" ]
+	then
+		continue
+	fi
+
+	if [ -n "${_DIRECTORY}" ]
+	then
+		_PARENT_DIRECTORY="$(dirname ${_DIRECTORY})"
+
+		rmdir "${_DIRECTORY}" > /dev/null 2>&1 || true
+
+		if [ ! -e "${_DIRECTORY}" ]
+		then
+			mkdir -p "${_DIRECTORY}"
+
+			cd "${_PARENT_DIRECTORY}"
+			git clone "${_URL}" "$(basename ${_DIRECTORY})"
+
+			if [ -n "${_UID}" ]
+			then
+				_GID="${_GID:-${_UID}}"
+
+				if getent passwd "${_UID}" > /dev/null 2>&1 && \
+				   getent groups "${_GID}" > /dev/null 2>&1
+				then
+					chown ${_UID}:${_GID} ${_DIRECTORY} -R
+				fi
+			fi
+
+			if [ -n "${_PERMISSION}" ]
+			then
+				chmod "${_PERMISSION}" "${_DIRECTORY}"
+			fi
+
+			if [ -n "${_COMMAND}" ]
+			then
+				cd "${_DIRECTORY}"
+				${_COMMAND}
+			fi
+		fi
+	else
+		echo "I: Skipping ${_URL}, ${_DIRECTORY} already exists and is non-empty."
+	fi
+done

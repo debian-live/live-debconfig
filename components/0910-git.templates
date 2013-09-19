@@ -1,0 +1,39 @@
+Template: live-debconfig/title
+Type: title
+Description: live-debconfig: System Configuration
+
+Template: live-debconfig/git/repository-url
+Type: string
+Default:
+Description: live-debconfig: Git repository url?
+ Enter a URL of a Git repository that should be cloned.
+
+Template: live-debconfig/git/repository-directory
+Type: string
+Default:
+Description: live-debconfig: Git repository directory?
+ Enter a filesystem location to put the Git repository to.
+
+Template: live-debconfig/git/repository-uid
+Type: string
+Default: 0
+Description: live-debconfig: Git repository UID?
+ Choose a UID the repository should be owned by.
+
+Template: live-debconfig/git/repository-gid
+Type: string
+Default:
+Description: live-debconfig: Git repository GID?
+ Choose a GID the repository should be owned by.
+
+Template: live-debconfig/git/repository-permission
+Type: string
+Default: 0755
+Description: live-debconfig: Git repository permission?
+ Enter optional permissions for the repository directory.
+
+Template: live-debconfig/git/repository-command
+Type: string
+Default:
+Description: live-debconfig: Git repository command?
+ Enter optional commands to be executed within the repository.
