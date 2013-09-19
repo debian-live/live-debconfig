@@ -1,3 +1,11 @@
+live-debconfig (4.0~alpha28-1) unstable; urgency=low
+
+  * Updating console numbering in systemd component to honor systems
+    behaviour of starting to count consoles at 0, not at 1 like sysvinit.
+  * Adding git component to checkout repositories.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Thu, 19 Sep 2013 20:24:35 +0200
+
 live-debconfig (4.0~a27-1) unstable; urgency=low
 
   * Correcting wrong spelling of password in password component (Closes: #719471).
