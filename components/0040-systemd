@@ -77,6 +77,9 @@ esac
 
 db_stop
 
+# systemd starts counting consoles at 0, not 1 like sysvinit.
+_LXC_CONSOLES="$((${_LXC_CONSOLES} - 1))"
+
 case "${_LXC_ENABLE}" in
 	true)
 		# Disable sulogin
@@ -111,7 +114,7 @@ case "${_LXC_ENABLE}" in
 		mv /etc/systemd/system.conf.tmp /etc/systemd/system.conf
 
 		# squeeze and newer have /dev/tty and /dev/tty0 by default
-		for _CONSOLE in $(seq 1 ${_LXC_CONSOLES})
+		for _CONSOLE in $(seq 0 ${_LXC_CONSOLES})
 		do
 			if [ ! -e "/dev/tty${_CONSOLE}" ]
 			then
