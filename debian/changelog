@@ -1,3 +1,13 @@
+live-debconfig (4.0~alpha29-1) unstable; urgency=low
+
+  * Updating package descriptions.
+  * Rewrapping control file.
+  * Moving /selinux to /sys/fs/selinux to accomodate newer selinux in
+    debian.
+  * Updating to standards version 3.9.5.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 04 Nov 2013 07:57:46 +0100
+
 live-debconfig (4.0~alpha28-1) unstable; urgency=low
 
   * Updating console numbering in systemd component to honor systems
