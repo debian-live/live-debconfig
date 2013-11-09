@@ -25,8 +25,7 @@ msgstr "LIVE-DEBCONFIG"
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
-#, fuzzy, no-wrap
-#| msgid "2013-11-11"
+#, no-wrap
 msgid "2013-11-09"
 msgstr "09.11.2013"
 
