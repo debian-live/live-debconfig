@@ -22,6 +22,16 @@
 
 set -e
 
+for _FILE in /etc/live/debconfig.conf /etc/live/debconfig/*
+do
+	if [ -e "${_FILE}" ]
+	then
+		. "${_FILE}"
+	fi
+done
+
+LIVE_COMPONENTS_DIRECTORY="${LIVE_COMPONENTS_DIRECTORY:-/lib/live/debconfig}"
+
 Cmdline ()
 {
 	for _PARAMETER in ${_CMDLINE}
@@ -34,12 +44,12 @@ Cmdline ()
 
 			--debconfig)
 				# Run all components
-				_COMPONENTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
+				_COMPONENTS="$(cd ${LIVE_COMPONENTS_DIRECTORY} && ls ????-* | grep -v '\.templates$')"
 				;;
 
 			--nodebconfig=*)
 				# Don't run requested components
-				_COMPONENTS="$(cd /lib/live/debconfig && ls ????-* | grep -v '\.templates$')"
+				_COMPONENTS="$(cd ${LIVE_COMPONENTS_DIRECTORY} && ls ????-* | grep -v '\.templates$')"
 				LIVE_NODEBCONFIGS="${_PARAMETER#*nodebconfig=}"
 				;;
 
@@ -161,7 +171,14 @@ Main ()
 	done
 
 	# Show debconf components dialog
-	/lib/live/debconfig/components ${_COMPONENTS}
+	for _FILE in "${LIVE_COMPONENTS_DIRECTORY}"/components /lib/live/debconfig/components
+	do
+		if [ -e "${_FILE}" ]
+		then
+			"${LIVE_COMPONENTS_DIRECTORY}"/components ${_COMPONENTS}
+			break
+		fi
+	done
 
 	. /var/lib/live/debconfig/components
 	rm -f /var/lib/live/debconfig/components
@@ -171,12 +188,12 @@ Main ()
 
 	for _COMPONENT in ${_COMPONENTS}
 	do
-		if ls /lib/live/debconfig/????-${_COMPONENT} > /dev/null
+		if ls "${LIVE_COMPONENTS_DIRECTORY}"/????-${_COMPONENT} > /dev/null
 		then
 			[ "${LIVE_DEBUG}" = "true" ] && echo "[$(date +'%F %T')] live-debconfig: ${_COMPONENT}" >> /var/log/live/debconfig.log
-			/lib/live/debconfig/????-${_COMPONENT}
+			"${LIVE_COMPONENTS_DIRECTORY}"/????-${_COMPONENT}
 		else
-			echo "W: ${_COMPONENT} - no such component in /lib/live/debconfig, skipping."
+			echo "W: ${_COMPONENT} - no such component in ${LIVE_COMPONENTS_DIRECTORY}, skipping."
 		fi
 	done
 }
