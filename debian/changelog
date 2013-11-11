@@ -1,3 +1,10 @@
+live-debconfig (4.0~alpha30-1) unstable; urgency=low
+
+  * Adding support for customizable components directory in
+    /etc/live/debconfig.conf and /etc/live/debconfig/*.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 11 Nov 2013 16:10:28 +0100
+
 live-debconfig (4.0~alpha29-1) unstable; urgency=low
 
   * Updating package descriptions.
