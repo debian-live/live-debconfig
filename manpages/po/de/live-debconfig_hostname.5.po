@@ -4,8 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: live-debconfig 4.0~alpha30-1\n"
-"POT-Creation-Date: 2013-11-11 16:08+0100\n"
+"Project-Id-Version: live-debconfig 4.0~alpha31-1\n"
+"POT-Creation-Date: 2013-11-29 13:57+0100\n"
 "PO-Revision-Date: 2013-04-13 21:07+0100\n"
 "Last-Translator: Daniel Baumann <mail@daniel-baumann.ch>\n"
 "Language-Team: none\n"
@@ -26,15 +26,15 @@ msgstr "LIVE-DEBCONFIG"
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2013-11-11"
-msgstr "11.11.2013"
+msgid "2013-11-29"
+msgstr "29.11.2013"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~alpha30-1"
-msgstr "4.0~alpha30-1"
+msgid "4.0~alpha31-1"
+msgstr "4.0~alpha31-1"
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
@@ -207,31 +207,31 @@ msgstr ""
 #: en/live-debconfig_hostname.5:32
 #, no-wrap
 msgid "  1. I<HOSTNAME> is set to the string in the /etc/hostname file, if existing and non-empty.\n"
-msgstr "  1. I<HOSTNAME> wird auf den String in der /etc/hostname Datei gesetzt, sofern vorhanden und nicht leer."
+msgstr "  1. I<HOSTNAME> wird auf den String in der /etc/hostname Datei gesetzt, sofern vorhanden und nicht leer.\n"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:36
 #, no-wrap
 msgid "  2. I<HOSTNAME> is set to the distributor's ID as in the /etc/os-release file, if existing and non-empty.\n"
-msgstr "  2. I<HOSTNAME> wird auf die Distributor ID in der /etc/os-release Datei gesetzt, sofern vorhanden und nicht leer."
+msgstr "  2. I<HOSTNAME> wird auf die Distributor ID in der /etc/os-release Datei gesetzt, sofern vorhanden und nicht leer.\n"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:40
 #, no-wrap
 msgid "  3. I<HOSTNAME> is set to the distributor's ID as in the I<lsb_release>(1) program, if installed and non-empty.\n"
-msgstr "  3. I<HOSTNAME> wird auf die Distributor ID des I<lsb_release>(1) Programmes gesetzt, sofern vorhanden und nicht leer."
+msgstr "  3. I<HOSTNAME> wird auf die Distributor ID des I<lsb_release>(1) Programmes gesetzt, sofern vorhanden und nicht leer.\n"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:44
 #, no-wrap
 msgid "  4. I<HOSTNAME> is set to B<progress-linux> if the /etc/progress-linux_version file is existing.\n"
-msgstr "  4. I<HOSTNAME> wird auf B<progress-linux> gesetzt sofern die /etc/progress-linux_version Datei vorhanden ist."
+msgstr "  4. I<HOSTNAME> wird auf B<progress-linux> gesetzt sofern die /etc/progress-linux_version Datei vorhanden ist.\n"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:48
 #, no-wrap
 msgid "  5. I<HOSTNAME> is set to B<debian> as a fallback.\n"
-msgstr "  5. I<HOSTNAME> wird auf B<debian> gesetzt als Fallback."
+msgstr "  5. I<HOSTNAME> wird auf B<debian> gesetzt als Fallback.\n"
 
 #. type: Plain text
 #: en/live-debconfig_hostname.5:52

@@ -10,6 +10,56 @@
 
 set -e
 
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+if [ ! -e /etc/ssh/sshd_config ]
+then
+	# System does not use openssh-server
+	exit 0
+fi
+
+Defaults ()
+{
+	_LXC_ENABLE="${_LXC_ENABLE:-false}"
+}
+
+db_get live-debconfig/openssh-server/lxc-enable
+_LXC_ENABLE="${RET}" # boolean
+
+Defaults
+
+db_set live-debconfig/openssh-server/lxc-enable "${_LXC_ENABLE}"
+db_fset live-debconfig/openssh-server/lxc-enable seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/openssh-server/lxc-enable || true
+db_go
+
+db_get live-debconfig/openssh-server/lxc-enable
+_LXC_ENABLE="${RET}" # boolean
+
+db_stop
+
+# Disabling loginuid (requires read-write proc filesystem)
+case "${_LXC_ENABLE}" in
+	true)
+		if grep -E -qs "^ *session *required *pam_loginuid.so" /etc/pam.d/sshd
+		then
+			sed -i -e 's|^.*\(session.*required.*pam_loginuid.so\)$|#\1|' /etc/pam.d/sshd
+		fi
+		;;
+
+	false)
+		if grep -E -qs "^# *session *required *pam_loginuid.so" /etc/pam.d/sshd
+		then
+			sed -i -e 's|^#.*\(session.*required.*pam_loginuid.so\)$|\1|' /etc/pam.d/sshd
+		fi
+		;;
+esac
+
 # Recreating openssh-server host keys
 for _PROTOCOL in dsa rsa ecdsa
 do

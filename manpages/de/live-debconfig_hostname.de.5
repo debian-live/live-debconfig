@@ -11,7 +11,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH LIVE\-DEBCONFIG 5 11.11.2013 4.0~alpha30\-1 "Live System Projekt"
+.TH LIVE\-DEBCONFIG 5 29.11.2013 4.0~alpha31\-1 "Live System Projekt"
 
 .SH NAME
 \fBlive\-debconfig\fP \- Hostname Komponente
@@ -37,19 +37,24 @@ Standardwert ist automatisch bestimmt:
 .br
 
 .br
-  1. \fIHOSTNAME\fP wird auf den String in der /etc/hostname Datei gesetzt, sofern vorhanden und nicht leer..br
+  1. \fIHOSTNAME\fP wird auf den String in der /etc/hostname Datei gesetzt, sofern vorhanden und nicht leer.
+.br
 
 .br
-  2. \fIHOSTNAME\fP wird auf die Distributor ID in der /etc/os\-release Datei gesetzt, sofern vorhanden und nicht leer..br
+  2. \fIHOSTNAME\fP wird auf die Distributor ID in der /etc/os\-release Datei gesetzt, sofern vorhanden und nicht leer.
+.br
 
 .br
-  3. \fIHOSTNAME\fP wird auf die Distributor ID des \fIlsb_release\fP(1) Programmes gesetzt, sofern vorhanden und nicht leer..br
+  3. \fIHOSTNAME\fP wird auf die Distributor ID des \fIlsb_release\fP(1) Programmes gesetzt, sofern vorhanden und nicht leer.
+.br
 
 .br
-  4. \fIHOSTNAME\fP wird auf \fBprogress\-linux\fP gesetzt sofern die /etc/progress\-linux_version Datei vorhanden ist..br
+  4. \fIHOSTNAME\fP wird auf \fBprogress\-linux\fP gesetzt sofern die /etc/progress\-linux_version Datei vorhanden ist.
+.br
 
 .br
-  5. \fIHOSTNAME\fP wird auf \fBdebian\fP gesetzt als Fallback..br
+  5. \fIHOSTNAME\fP wird auf \fBdebian\fP gesetzt als Fallback.
+.br
 
 .br
 \fBWarnung:\fP der neue Hostname wird in der /etc/hostname Datei, jeglicher
