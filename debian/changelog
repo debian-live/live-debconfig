@@ -1,3 +1,19 @@
+live-debconfig (4.0~alpha31-1) unstable; urgency=low
+
+  [ chals ]
+  * Adding missing newlines in several strings of German live-
+    debconfig_hostname manpages, thanks to victory
+    <victory.deb@gmail.com>.
+  * Updating dates in manpages.
+  * Unfuzzying dates in the translation files of the manpages.
+  * Removing obsolete flag '--no-backups' from po4a options.
+
+  [ Daniel Baumann ]
+  * Adding support for LXC in openssh-server component for openssh 6.2p2-2
+    and newer.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 29 Nov 2013 13:58:43 +0100
+
 live-debconfig (4.0~alpha30-1) unstable; urgency=low
 
   * Adding support for customizable components directory in
