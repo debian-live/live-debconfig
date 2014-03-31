@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: live-debconfig VERSION\n"
-"POT-Creation-Date: 2014-03-26 19:57+0100\n"
+"POT-Creation-Date: 2014-03-31 22:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,14 +27,14 @@ msgstr ""
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "2014-03-26"
+msgid "2014-03-31"
 msgstr ""
 
 #. type: TH
 #: en/live-debconfig-get-selections.1:9 en/live-debconfig-set-selections.1:9
 #: en/live-debconfig.7:9 en/live-debconfig_hostname.5:9
 #, no-wrap
-msgid "4.0~alpha31-1"
+msgid "4.0~alpha32-1"
 msgstr ""
 
 #. type: TH
@@ -159,8 +159,8 @@ msgstr ""
 #. type: Plain text
 #: en/live-debconfig-set-selections.1:13
 msgid ""
-"B<live-debconfig-set-selections> - insert new values into the live-debconfig"
-"(7) debconf database"
+"B<live-debconfig-set-selections> - insert new values into the live-"
+"debconfig(7) debconf database"
 msgstr ""
 
 #. type: Plain text
@@ -177,9 +177,9 @@ msgstr ""
 #. type: Plain text
 #: en/live-debconfig-set-selections.1:21
 msgid ""
-"B<live-debconfig-set-selections> inserts new values into the live-debconfig"
-"(7) debconf database, see debconf-set-selections(1) for more information "
-"about the data format."
+"B<live-debconfig-set-selections> inserts new values into the live-"
+"debconfig(7) debconf database, see debconf-set-selections(1) for more "
+"information about the data format."
 msgstr ""
 
 #. type: Plain text

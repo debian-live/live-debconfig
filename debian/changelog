@@ -1,3 +1,18 @@
+live-debconfig (4.0~alpha32-1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Updating preseed example for 4.0~alpha31-1.
+  * Updating copyright notices for 2014.
+
+  [ chals ]
+  * Using proper flying middle dot in the Catalan translation.
+  * Updating dates in several manpages.
+
+  [ Daniel Baumann ]
+  * Building with dh --parallel.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Mon, 31 Mar 2014 22:10:54 +0200
+
 live-debconfig (4.0~alpha31-1) unstable; urgency=low
 
   [ chals ]
