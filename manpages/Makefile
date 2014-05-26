@@ -38,7 +38,7 @@ build: check po4a.cfg
 		exit 1; \
 	fi
 
-	po4a --keep 0 --package-name live-debconfig po4a.cfg
+	po4a --keep 0 --package-name live-debconfig --package-version $(shell cat ../VERSION) po4a.cfg
 
 clean:
 	rm -rf $(LANGUAGES)
