@@ -25,7 +25,7 @@ Defaults ()
 {
 	_LXC_ENABLE="${_LXC_ENABLE:-false}"
 	_LXC_CONSOLES="${_LXC_CONSOLES:-6}"
-	_LXC_DISABLE_SERVICES="${_LXC_DISABLE_SERVICES:-checkroot.service dev-hugepages.mount dev-mqueue.mount proc-sys-fs-binfmt_misc.automount remount-rootfs.service run-lock.mount run-user.mount swap.target sys-kernel-debug.mount sys-kernel-security.mount systemd-modules-load.service systemd-remount-api-vfs.service systemd-sysctl.service systemd-update-utmp-runlevel.service udev.service udev-settle.service udev-trigger.service user.mount var-lock.mount systemd-update-utmp-runlevel.service rescue.target}"
+	_LXC_DISABLE_SERVICES="${_LXC_DISABLE_SERVICES:-checkroot.service dev-hugepages.mount dev-mqueue.mount proc-sys-fs-binfmt_misc.automount remount-rootfs.service run-lock.mount run-user.mount swap.target sys-kernel-debug.mount sys-kernel-security.mount systemd-modules-load.service systemd-remount-api-vfs.service systemd-sysctl.service systemd-update-utmp-runlevel.service udev.service udev-settle.service udev-trigger.service user.mount var-lock.mount systemd-update-utmp-runlevel.service rescue.target sys-fs-fuse-connections.mount}"
 }
 
 db_get live-debconfig/systemd/lxc-enable

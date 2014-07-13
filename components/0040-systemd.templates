@@ -30,4 +30,4 @@ Description: live-debconfig: Which services to disable for LXC?
  sys-kernel-security.mount systemd-modules-load.service
  systemd-remount-api-vfs.service systemd-sysctl.service
  systemd-update-utmp-runlevel.service udev.service udev-settle.service
- udev-trigger.service user.mount var-lock.mount.
+ udev-trigger.service user.mount var-lock.mount sys-fs-fuse-connections.mount.
