@@ -130,6 +130,9 @@ case "${_LXC_ENABLE}" in
 
 		# Disable setting CapabilityBoundingSet for journald
 		sed -e 's/^ *CapabilityBoundingSet/\#&/' /lib/systemd/system/systemd-journald.service > /etc/systemd/system/systemd-journald.service
+
+		# Disable setting CapabilityBoundingSet for logind
+		sed -e 's/^ *CapabilityBoundingSet/\#&/' /lib/systemd/system/systemd-logind.service > /etc/systemd/system/systemd-logind.service
 		;;
 
 	false)
