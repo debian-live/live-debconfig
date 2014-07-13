@@ -125,7 +125,7 @@ case "${_LXC_ENABLE}" in
 		# Remove uneeded services in a container
 		for _SERVICE in ${_LXC_DISABLE_SERVICES}
 		do
-			systemctl mask ${_SERVICE}
+			ln -sf "/dev/null" "/etc/systemd/system/${_SERVICE}"
 		done
 
 		# Disable setting CapabilityBoundingSet for journald
