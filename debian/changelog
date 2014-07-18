@@ -1,3 +1,23 @@
+live-debconfig (4.0~alpha33-1) unstable; urgency=low
+
+  [ Daniel Baumann ]
+  * Updating preseed file for 4.0~alpha32-1.
+
+  [ Carlos Zuferri ]
+  * Adding .po integrity check target to manpages/Makefile.
+  * Adding '--package-version' to po4a options.
+
+  [ Nik Lutz ]
+  * Replacing 'systemctl mask' with 'ln -sf /dev/null' because newer
+    versions of systemd (jessie/wheezy-backports) require systemd to be
+    running to perform 'mask'.
+  * Adding sys-fs-fuse-connections.mount to list of services to be
+    disabled in a container running systemd.
+  * Disable CapabilityBoundingSet for systemd-logind in containers running
+    systemd else logind fails to start.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Fri, 18 Jul 2014 10:17:16 +0200
+
 live-debconfig (4.0~alpha32-1) unstable; urgency=low
 
   [ Daniel Baumann ]
