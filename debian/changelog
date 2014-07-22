@@ -1,3 +1,10 @@
+live-debconfig (4.0~alpha34-1) unstable; urgency=low
+
+  * Adding component to configure login for LXC required for jessie.
+  * Also recreating ed25519 hostkeys in openssh-server component.
+
+ -- Daniel Baumann <mail@daniel-baumann.ch>  Tue, 22 Jul 2014 09:05:23 +0200
+
 live-debconfig (4.0~alpha33-1) unstable; urgency=low
 
   [ Daniel Baumann ]
