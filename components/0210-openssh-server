@@ -61,7 +61,7 @@ case "${_LXC_ENABLE}" in
 esac
 
 # Recreating openssh-server host keys
-for _PROTOCOL in dsa rsa ecdsa
+for _PROTOCOL in dsa rsa ecdsa ed25519
 do
 	if [ ! -e /etc/ssh/ssh_host_${_PROTOCOL}_key ] && \
 	   grep -qs "ssh_host_${_PROTOCOL}_key" /etc/ssh/sshd_config
