@@ -1,0 +1,55 @@
+#!/bin/sh
+
+## live-debconfig(7) - System Configuration Components
+## Copyright (C) 2006-2014 Daniel Baumann <mail@daniel-baumann.ch>
+##
+## This program comes with ABSOLUTELY NO WARRANTY; for details see COPYING.
+## This is free software, and you are welcome to redistribute it
+## under certain conditions; see COPYING for details.
+
+
+set -e
+
+DEBCONF_SYSTEMRC="/var/lib/live/debconfig/systemrc"
+export DEBCONF_SYSTEMRC
+
+. /usr/share/debconf/confmodule
+
+Defaults ()
+{
+	_LXC_ENABLE="${_LXC_ENABLE:-false}"
+}
+
+db_get live-debconfig/cron/lxc-enable
+_LXC_ENABLE="${RET}" # boolean
+
+Defaults
+
+db_set live-debconfig/cron/lxc-enable "${_LXC_ENABLE}"
+db_fset live-debconfig/cron/lxc-enable seen false
+
+db_settitle live-debconfig/title
+db_input high live-debconfig/cron/lxc-enable || true
+db_go
+
+db_get live-debconfig/cron/lxc-enable
+_LXC_ENABLE="${RET}" # boolean
+
+db_stop
+
+# Disabling loginuid (requires read-write proc filesystem)
+case "${_LXC_ENABLE}" in
+	true)
+		if grep -E -qs "^ *session *required *pam_loginuid.so" /etc/pam.d/cron
+		then
+			sed -i -e 's|^.*\(session.*required.*pam_loginuid.so\)$|#\1|' /etc/pam.d/cron
+		fi
+		;;
+
+	false)
+		if grep -E -qs "^# *session *required *pam_loginuid.so" /etc/pam.d/cron
+		then
+			sed -i -e 's|^#.*\(session.*required.*pam_loginuid.so\)$|\1|' /etc/pam.d/cron
+		fi
+		;;
+esac
